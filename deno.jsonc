@@ -1,0 +1,50 @@
+{
+  "tasks": {
+    "build": "deno run -A tasks.ts build",           // Build Project
+    "clean": "deno run -A tasks.ts clean",           // Clean Build Targets
+    "format": "deno run -A tasks.ts format",         // Formats Code
+    "local": "deno run -A tasks.ts local",           // Build Local Project
+    "publish": "deno run -A tasks.ts publish",       // Publish Package
+    "report": "deno run -A tasks.ts report",         // Test Converage
+    "range": "deno run -A tasks.ts range",           // TypeScript Compiler Ranges
+    "start": "deno run -A tasks.ts start",           // Run Example
+    "test": "deno run -A tasks.ts test"              // Test Project
+  },
+  "imports": {
+    // --------------------------------------------------------------
+    // Build
+    // --------------------------------------------------------------
+    "tasksmith": "https://raw.githubusercontent.com/sinclairzx81/tasksmith/0.9.6/src/index.ts",
+    // --------------------------------------------------------------
+    // Test
+    // --------------------------------------------------------------
+    "test": "./test/common/index.ts",    
+    // --------------------------------------------------------------
+    // Dependencies
+    // --------------------------------------------------------------
+    "@standard-schema/spec": "npm:@standard-schema/spec",
+    "typebox": "npm:typebox",
+    // --------------------------------------------------------------
+    // DevDependencies
+    // --------------------------------------------------------------
+    "zod": "npm:zod",
+    "valibot": "npm:valibot",
+    "arktype": "npm:arktype",
+    // --------------------------------------------------------------
+    // Library
+    // --------------------------------------------------------------
+    "typedriver": "./src/index.ts"
+  },
+  "fmt": {
+    "semiColons": false,
+    "singleQuote": true,
+    "trailingCommas": "never",
+    "lineWidth": 240
+  },
+  "exclude": [
+    "tasks"
+  ],
+  "compilerOptions": {
+    "strict": true
+  }
+}

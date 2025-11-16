@@ -1,0 +1,25 @@
+{
+  "name": "typedriver",
+  "description": "Unified Runtime Validation and Inference Driver for TypeScript",
+  "type": "module",
+  "scripts": {
+    "build": "deno run -A tasks.ts build", 
+    "clean": "deno run -A tasks.ts clean", 
+    "format": "deno run -A tasks.ts format", 
+    "local": "deno run -A tasks.ts local", 
+    "publish": "deno run -A tasks.ts publish", 
+    "report": "deno run -A tasks.ts report",
+    "range": "deno run -A tasks.ts range", 
+    "start": "deno run -A tasks.ts start",
+    "test": "deno run -A tasks.ts test"
+  },
+  "dependencies": {
+    "@standard-schema/spec": "^1.0.0",
+    "typebox": "^1.0.53"
+  },
+  "devDependencies": {
+    "arktype": "^2.1.26",
+    "valibot": "^1.1.0",
+    "zod": "^4.1.12"
+  }
+}

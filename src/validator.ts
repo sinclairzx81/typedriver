@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------------------
+
+TypeDriver
+
+The MIT License (MIT)
+
+Copyright (c) 2025 Haydn Paterson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+---------------------------------------------------------------------------*/
+
+// deno-fmt-ignore-file
+
+/** Abstract Base for all Validator types. */
+export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
+  /** Returns the internal schema used by this validator */
+  public abstract schema(): Input
+  /** Asserts a value matches the given schema */
+  public abstract assert(value: unknown): asserts value is Output
+  /** Checks a value matches the given schema */
+  public abstract check(value: unknown): value is Output
+  /** Parses a value and throws if invalid */
+  public abstract parse(value: unknown): Output
+  /** Returns errors for the given value */
+  public abstract errors(value: unknown): object[]
+
+  /** True if the the validator supports Json Schema translation */
+  public abstract isJsonSchema(): boolean
+  /** Returns this validator as Json Schema. */
+  public abstract asJsonSchema(): unknown
+}

@@ -1,0 +1,31 @@
+name: Test
+on: [push, pull_request]
+jobs:
+  Build:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        node: [20.x]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      # Deno
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: 2.5.4
+      # Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      # Install
+      - name: Install Packages
+        run: deno install
+      # Test
+      - name: Test Library
+        run: deno task test
+      # Build
+      - name: Build Library
+        run: deno task build
