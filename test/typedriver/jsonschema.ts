@@ -34,7 +34,7 @@ Test('Should Check 1', () => {
   Behaviors(T, ['hello'], [null])
 })
 Test('Should Check 2', () => {
-  const T = compile({ 
+  const T = compile({
     type: 'object',
     required: ['x', 'y', 'z'],
     properties: {
@@ -54,7 +54,7 @@ Test('Should Check 2', () => {
   Behaviors(T, [{ x: 1, y: 2, z: 3 }], [null])
 })
 Test('Should Check 3', () => {
-  const T = compile({ 
+  const T = compile({
     type: 'object',
     required: ['x', 'y'],
     properties: {
@@ -74,7 +74,7 @@ Test('Should Check 3', () => {
   Behaviors(T, [{ x: 1, y: 2, z: 3 }, { x: 1, y: 2 }], [null])
 })
 Test('Should Check 4', () => {
-  const T = compile({ 
+  const T = compile({
     type: 'array',
     items: { type: 'number' }
   })
@@ -85,7 +85,7 @@ Test('Should Check 4', () => {
   Behaviors(T, [[1, 2, 3]], [[1, 2, null], null])
 })
 Test('Should Check 5', () => {
-  const T = compile({ 
+  const T = compile({
     type: 'array',
     minItems: 2,
     maxItems: 2,
@@ -98,7 +98,7 @@ Test('Should Check 5', () => {
   Behaviors(T, [[1, true]], [[true, true], null])
 })
 Test('Should Check 6', () => {
-  const T = compile({ 
+  const T = compile({
     anyOf: [{
       type: 'number'
     }, {

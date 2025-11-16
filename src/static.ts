@@ -60,7 +60,7 @@ type StaticJsonSchema<Input extends Type.TSchema,
 // ------------------------------------------------------------------
 // Infers a TypeScript Type from Json Schema, Standard Schema or TypeScript DSL
 // ------------------------------------------------------------------
-export type StaticInput<Input extends unknown> = (
+type StaticInput<Input extends unknown> = (
   Input extends Validator<infer Input extends unknown, infer Output extends unknown> ? StaticValidator<Input, Output> :
   Input extends string ? StaticTypeScript<Input > :
   Input extends StandardSchemaV1 ? StaticStandardSchema<Input > :

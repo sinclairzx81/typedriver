@@ -9,7 +9,7 @@
 <br />
 <br />
 
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Test](https://github.com/sinclairzx81/universal-schema/actions/workflows/build.yml/badge.svg)](https://github.com/sinclairzx81/universal-schema/actions/workflows/build.yml)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Test](https://github.com/sinclairzx81/typedriver/actions/workflows/build.yml/badge.svg)](https://github.com/sinclairzx81/typedriver/actions/workflows/build.yml)
 
 </div>
 
@@ -52,7 +52,7 @@ const position = Vector3.parse({                    // const position: {
 
 ## Overview
 
-TypeDriver is a unified runtime validation and inference system for Json Schema, Standard Schema and Runtime TypeScript. It is designed for framework integration and offers simple JSON Schema and Standard Schema integration using a common Validation interface.
+TypeDriver is a unified runtime validation and inference system for Json Schema, Standard Schema, and runtime TypeScript. It is designed for framework integration and offers simple Json Schema and Standard Schema integration using a common validation interface.
 
 License MIT
 
@@ -166,7 +166,7 @@ const errors = Vector3.errors(value)
 
 ## Static
 
-TypeDriver provides a single inference type called `Static<T>` that can infer types from Validator instances.
+TypeDriver provides a unified inference type called `Static<T>` that can infer types from Validator instances as well as Json Schema, Standard Schema or TypeScript syntax. The following infers a Validator.
 
 ```typescript
 import { compile, type Static } from 'typedriver'
@@ -186,27 +186,27 @@ type Vector = Static<typeof Vector>                 // type Vector = {
 
 ## Schema
 
-Validator instances provide access to internal schematics if required. They also provide support for Validator to JSON Schema translation in some cases, with fallbacks for manual JSON Schema transformation if required.
+Validator instances provide access to internal schematics if required. They also provide support for Validator to Json Schema translation in some cases, with fallbacks for manual Json Schema transformation if required.
 
 ```typescript
 import { compile, type Static } from 'typedriver'
 
 const validator = compile(...)
 
-validator.isJsonSchema()    // Returns true if the Validator can be converted to 
-                            // JSON Schema. This will be true for the validator 
-                            // was compiled with JSON Schema or Typescript, but 
-                            // will be false if the validator was compiled with 
-                            // Standard Schema.
+
+validator.isJsonSchema()    // Returns true if the validator can be converted to 
+                            // Json Schema. This is true when the validator was 
+                            // compiled with Json Schema or TypeScript, but false 
+                            // if it was compiled with Standard Schema.
 
 validator.asJsonSchema()    // Returns the Json Schema for the validator. If the 
-                            // Validator was compiled with Standard Schema, an 
-                            // empty {} will be returned which is used to indicate 
-                            // an unknown runtime schema.
+                            // validator was compiled with Standard Schema, an 
+                            // empty {} is returned to indicate an unknown 
+                            // runtime schema.
 
 validator.schema()          // Returns the schema that was passed to compile. This 
-                            // can be used to manually transform if isJsonSchema()
-                            // returns false.
+                            // can be used to manually transform the schema if 
+                            // isJsonSchema() returns false.
 ```
 
 ## Contribute

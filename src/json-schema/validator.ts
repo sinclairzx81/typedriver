@@ -33,9 +33,6 @@ import { AssertError, ParseError } from '../errors.ts'
 import { Validator } from '../validator.ts'
 import Type from 'typebox'
 
-// ------------------------------------------------------------------
-// JsonSchemaValidator
-// ------------------------------------------------------------------
 export class JsonSchemaValidator<Input extends Type.TSchema, 
   Output extends unknown = Type.Static<Input>
 > extends Validator<Input, Output> {
