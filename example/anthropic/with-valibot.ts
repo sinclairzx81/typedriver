@@ -8,7 +8,7 @@ const server = new McpServer({
 server.registerTool('add', {
   title: 'Addition tool',
   description: 'add two numbers',
-  inputSchema: v.object({ // note: requires explicit json schema transform
+  inputSchema: v.object({ // note: requires explicit Json Schema transform
     a: v.number(),
     b: v.number()
   }),

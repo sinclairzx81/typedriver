@@ -39,7 +39,7 @@ Test('Should Check 2', () => {
   const T = compile(type({
     x: 'number',
     y: 'number',
-    z: 'number',
+    z: 'number'
   }))
 
   type T = Static<typeof T>
@@ -55,7 +55,7 @@ Test('Should Check 3', () => {
   const T = compile(type({
     x: 'number',
     y: 'number',
-    'z?': 'number',
+    'z?': 'number'
   }))
 
   type T = Static<typeof T>

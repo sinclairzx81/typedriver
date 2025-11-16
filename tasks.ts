@@ -45,6 +45,7 @@ Task.run('local', (target: string = `../build-test/node_modules/typedriver`) => 
 // Publish
 // ------------------------------------------------------------------
 Task.run('publish', async (otp: string, target: string = `target/build`) => {
+  console.log(`cd ${target} && npm publish typedriver-${Version}.tgz --access=public --otp ${otp}`)
   await Task.shell(`cd ${target} && npm publish typedriver-${Version}.tgz --access=public --otp ${otp}`)
   await Task.shell(`git tag ${Version}`)
   await Task.shell(`git push origin ${Version}`)

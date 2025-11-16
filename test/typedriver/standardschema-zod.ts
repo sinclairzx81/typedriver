@@ -22,7 +22,7 @@ Test('Should JsonSchema 1', () => {
 })
 Test('Should JsonSchema 2', () => {
   const T = compile(z.string())
-  Assert.IsEqual(T.asJsonSchema(), { })
+  Assert.IsEqual(T.asJsonSchema(), {})
 })
 // ------------------------------------------------------------------
 // Check
@@ -38,7 +38,7 @@ Test('Should Check 2', () => {
   const T = compile(z.object({
     x: z.number(),
     y: z.number(),
-    z: z.number(),
+    z: z.number()
   }))
 
   type T = Static<typeof T>

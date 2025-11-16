@@ -49,7 +49,7 @@ export class McpServer {
       options.inputSchema ? compile(options.inputSchema) : compile({}),
       options.outputSchema ? compile(options.outputSchema) : compile({})
     ]
-    // step 2: resolve json schema
+    // step 2: resolve Json Schema
     const [inputJsonSchema, outputJsonSchema] = [
       this.#resolveJsonSchema(inputValidator),
       this.#resolveJsonSchema(outputValidator)

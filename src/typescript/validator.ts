@@ -33,9 +33,6 @@ import { Validator } from '../validator.ts'
 import { AssertError, ParseError } from '../errors.ts'
 import Type from 'typebox'
 
-// ------------------------------------------------------------------
-// Validator
-// ------------------------------------------------------------------
 export class TypeScriptValidator<Input extends string, 
   Schema extends Type.TSchema = Type.TScript<{}, Input>, 
   Output extends unknown = Type.Static<Schema>

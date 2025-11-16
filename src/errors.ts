@@ -1,4 +1,3 @@
-
 export class AssertError extends globalThis.Error {
   constructor(public readonly errors: object[]) {
     super('AssertError')

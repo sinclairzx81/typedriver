@@ -32,9 +32,6 @@ import { StandardSchemaV1 } from '@standard-schema/spec'
 import { AssertError, ParseError, UnknownError } from '../errors.ts'
 import { Validator } from '../validator.ts'
 
-// ------------------------------------------------------------------
-// StandardSchemaV1Validator
-// ------------------------------------------------------------------
 export class StandardSchemaValidator<Input extends StandardSchemaV1, 
   Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {

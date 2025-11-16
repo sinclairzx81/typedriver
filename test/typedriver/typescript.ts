@@ -70,7 +70,7 @@ Test('Should Check 4', () => {
 
   type T = Static<typeof T>
   Assert.IsExtendsMutual<T, number[]>(true)
-  
+
   Behaviors(T, [[1, 2, 3]], [[1, 2, null], null])
 })
 Test('Should Check 5', () => {

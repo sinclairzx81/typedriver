@@ -38,7 +38,7 @@ Test('Should Check 2', () => {
   const T = compile(v.object({
     x: v.number(),
     y: v.number(),
-    z: v.number(),
+    z: v.number()
   }))
 
   type T = Static<typeof T>
