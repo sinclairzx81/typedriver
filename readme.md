@@ -35,14 +35,6 @@ const Vector3 = compile(`{
                                                     //   z: number
                                                     // }>
 
-// Infer
-
-type Vector3 = Static<typeof Vector3>               // type Vector3 = {
-                                                    //   x: number,
-                                                    //   y: number,
-                                                    //   z: number
-                                                    // }
-
 // Parse
 
 const position = Vector3.parse({                    // const position: {
