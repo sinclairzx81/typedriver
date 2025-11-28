@@ -21,7 +21,7 @@
 Compile, Infer and Parse | [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApgGjjATzCzgGUYBDGYZOAXzgDMo04ByQ4gEymADcsUNgChhAejFwAwmjCYso1ADsAzvABqWZDGgBmOAF4Us+QAoABgmFw4ADwBccJQFcQAI0HW4BRy-eebAC9fVw8oYTpzAEobWLj4hMSk5PiJY1UNLR0oXUd1CgxgLipoAB4AOkrELxTauvq4tJsHJ1DBHBqGru7GyRsfVv8oDp7Rnqa4YMGwzrG55LS6AD5RNIBJJUZPYU4STW09QzJKamRS3YhGOH3s3SWutN3rrMOjK3mPhb67EKGRz4BvViAz8YX+gMBEymoICEMhkjoq0kAAUKFAVAphMo1HBICpgNQIEojjc9OUwGiMaYkGM0tj4HiCcAiY53j84AAGPBw8bfFow4ZeAYARm5PIe3xBbUFQUcHPFvNi0OlERiCtpCKOlXKQA)
 
 ```typescript
-import { compile, type Static } from 'typedriver'
+import { compile } from 'typedriver'
 
 // Compile
 
