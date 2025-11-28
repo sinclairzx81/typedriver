@@ -2,7 +2,7 @@
 
 <h1>TypeDriver</h1>
 
-<p>Unified Runtime Validation and Inference Driver for TypeScript</p>
+<p>Integration Driver for Runtime Type Systems</p>
 
 <img src="typedriver.png" />
 
