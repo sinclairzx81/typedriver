@@ -29,11 +29,7 @@ const Vector3 = compile(`{
   x: number
   y: number
   z: number
-}`)                                                 // const Vector3: Validator<... {
-                                                    //   x: number,
-                                                    //   y: number,
-                                                    //   z: number
-                                                    // }>
+}`)
 
 // Parse
 
