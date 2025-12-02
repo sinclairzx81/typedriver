@@ -3,7 +3,7 @@
 import { Range } from './task/range/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.8.0'
+const Version = '0.8.1'
 
 // ------------------------------------------------------------------
 // Build
@@ -24,8 +24,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
       url: 'https://github.com/sinclairzx81/typedriver'
     },
     dependencies: {
-      "@standard-schema/spec": "^1.0.0",
-      "typebox": "^1.0.53"
+      "typebox": "^1.0.61"
     }
   },
 })

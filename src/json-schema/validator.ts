@@ -29,10 +29,27 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { Validator as TBValidator } from 'typebox/compile'
-import { AssertError, ParseError } from '../errors.ts'
+import { ParseError } from '../errors.ts'
 import { Validator } from '../validator.ts'
 import Type from 'typebox'
 
+/**
+ * High-performance Json Schema validator that uses library-specific
+ * inference mechanisms. The validator assumes the source library
+ * produces accurate schematics that encode the runtime
+ * representations of its types.
+ *
+ * In TypeBox terminology, this falls under the TUnsafe<T> category.
+ * Preferably, TypeScript types "should" be derived from the
+ * schematics rather than assumed.
+ *
+ * Note:
+ *
+ * Standard JSON Schema does not advertise which Draft versions it
+ * supports, and the resolver is using try/catch resolution. This
+ * should be brought up in RFC feedback, not by me of course, I don't
+ * know anything about Json Schema.
+ */
 export class JsonSchemaValidator<Input extends Type.TSchema, 
   Output extends unknown = Type.Static<Input>
 > extends Validator<Input, Output> {
@@ -50,18 +67,15 @@ export class JsonSchemaValidator<Input extends Type.TSchema,
   // ----------------------------------------------------------------
   // Json Schema
   // ----------------------------------------------------------------
-  public isJsonSchema(): boolean {
+  public override isJsonSchema(): boolean {
     return true
   }
-  public asJsonSchema(): unknown {
+  public override toJsonSchema(): unknown {
     return this.input
   }
   // ----------------------------------------------------------------
   // Validation
   // ----------------------------------------------------------------
-  public override assert(value: unknown): asserts value is Output {
-    if (!this.validator.Check(value)) throw new AssertError(this.errors(value))
-  }
   public override check(value: unknown): value is Output {
     return this.validator.Check(value)
   }

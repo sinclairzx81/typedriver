@@ -28,18 +28,33 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-/** Abstract Base for all Validator types. */
-export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
-  /** Returns the schema used to construct this validator */
-  public abstract schema(): Input
-  /** Checks a value matches the given schema */
-  public abstract check(value: unknown): value is Output
-  /** Parses a value and throws if invalid */
-  public abstract parse(value: unknown): Output
-  /** Returns errors for the given value */
-  public abstract errors(value: unknown): object[]
-  /** True if the validator has a Json Schema representation */
-  public abstract isJsonSchema(): boolean
-  /** Return the validator Json Schema representation. */
-  public abstract toJsonSchema(): unknown
+import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import Guard from 'typebox/guard'
+
+function IsStandardSchemaV1Props(value: unknown) {
+  return Guard.IsObject(value) &&
+    Guard.HasPropertyKey(value, 'version') &&
+    Guard.HasPropertyKey(value, 'vendor') &&
+    Guard.HasPropertyKey(value, 'validate') &&
+    (
+      Guard.IsEqual(value.version, '1') || // spec
+      Guard.IsEqual(value.version, 1) // arktype
+    ) &&
+    Guard.IsString(value.vendor) &&
+    Guard.IsFunction(value.validate)
+}
+function IsTypicalStandardSchemaV1(value: unknown): value is StandardSchemaV1 {
+  return Guard.IsObject(value) &&
+    Guard.HasPropertyKey(value, '~standard') &&
+    IsStandardSchemaV1Props(value['~standard'])
+}
+// ArkType (Obviously)
+function IsNonTypicalStandardSchemaV1(value: unknown): value is StandardSchemaV1 {
+  return Guard.IsFunction(value) &&
+    !Guard.IsUndefined((value as never)['~standard']) &&
+    IsStandardSchemaV1Props((value as never)['~standard'])
+}
+export function IsStandardSchemaV1(value: unknown): value is StandardSchemaV1 {
+  return IsTypicalStandardSchemaV1(value) ||
+    IsNonTypicalStandardSchemaV1(value)
 }

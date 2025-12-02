@@ -28,11 +28,11 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardSchemaV1 } from '@standard-schema/spec'
-import { AssertError, ParseError, UnknownError } from '../errors.ts'
+import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import { ParseError, UnknownError } from '../errors.ts'
 import { Validator } from '../validator.ts'
 
-export class StandardSchemaValidator<Input extends StandardSchemaV1, 
+export class StandardSchemaValidator<Input extends StandardSchemaV1,
   Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {
   constructor(private readonly input: Input) {
@@ -47,30 +47,26 @@ export class StandardSchemaValidator<Input extends StandardSchemaV1,
   // ----------------------------------------------------------------
   // Json Schema
   // ----------------------------------------------------------------
-  public isJsonSchema(): boolean {
+  public override  isJsonSchema(): boolean {
     return false
   }
-  public asJsonSchema(): unknown {
+  public override  toJsonSchema(): unknown {
     return {}
   }
   // ----------------------------------------------------------------
   // Validation
   // ----------------------------------------------------------------
-  public assert(value: unknown): asserts value is Output {
-    const result = this.input['~standard'].validate(value)
-    if ('issues' in result) throw new AssertError(result.issues as never || [])
-  }
-  public check(value: unknown): value is Output {
+  public override check(value: unknown): value is Output {
     const result = this.input['~standard'].validate(value)
     return !('issues' in result)
   }
-  public parse(value: unknown): Output {
+  public override  parse(value: unknown): Output {
     const result = this.input['~standard'].validate(value)
     if ('issues' in result) throw new ParseError(result.issues as never || [])
     if ('value' in result) return result.value as never
     throw new UnknownError('Invalid result')
   }
-  public errors(value: unknown): object[] {
+  public override  errors(value: unknown): object[] {
     const result = this.input['~standard'].validate(value)
     if ('issues' in result) return result.issues as object[] || []
     return []

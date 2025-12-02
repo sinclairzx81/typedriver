@@ -28,18 +28,8 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-/** Abstract Base for all Validator types. */
-export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
-  /** Returns the schema used to construct this validator */
-  public abstract schema(): Input
-  /** Checks a value matches the given schema */
-  public abstract check(value: unknown): value is Output
-  /** Parses a value and throws if invalid */
-  public abstract parse(value: unknown): Output
-  /** Returns errors for the given value */
-  public abstract errors(value: unknown): object[]
-  /** True if the validator has a Json Schema representation */
-  public abstract isJsonSchema(): boolean
-  /** Return the validator Json Schema representation. */
-  public abstract toJsonSchema(): unknown
+import Guard from 'typebox/guard'
+
+export function IsTypeScript(value: unknown): value is string {
+  return Guard.IsString(value)
 }
