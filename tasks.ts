@@ -24,8 +24,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
       url: 'https://github.com/sinclairzx81/typedriver'
     },
     dependencies: {
-      "@standard-schema/spec": "^1.0.0",
-      "typebox": "^1.0.53"
+      "typebox": "^1.0.61"
     }
   },
 })

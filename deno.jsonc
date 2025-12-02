@@ -22,7 +22,8 @@
     // --------------------------------------------------------------
     // Dependencies
     // --------------------------------------------------------------
-    "@standard-schema/spec": "npm:@standard-schema/spec",
+    // "@standard-schema/spec": "npm:@standard-schema/spec",
+    "@standard-schema/spec": "./src/_standard/standard-schema.ts",
     "typebox": "npm:typebox",
     // --------------------------------------------------------------
     // DevDependencies

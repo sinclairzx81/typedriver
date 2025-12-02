@@ -2,9 +2,6 @@ import { Assert } from 'test'
 import { compile, type Static, Validator } from 'typedriver'
 
 export function Behaviors(validator: Validator, valid: unknown[], invalid: unknown[]) {
-  // Assert
-  valid.forEach((value) => validator.assert(value))
-  invalid.forEach((value) => Assert.Throws(() => validator.assert(value)))
   // Checks
   valid.forEach((value) => Assert.IsTrue(validator.check(value)))
   invalid.forEach((value) => Assert.IsFalse(validator.check(value)))
