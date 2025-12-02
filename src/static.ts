@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { type StandardSchemaV1 } from '@standard-schema/spec'
+import { type StandardSchemaV1 } from './_standard/standard-schema.ts'
 import { type Validator } from './validator.ts'
 import Type from 'typebox'
 

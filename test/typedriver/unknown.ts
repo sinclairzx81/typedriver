@@ -21,7 +21,7 @@ Test('Should JsonSchema 1', () => {
 })
 Test('Should JsonSchema 1', () => {
   const T = compile(null)
-  Assert.IsEqual(T.asJsonSchema(), {})
+  Assert.IsEqual(T.toJsonSchema(), {})
 })
 // ------------------------------------------------------------------
 // Check

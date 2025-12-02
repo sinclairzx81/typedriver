@@ -28,29 +28,38 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { Validator as TBValidator } from 'typebox/compile'
-import { Validator } from '../validator.ts'
+import { StandardJSONSchemaV1, StandardSchemaV1 } from '../_standard/standard-schema.ts'
 import { ParseError } from '../errors.ts'
-import Type from 'typebox'
+import { Validator } from '../validator.ts'
+import { Validator as TBValidator } from 'typebox/compile'
+import { ResolveJsonSchema } from './resolve.ts'
 
-export class TypeScriptValidator<Input extends string, 
-  Schema extends Type.TSchema = Type.TScript<{}, Input>, 
-  Output extends unknown = Type.Static<Schema>
+/**
+ * High-performance Json Schema validator that uses library-specific
+ * inference mechanisms. The validator assumes the source library
+ * produces accurate schematics that encode the runtime
+ * representations of its types.
+ *
+ * Note:
+ *
+ * Standard JSON Schema does not advertise which Draft versions it
+ * supports, and the resolver is using try/catch resolution. This
+ * should be brought up in RFC feedback.
+ */
+export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & StandardSchemaV1, 
+  Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {
-  private readonly validator: TBValidator<Type.TProperties, Type.TSchema>
-  private readonly script: Input
-  private readonly jsonschema: Type.TSchema
-  constructor(script: Input) {
+  private readonly validator: TBValidator<{}, Record<string, unknown>>
+  constructor(private readonly input: Input) {
     super()
-    this.script = script
-    this.jsonschema = Type.Script(this.script) as never as Schema
-    this.validator = new TBValidator({}, this.jsonschema)
+    const schema = ResolveJsonSchema(input)
+    this.validator = new TBValidator({}, schema)
   }
   // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {
-    return this.script
+    return this.input
   }
   // ----------------------------------------------------------------
   // Json Schema
@@ -59,7 +68,7 @@ export class TypeScriptValidator<Input extends string,
     return true
   }
   public override toJsonSchema(): unknown {
-    return this.jsonschema
+    return this.validator.Type()
   }
   // ----------------------------------------------------------------
   // Validation
@@ -69,7 +78,7 @@ export class TypeScriptValidator<Input extends string,
   }
   public override parse(value: unknown): Output {
     if (!this.validator.Check(value)) throw new ParseError(this.errors(value))
-    return value as Output
+    return value as never
   }
   public override errors(value: unknown): object[] {
     return this.validator.Errors(value)

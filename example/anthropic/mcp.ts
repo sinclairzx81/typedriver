@@ -61,7 +61,7 @@ export class McpServer {
   // ----------------------------------------------------------------
   #resolveJsonSchema(validator: Validator): unknown {
     // if the validator supports Json Schema, just return it
-    if(validator.isJsonSchema()) return validator.asJsonSchema()
+    if(validator.isJsonSchema()) return validator.toJsonSchema()
     
       // ... otherwise, check if the schema is Zod and transform
     const schema = validator.schema()

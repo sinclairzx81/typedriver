@@ -3,13 +3,11 @@
   "specifiers": {
     "jsr:@std/media-types@1.1.0": "1.1.0",
     "jsr:@std/path@1.1.0": "1.1.0",
-    "npm:@standard-schema/spec@*": "1.0.0",
-    "npm:@standard-schema/spec@1": "1.0.0",
     "npm:@types/node@*": "24.2.0",
     "npm:arktype@*": "2.1.26",
     "npm:arktype@^2.1.26": "2.1.26",
-    "npm:typebox@*": "1.0.53",
-    "npm:typebox@^1.0.53": "1.0.53",
+    "npm:typebox@*": "1.0.61",
+    "npm:typebox@^1.0.61": "1.0.61",
     "npm:valibot@*": "1.1.0",
     "npm:valibot@^1.1.0": "1.1.0",
     "npm:zod@*": "4.1.12",
@@ -36,9 +34,6 @@
     "@ark/util@0.54.0": {
       "integrity": "sha512-ugTfpEDGA6d2uU2/3M7uRiuPNYckQMhg2wfNMw8zZHXjPhuVCbXWZzIcBojuXuCN8j4MrNWNqQ9z7f8W/JiE8w=="
     },
-    "@standard-schema/spec@1.0.0": {
-      "integrity": "sha512-m2bOd0f2RT9k8QJx1JN85cZYyH1RqFBdlwtkSlf4tBDYLCiiZnv1fIIwacK6cqwXavOydf0NPToMQgpKq+dVlA=="
-    },
     "@types/node@24.2.0": {
       "integrity": "sha512-3xyG3pMCq3oYCNg7/ZP+E1ooTaGB4cG8JWRsqqOYQdbWNY4zbaV0Ennrd7stjiJEFZCaybcIgpTjJWHRfBSIDw==",
       "dependencies": [
@@ -59,8 +54,8 @@
         "arkregex"
       ]
     },
-    "typebox@1.0.53": {
-      "integrity": "sha512-fCi3wnKP4owdhs+LRIUfkPzR4p5RLa3tM4O6gqO7TeAo6SsamvqA59yPb1GyKDcCgB/ClmifVJ9BqQ128a4uvQ=="
+    "typebox@1.0.61": {
+      "integrity": "sha512-5KeeL5QoPBoYm8Z7tGR1Pw9FjWA75MLhVuiSMCRgtgTg/d2+kTvolFddhOUua9FxpIaqXznFPZcc3sl6cEpafw=="
     },
     "undici-types@7.10.0": {
       "integrity": "sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag=="
@@ -141,7 +136,6 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:@standard-schema/spec@*",
       "npm:arktype@*",
       "npm:typebox@*",
       "npm:valibot@*",
@@ -149,9 +143,8 @@
     ],
     "packageJson": {
       "dependencies": [
-        "npm:@standard-schema/spec@1",
         "npm:arktype@^2.1.26",
-        "npm:typebox@^1.0.53",
+        "npm:typebox@^1.0.61",
         "npm:valibot@^1.1.0",
         "npm:zod@^4.1.12"
       ]

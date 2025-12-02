@@ -28,18 +28,32 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-/** Abstract Base for all Validator types. */
-export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
-  /** Returns the schema used to construct this validator */
-  public abstract schema(): Input
-  /** Checks a value matches the given schema */
-  public abstract check(value: unknown): value is Output
-  /** Parses a value and throws if invalid */
-  public abstract parse(value: unknown): Output
-  /** Returns errors for the given value */
-  public abstract errors(value: unknown): object[]
-  /** True if the validator has a Json Schema representation */
-  public abstract isJsonSchema(): boolean
-  /** Return the validator Json Schema representation. */
-  public abstract toJsonSchema(): unknown
+import { StandardJSONSchemaV1 } from '../_standard/standard-schema.ts'
+import { Guard } from 'typebox/guard'
+
+function AsOpenAPI3_0(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
+  try {
+    return input['~standard'].jsonSchema.input({ target: 'openapi-3.0' })
+  } catch {
+    return undefined
+  }
+}
+function AsDraft7(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
+  try {
+    return input['~standard'].jsonSchema.input({ target: 'draft-07' })
+  } catch {
+    return undefined
+  }
+}
+function AsDraft2020_12(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
+  try {
+    return input['~standard'].jsonSchema.input({ target: 'draft-2020-12' })
+  } catch {
+    return undefined
+  }
+}
+export function ResolveJsonSchema(input: StandardJSONSchemaV1): Record<string, unknown> {
+  const jsonschema = AsDraft2020_12(input) ?? AsDraft7(input) ?? AsOpenAPI3_0(input)
+  if(Guard.IsUndefined(jsonschema)) throw Error(`Vendor '${input['~standard'].vendor}' advertised itself as a Standard JSON Schema but failed to produce a schematic. Submit an issue with the vendor.`)
+  return jsonschema
 }
