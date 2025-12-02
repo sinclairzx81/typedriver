@@ -41,9 +41,9 @@ const normal = Vec3.parse({
 
 ## Overview
 
-TypeDriver is a runtime type system and integration driver for web frameworks that need to support type inference and validation for TypeScript, JSON Schema, and Standard Schema. It includes a high-performance JSON Schema validation compiler, an integrated TypeScript engine, and seamless integration support for Standard Schema libraries.
+TypeDriver is a runtime type system and integration driver for web frameworks that need to support type inference and validation for TypeScript, Json Schema, and Standard Schema. It includes a high-performance Json Schema validation compiler, an integrated TypeScript engine, and seamless integration support for Standard Schema libraries.
 
-TypeDriver supports JSON Schema drafts 3 through 2020-12 and provides advanced inference support for JSON Schema and TypeScript DSL definitions. It uses TypeBox as a foundation for runtime validation and inference, and Standard Schema for cross-library compatibility.
+TypeDriver supports Json Schema drafts 3 through 2020-12. It provides advanced type inference support for both Json Schema and TypeScript DSL definitions as standard. It uses TypeBox as a foundation for high performance runtime validation, and Standard Schema for cross-library compatibility.
 
 License MIT
 
