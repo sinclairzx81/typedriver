@@ -38,6 +38,8 @@ const normal = Vec3.parse({
 
 TypeDriver is a runtime type system and integration driver for web frameworks that require both type inference and validation support for TypeScript, Json Schema and Standard Schema. It includes a high performance Json Schema validation compiler, integrated TypeScript engine, and seamless integration support for Standard Schema libraries.
 
+TypeDriver has compilation support for Json Schema Drafts 3 through to 2020-12.
+
 License MIT
 
 ## Contents
@@ -101,7 +103,7 @@ import { compile } from 'typedriver'
 Pass TypeScript definitions via strings. | [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFAAMErOHAAeALjicAriABGzFXApbdBo6oBeZvYaitcCgJSq37j56-ef7gPR+Ujz8gsJQIlp8AIYYwDRRYQA8AHSpADSIxr7ZObluAW6a2nbMaVl5FZX5gaqmxRZQZVXNlQXWtg1NLd3ZBbgAfOxcvHCQ3MAwwBCcEnACQqLJYFFQ3PJIxkUADF11AIxdNnBbjs5AA)
 
 ```typescript
-const Vector3 = compile(`{
+const Vec3 = compile(`{
   x: number
   y: number
   z: number
@@ -111,7 +113,7 @@ const Vector3 = compile(`{
 ... or Json Schema | [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFEjhLlK1WtUB6DVJ79BwqCIBccPgEMMwGmYMAeAHSOANIlZLK1E6QgAjAFb6pC7qIaFhWsoAHiacAK4gPsxObnBQWACOscBpNCYA2qSRQWQUxaQAXqQAusFhdXARShQx8YlQyUpgxNSwwFjcJor1w+HaSuUtCcwpStGIcB5YXnFTLHi1I6ERuAB8M3DN84vLrcyk6-sTR1RLZCtt57gpT7gAlOxcvHCQ3MAwwBBOBJTPpRPYwGYoNx5EgUnMAAwdA4mACMSKu8NYbyAA)
 
 ```typescript
-const Vector3 = compile({ 
+const Vec3 = compile({ 
   type: 'object',
   required: ['x', 'y', 'z'],
   properties: {
@@ -127,7 +129,7 @@ const Vector3 = compile({
 ```typescript
 import * as z from 'zod'
 
-const Vector3 = compile(z.object({ 
+const Vec3 = compile(z.object({ 
   x: z.number(),  
   y: z.number(), 
   z: z.number(), 
@@ -144,9 +146,9 @@ The compile(...) function returns Validator instances to Check, Parse and report
 The check(...) returns a boolean result.
 
 ```typescript
-// Vector3.check(value: unknown): value is Vector3
+// Vec3.check(value: unknown): value is Vec3
 
-if(Vector3.check(value)) {
+if(Vec3.check(value)) {
 
   const { x, y, z } = value // safe
 }
@@ -157,9 +159,9 @@ if(Vector3.check(value)) {
 The parse(...) function returns if valid, otherwise throws.
 
 ```typescript
-// Vector3.parse(value: unknown): Vector3
+// Vec3.parse(value: unknown): Vec3
 
-const { x, y, z } = Vector3.parse(value)                 
+const { x, y, z } = Vec3.parse(value)                 
 ```
 
 ### Errors
@@ -167,9 +169,9 @@ const { x, y, z } = Vector3.parse(value)
 The errors(...) function returns diagnostics (use only after failed check)
 
 ```typescript
-// Vector3.errors(value: unknown): object[]
+// Vec3.errors(value: unknown): object[]
 
-const errors = Vector3.errors(value)              
+const errors = Vec3.errors(value)              
 ```
 
 ## Static
