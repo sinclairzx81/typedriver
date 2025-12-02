@@ -3,7 +3,7 @@
 import { Range } from './task/range/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.8.0'
+const Version = '0.8.1'
 
 // ------------------------------------------------------------------
 // Build
