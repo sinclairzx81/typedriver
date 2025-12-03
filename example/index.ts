@@ -22,3 +22,5 @@ const position = Vector3.parse({
   y: 1,
   z: 0
 })
+
+console.log(position)
