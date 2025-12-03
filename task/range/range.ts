@@ -35,3 +35,10 @@ export async function Range(versions: string[]) {
       .run('src/index.ts --target ESNext --strict --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext')
   }
 }
+export async function RangeNext(versions: string[]) {
+  for(const version of versions) {
+    console.log('checking ...', version)
+    await Task.tsc(version)
+      .run('src/index.ts --target ESNext --strict --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --ignoreConfig')
+  }
+}

@@ -28,9 +28,13 @@
     // --------------------------------------------------------------
     // DevDependencies
     // --------------------------------------------------------------
-    "zod": "npm:zod",
-    "valibot": "npm:valibot",
+    "@arrirpc/schema": "npm:@arrirpc/schema",
     "arktype": "npm:arktype",
+    "effect": "npm:effect",
+    "sury": "npm:sury",
+    "valibot": "npm:valibot",
+    "yup": "npm:yup",
+    "zod": "npm:zod",
     // --------------------------------------------------------------
     // Library
     // --------------------------------------------------------------

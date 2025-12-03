@@ -28,6 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+export * from './locale.ts'
 export * from './compile.ts'
 export * from './validator.ts'
 export * from './static.ts'

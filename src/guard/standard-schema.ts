@@ -45,7 +45,7 @@ function IsStandardSchemaV1Props(value: unknown) {
 }
 function IsTypicalStandardSchemaV1(value: unknown): value is StandardSchemaV1 {
   return Guard.IsObject(value) &&
-    Guard.HasPropertyKey(value, '~standard') &&
+    !Guard.IsUndefined((value as never)['~standard']) &&
     IsStandardSchemaV1Props(value['~standard'])
 }
 // ArkType (Obviously)
@@ -55,6 +55,7 @@ function IsNonTypicalStandardSchemaV1(value: unknown): value is StandardSchemaV1
     IsStandardSchemaV1Props((value as never)['~standard'])
 }
 export function IsStandardSchemaV1(value: unknown): value is StandardSchemaV1 {
+  
   return IsTypicalStandardSchemaV1(value) ||
     IsNonTypicalStandardSchemaV1(value)
 }

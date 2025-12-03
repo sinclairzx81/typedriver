@@ -1,6 +1,6 @@
 // deno-fmt-ignore-file
 
-import { Range } from './task/range/index.ts'
+import { Range, RangeNext } from './task/range/index.ts'
 import { Task } from 'tasksmith'
 
 const Version = '0.8.1'
@@ -10,7 +10,7 @@ const Version = '0.8.1'
 // ------------------------------------------------------------------
 const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', {
   outdir: target,
-  compiler: '5.9.2',
+  compiler: '5.9.3',
   additional: ['license', 'readme.md'],
   packageJson: {
     name: 'typedriver',
@@ -75,5 +75,5 @@ Task.run('report', () => Task.test.report(['test/typedriver']))
 Task.run('range', () => Range([
   '5.0.4', '5.1.3', '5.1.6', '5.2.2', '5.3.2', '5.3.3',
   '5.4.3', '5.4.5', '5.5.2', '5.5.3', '5.5.4', '5.6.2',
-  '5.6.3', '5.7.2', '5.7.3', 'next', 'latest'
-]))
+  '5.6.3', '5.7.2', '5.7.3', '5.9.2', 'latest',
+]).then(() => RangeNext(['next'])))
