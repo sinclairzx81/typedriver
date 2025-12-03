@@ -254,7 +254,7 @@ const issues = [
 
 ## Locales
 
-TypeDriver has i18n translations for many different languages and locales.
+TypeDriver has translations for many different languages and locales.
 
 ```typescript
 const issues = Vector3.errors({ x: 1, y: true }, {  
