@@ -28,28 +28,13 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+import { System } from 'typebox/system'
 import { Validator as TBValidator } from 'typebox/compile'
-import { ParseError } from '../errors.ts'
-import { Validator } from '../validator.ts'
+import { ParseError, errorToIssue } from '../../errors/index.ts'
+import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
+
 import Type from 'typebox'
 
-/**
- * High-performance Json Schema validator that uses library-specific
- * inference mechanisms. The validator assumes the source library
- * produces accurate schematics that encode the runtime
- * representations of its types.
- *
- * In TypeBox terminology, this falls under the TUnsafe<T> category.
- * Preferably, TypeScript types "should" be derived from the
- * schematics rather than assumed.
- *
- * Note:
- *
- * Standard JSON Schema does not advertise which Draft versions it
- * supports, and the resolver is using try/catch resolution. This
- * should be brought up in RFC feedback, not by me of course, I don't
- * know anything about Json Schema.
- */
 export class JsonSchemaValidator<Input extends Type.TSchema, 
   Output extends unknown = Type.Static<Input>
 > extends Validator<Input, Output> {
@@ -74,7 +59,7 @@ export class JsonSchemaValidator<Input extends Type.TSchema,
     return this.input
   }
   // ----------------------------------------------------------------
-  // Accelerated
+  // Acceleration
   // ----------------------------------------------------------------
   public override isAccelerated(): boolean {
     return this.validator.IsEvaluated()
@@ -86,10 +71,16 @@ export class JsonSchemaValidator<Input extends Type.TSchema,
     return this.validator.Check(value)
   }
   public override parse(value: unknown): Output {
-    if (!this.validator.Check(value)) throw new ParseError(this.errors(value))
+    if (!this.validator.Check(value)) throw new ParseError(value, this.errors(value))
     return value as never
   }
-  public override errors(value: unknown): object[] {
-    return this.validator.Errors(value)
+  public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
+    const config = resolveErrorOptions(options)
+    System.Locale.Set(System.Locale[config.locale])
+    const errors = this.validator.Errors(value)
+    return (config.format === 'standard-schema'
+      ? errors.map(error => errorToIssue(error))
+      : errors
+    ) as never
   }
 }

@@ -58,14 +58,15 @@ License MIT
 
 ## Features
 
-- Designed Specifically for Framework Integration
-- Integrated TypeScript DSL for TS7 Native (supported in TS5 and above)
+- Built Specifically for Framework Integration
+- TypeScript DSL for TS7 Native (supported in TS5 and above)
 - Unified Validation for JSON Schema and Standard Schema
 - Unified Inference for JSON Schema and Standard Schema
 - High Performance Validation Compiler (performance approx 2x Ajv)
 - Acceleration support for Standard JSON Schema
 - JSON Schema Reflect for OpenAPI, MCP and IDL Based Systems
-- Localization Support for 40+ languages
+- Error Formats for JSON Schema and Standard Schema Based Reporting
+- Error Message Localization (i18n)
 
 ## Contents
 
@@ -76,20 +77,20 @@ License MIT
 - [Check](#Check)
 - [Parse](#Parse)
 - [Errors](#Errors)
+- [Locales](#Locales)
 - [Static](#Static)
 - [Reflect](#Schema)
-- [Locale](#Locale)
 - [Accelerate](#Accelerate)
 - [Contribute](#Contribute)
 
 ## Framework
 
-TypeDriver is designed for framework integration to allow multiple type safe libraries to be hosted on framework interfaces. It provides a simple infrastructure to connect type inference and validation to the framework. The following shows a simple design for a route function ...
+TypeDriver is designed for framework integration. It provides a simple infrastructure to connect type inference and validation to framework interfaces.
 
 Ref: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YyAoEoAiBTAzgSwOYB2qYSZ5FcyADgPbYAuAFAOTAsA0oA3sqKACNaAEwCeALlAADXv34APSYQCuAWwGYAThz5yJoFeq065oAF5K1GzboC+U5La5NNmAI7KcDAJSgAvAB8PLoAxrSEjDyg8lyiXGagtv6grh5eAHRCYqBoDKLUmODYAIYAZpgAhI7eyCQQlA2N8HUAYprFqpgA7rSaANZ1TUPDyLiqdJoMUXkFoADKDMUMuCFcYeO4ADaYiaClmrSqoCwzmMKauABuWiy1mPITU7iEDFqlxSE7AEq0yq8A8tRluFsAAeABCIlEoHur0IwmwoGUhD6hFoXUIyWRqPRhCCskEUMkkLEjmQ90eoFOoB+f0wAGFiptNgIPn1QQAFJYACxh8jhCNAjAuhHwXEBwIifIFiNpAKBuBBQT8oCYuhc7k8jEk3CRmk2ki5DG5XCy+gWSxWoIlioiAG0WGaWABdIK2XyBUCXWi4YTIGoU3pTUrIkKS0B0RicnnSzDwxHC55i0BhCJTG0g2Pxmm-eWS7BcXSM5mskJ9ZJyhlMlls6PG8UKpXIAJMag8w08ri0RsRSQZiJraulvqSYs1su+AmpyJmgD6lyZvqWvWS62oW0wTG7+YdTudNX4uREtEk6TPoDG1G2nReKVzO02tHwKzJQA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YyAoEoAiBTAzgSwOYB2qYSZ5FcyADgPbYAuAFAOTAsA0oA3sqKACNaAEwCeALh59+oBqOqZJLWgIBWmAMYNO0-gCdMARwCuuA8MkBtFgA9OoFqPssAXiwC6HXaGp7aCvQZcHEleGRkbUNl5RQdCYwBbAUw9FlAAXy9w-gkeaIUleKSUtMzvfhcouQK4xOTUjKyZdOkWzNAmAxMcBgBKUABeAD4pfg1aQkY8my5RLhcMwdAu4x6AOiExUDRqzHBsAEMAM0wAQmR03uQSCEo7+-gbgDE9A4TMAHdaPQBrG4eAYDkLgEnRAnldqAAMoMA5BDRccag3AAG0wiyOfgSDl2wj0uAAbiVrpgbGCGKBcIQGCkjgcNOiAEq0Yw0gDy1CCE2wAB4AEIiUSgUk0wjCbCgYyEH6EWgfQhLKUyuWEEZhQSCyQCsQXZCk8n5JksmkAYQOKJRAnpPx5AAU4QALYU2UXi0CMfGEfBcDlcybO10S5mszC+3DckYDDrSTpGVaMKLGPQoyT2hgOribXIwuG4DQ8sPc6xZjwjS6DEYE2i4YTIK7674Uo5SrThhV0Rh2x0BzBiiUeqne0DjSYUwv+kW9t3B9mctvYLjSM0Wq0aH5LGeYZeW61d9M+ucR5BDJjUR2px1cfx+7CSccL4fmndryTb1c-frqkdTLMAfQJ5o1nC3xLEi1CopgTDXvOxaCh4Vz8DsIi0JIaxoZSoJou81LLMa6IorQ+B5rqQA) | [Standard Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YyAoEoAiBTAzgSwOYB2qYSZ5FcyuAtgA4D2ATgC6gBUoAhtqAF6gAZkwY1QAcj4MAJuOTJG2FgApxwcQBpQAb2ShQAIxkBPAFz8AdAwMArTAGMVu-foAe5vhcIBXGgcxMygCUGnouZpY+fgHBoS78Hl6+-oEhYQC+QcjpWspMmACO3jgsQaAAvAB8OmH2DIRKOqCuWsZaAukVoPlFJRZG0sagaCzGdJjg2FyCmACE2VkkEJQrq-BLAGJMXDSYAO7MANZLa6dn1PTMbNqgo+OgAMosXCy49lp19LgANpigncJRBI7phpExcAA3AJyZCYVyMVigXCEFgBQRcex-ABKDG8qIA8nRXvVsAAeABCJlAcNRhGkvG8hEOhAYe0IXUZzNZhGqzkMJnMlMG2Vh8KutzG2NxqIAwlxvt8DBjDqSAAovAAW1NctPpoCU4MI+C0hOJDW1ut4OLxmFNuBJ1XKoGUYTyhWKSnMN28TG+5nVLA1WgGESeLzepLtJIA2uIQ+IALrVTIVaoQhi4aTILJwhFsQSMxz29mKFhqzUWzB03gG5HG0B1BpsKPmmlVvXWglE4vYLRhOUKpX2Q5dTuYAeK5XlwMm7sO5CVZR0TX+zVaBhzhrmFu9hvyyfD8wToeHMp8xuNEMAfQh8szL2YXU+dB+mGUG7N2Fj8YTWX0IxkBhzAsECkXoX5dhRbppT+b4GHwN4RSAA)
 
 ```typescript
-post('/', {
+route('/', {
   body: `{
     x: number,
     y: number,
@@ -100,11 +101,11 @@ post('/', {
 })
 ```
 
-Where the above design is achieved with the following TS definitions (Expand to View)
+Where the above interface design is achieved with the following TS definitions 
 
 <details>
 
-<summary>TypeDriver Route Definition</summary>
+<summary>Route Interface Definition (Expand)</summary>
 
 
 ```typescript
@@ -116,7 +117,7 @@ export interface RouteOptions<Body extends unknown = unknown> {
 export type RouteCallback<Path extends string, Options extends RouteOptions> = (
   (request: { url: Path, body: Static<Options['body']> }) => void
 )
-export function post<Path extends string, const Options extends RouteOptions, 
+export function route<Path extends string, const Options extends RouteOptions, 
   Callback = RouteCallback<Path, Options>
 >(path: Path, options: Options, callback: Callback) {
   const body_validator = compile(options['body'])
@@ -134,7 +135,7 @@ TypeDriver consists of a single compile(...) function that accepts JSON Schema, 
 import { compile } from 'typedriver'
 ```
 
-TypeScript [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFAAMErOHAAeALjicAriABGzFXApbdBo6oBeZvYaitcCgJSq37j56-ef7gPR+Ujz8gsJQIlp8AIYYwDRRYQA8AHSpADSIxr7ZObluAW6a2nbMaVl5FZX5gaqmxRZQZVXNlQXWtg1NLd3ZBbgAfOxcvHCQ3MAwwBCcEnACQqLJYFFQ3PJIxkUADF11AIxdNnBbjs5AA)
+ Ref: [TypeScript](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFAAMErOHAAeALjicAriABGzFXApbdBo6oBeZvYaitcCgJSq37j56-ef7gPR+Ujz8gsJQIlp8AIYYwDRRYQA8AHSpADSIxr7ZObluAW6a2nbMaVl5FZX5gaqmxRZQZVXNlQXWtg1NLd3ZBbgAfOxcvHCQ3MAwwBCcEnACQqLJYFFQ3PJIxkUADF11AIxdNnBbjs5AA)
 
 ```typescript
 const Vector3 = compile(`{
@@ -144,7 +145,7 @@ const Vector3 = compile(`{
 }`)
 ```
 
-JSON Schema [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFEjhLlK1WtUB6DVJ79BwqCIBccPgEMMwGmYMAeAHSOANIlZLK1E6QgAjAFb6pC7qIaFhWsoAHiacAK4gPsxObnBQWACOscBpNCYA2qSRQWQUxaQAXqQAusFhdXARShQx8YlQyUpgxNSwwFjcJor1w+HaSuUtCcwpStGIcB5YXnFTLHi1I6ERuAB8M3DN84vLrcyk6-sTR1RLZCtt57gpT7gAlOxcvHCQ3MAwwBBOBJTPpRPYwGYoNx5EgUnMAAwdA4mACMSKu8NYbyAA)
+ Ref: [JSON Schema](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFEjhLlK1WtUB6DVJ79BwqCIBccPgEMMwGmYMAeAHSOANIlZLK1E6QgAjAFb6pC7qIaFhWsoAHiacAK4gPsxObnBQWACOscBpNCYA2qSRQWQUxaQAXqQAusFhdXARShQx8YlQyUpgxNSwwFjcJor1w+HaSuUtCcwpStGIcB5YXnFTLHi1I6ERuAB8M3DN84vLrcyk6-sTR1RLZCtt57gpT7gAlOxcvHCQ3MAwwBBOBJTPpRPYwGYoNx5EgUnMAAwdA4mACMSKu8NYbyAA)
 
 ```typescript
 const Vector3 = compile({ 
@@ -158,7 +159,7 @@ const Vector3 = compile({
 })
 ```
 
-Standard Schema [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV0SWOAKjgEMAznABehYiDIiINNq1QA7QfABqWZDGgBmOAF4UaMJiwAKEQDoIAIwBW6mCaRxnL12+cB6DwaWr72gC44FX4MYBp+TSgAHnM4gBpEVmcADyCLBQBXECtmEwBKRPdiktK3Lxc0uCyc5njkuAp08xrcqAKisq7uuArnJurstvrnEWbWvMKe6dK+0SCJqFZcfPyZ9Y3e71wAPnZFZThIQWAYYAgFPWD-KC1zMH4oQVMkBqqABhHGoIBGL7G4O9lvkgA)
+ Ref: [Standard Schema](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV0SWOAKjgEMAznABehYiDIiINNq1QA7QfABqWZDGgBmOAF4UaMJiwAKEQDoIAIwBW6mCaRxnL12+cB6DwaWr72gC44FX4MYBp+TSgAHnM4gBpEVmcADyCLBQBXECtmEwBKRPdiktK3Lxc0uCyc5njkuAp08xrcqAKisq7uuArnJurstvrnEWbWvMKe6dK+0SCJqFZcfPyZ9Y3e71wAPnZFZThIQWAYYAgFPWD-KC1zMH4oQVMkBqqABhHGoIBGL7G4O9lvkgA)
 
 ```typescript
 import * as z from 'zod'
@@ -200,13 +201,100 @@ const { x, y, z } = Vector3.parse(value)
 
 ## Errors
 
-The errors(...) function returns diagnostics (use only after failed check)
+The errors(...) function returns error diagnostics for values (use after failed check only)
 
 ```typescript
-// Vector3.errors(value: unknown): object[]
+// Vector3.errors(value: unknown): TLocalizedValidationError[]
 
 const errors = Vector3.errors(value)              
 ```
+
+The errors(...) function can generate both JSON Schema and Standard Schema error formats.
+
+```typescript
+const errors = Vector3.errors({ x: 1, y: true }, {  
+  format: 'json-schema'                             
+})
+
+const issues = Vector3.errors({ x: 1, y: true }, {  
+  format: 'standard-schema'                         
+})
+```
+
+<details>
+
+<summary>Generated Errors and Issues</summary>
+
+```typescript
+// TLocalizedValidationError[]
+
+const errors = [{    
+  keyword: "required",    
+  schemaPath: "#",
+  instancePath: "",
+  params: { requiredProperties: [ "z" ] },
+  message: "must have required properties z"
+},
+{
+  keyword: "type",
+  schemaPath: "#/properties/y",
+  instancePath: "/y",
+  params: { type: "number" },
+  message: "must be number"
+}]
+
+// StandardSchemaV1.Issue[]
+
+const issues = [
+  { path: [], message: "must have required properties z" },
+  { path: [ "y" ], message: "must be number" }
+]
+```
+</details>
+
+## Locales
+
+TypeDriver has translations for many different languages and locales.
+
+```typescript
+const issues = Vector3.errors({ x: 1, y: true }, {  
+  format: 'standard-schema',                        
+  locale: 'ko_KR'                                   
+})                                                 
+```
+
+<details>
+
+<summary>Generated Localization</summary>
+
+```typescript
+
+// StandardSchemaV1.Issue[]
+
+const issues = [
+  { path: [], message: "필수 속성 z을(를) 가지고 있어야 합니다" },
+  { path: [ "y" ], message: "number이어야 합니다" }
+]
+```
+</details>
+
+<details>
+
+<summary>Supported Locales</summary>
+
+```typescript
+type LocaleString = (
+  | "ar_001" | "bn_BD"   | "cs_CZ"   | "de_DE"  | "el_GR"  | "en_US" | "es_419" 
+  | "es_AR"  | "es_ES"   | "es_MX"   | "fa_IR"  | "fil_PH" | "fr_CA" | "fr_FR" 
+  | "ha_NG"  | "hi_IN"   | "hu_HU"   | "id_ID"  | "it_IT"  | "ja_JP" | "ko_KR" 
+  | "ms_MY"  | "nl_NL"   | "pl_PL"   | "pt_BR"  | "pt_PT"  | "ro_RO" | "ru_RU" 
+  | "sv_SE"  | "sw_TZ"   | "th_TH"   | "tr_TR"  | "uk_UA"  | "ur_PK" | "vi_VN" 
+  | "yo_NG"  | "zh_Hans" | "zh_Hant"
+)
+```
+</details>
+
+Localization support is only available for JSON Schema
 
 ## Static
 
@@ -273,46 +361,6 @@ The source type used for compilation can also be returned via
 ```typescript
 validator.schema()          // will return the schematic used for compile.
 ```
-
-## Locale
-
-TypeDriver provides (i18n) error message translations for many languages and locales. Locales are defined as [IETF BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) localization codes. Additional localizations can be submitted to the TypeBox project.
-
-```typescript
-import { compile, locale } from 'typedriver'
-
-// Supported Locales
-
-type LocaleString = (
-  | "ar_001" | "bn_BD"   | "cs_CZ"   | "de_DE"  | "el_GR"  | "en_US" | "es_419" 
-  | "es_AR"  | "es_ES"   | "es_MX"   | "fa_IR"  | "fil_PH" | "fr_CA" | "fr_FR" 
-  | "ha_NG"  | "hi_IN"   | "hu_HU"   | "id_ID"  | "it_IT"  | "ja_JP" | "ko_KR" 
-  | "ms_MY"  | "nl_NL"   | "pl_PL"   | "pt_BR"  | "pt_PT"  | "ro_RO" | "ru_RU" 
-  | "sv_SE"  | "sw_TZ"   | "th_TH"   | "tr_TR"  | "uk_UA"  | "ur_PK" | "vi_VN" 
-  | "yo_NG"  | "zh_Hans" | "zh_Hant"
-)
-
-locale('en_US') // Set: English | US (Default)
-
-console.log(compile('string').errors(42)) // [{
-                                          //   keyword: "type",
-                                          //   schemaPath: "#",
-                                          //   instancePath: "",
-                                          //   params: { type: "string" },
-                                          //   message: "must be string"
-                                          // }]
-
-locale('ko_KR') // Set: Korean | South Korea
-
-console.log(compile('string').errors(42)) // [{
-                                          //   keyword: "type",
-                                          //   schemaPath: "#",
-                                          //   instancePath: "",
-                                          //   params: { type: "string" },
-                                          //   message: "string이어야 합니다"
-                                          // }]
-```
-Localization support is only available for JSON Schema.
 
 ## Accelerate
 

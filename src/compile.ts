@@ -31,10 +31,10 @@ THE SOFTWARE.
 import Type from 'typebox'
 import { type StandardSchemaV1, type StandardJSONSchemaV1 } from './_standard/standard-schema.ts'
 import { IsJsonSchema, IsStandardSchemaV1, IsStandardJsonSchemaV1, IsTypeScript } from './guard/index.ts'
-import { JsonSchemaValidator } from './json-schema/validator.ts'
-import { StandardJsonSchemaValidator } from './standard-json-schema/validator.ts'
-import { StandardSchemaValidator } from './standard-schema/validator.ts'
-import { TypeScriptValidator } from './typescript/validator.ts'
+import { JsonSchemaValidator } from './validators/json-schema/validator.ts'
+import { StandardJsonSchemaValidator } from './validators/standard-json-schema/validator.ts'
+import { StandardSchemaValidator } from './validators/standard-schema/validator.ts'
+import { TypeScriptValidator } from './validators/typescript/validator.ts'
 import { Validator } from './validator.ts'
 
 // ------------------------------------------------------------------

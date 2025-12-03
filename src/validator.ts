@@ -28,6 +28,64 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+import { System } from 'typebox/system'
+import { TLocalizedValidationError } from 'typebox/error'
+import { StandardSchemaV1 } from './_standard/standard-schema.ts'
+
+// ------------------------------------------------------------------
+// TErrorFormat
+// ------------------------------------------------------------------
+export type TErrorFormat = 'json-schema' | 'standard-schema'
+
+// ------------------------------------------------------------------
+// TErrorLocale
+// ------------------------------------------------------------------
+const Locale = System.Locale
+
+export type TErrorLocale = (
+  Exclude<keyof typeof Locale, 'Get' | 'Set' | 'Reset'> & ({} & string)
+)
+// ------------------------------------------------------------------
+// TErrorOptions
+// ------------------------------------------------------------------
+/** Internal */
+export function resolveErrorOptions(options?: Partial<TErrorOptions>): TErrorOptions {
+  const defaults: TErrorOptions = {  format: 'json-schema', locale: 'en_US' }
+  const resolved: Partial<TErrorOptions> = options ?? {  }
+  return { ...defaults, ...resolved }
+}
+export interface TErrorOptions {
+  /**
+   * Specifies the error message generation format.
+   *
+   * Supported values are `json-schema` and `standard-schema`.
+   *
+   * Default: `json-schema`
+   */
+  format: TErrorFormat
+
+  /**
+   * Specifies the locale used when generating error messages.
+   *
+   * This setting applies only when used with TypeScript, JSON Schema,
+   * or implementations that follow the Standard JSON Schema specification.
+   * When the compiled type is Standard Schema only, the error message
+   * will be whatever is returned from that library.
+   *
+   * Default: `en_US`
+   */
+  locale: TErrorLocale
+}
+// ------------------------------------------------------------------
+// TErrorResult
+// ------------------------------------------------------------------
+export type TErrorResult<Options extends Partial<TErrorOptions>> = (
+  Options['format'] extends 'standard-schema' ? StandardSchemaV1.Issue[] :
+  TLocalizedValidationError[]
+)
+// ------------------------------------------------------------------
+// Validator
+// ------------------------------------------------------------------
 /** Abstract Base for all Validator types. */
 export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
   /** Returns the schema used to construct this validator */
@@ -37,7 +95,7 @@ export abstract class Validator<Input extends unknown = unknown, Output extends 
   /** Parses a value and throws if invalid */
   public abstract parse(value: unknown): Output
   /** Returns errors for the given value */
-  public abstract errors(value: unknown): object[]
+  public abstract errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options>
   /** True if the validator has a Json Schema representation */
   public abstract isJsonSchema(): boolean
   /** Return the validator Json Schema representation. */

@@ -28,23 +28,25 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-// ------------------------------------------------------------------
-// Compile
-// ------------------------------------------------------------------
-export { type TCompile, compile } from './compile.ts'
+import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import { TLocalizedValidationError } from 'typebox/error'
+import { Guard } from 'typebox/guard'
 
 // ------------------------------------------------------------------
-// Static
+// Issues
 // ------------------------------------------------------------------
-export { type Static } from './static.ts'
-
-// ------------------------------------------------------------------
-// Validator
-// ------------------------------------------------------------------
-export { 
-  Validator, 
-  type TErrorFormat, 
-  type TErrorLocale, 
-  type TErrorOptions, 
-  type TErrorResult
-} from './validator.ts'
+function jsonPointer(segments: readonly StandardSchemaV1.PathSegment[]): string {
+  return `#${segments.join('/')}`
+}
+export function issueToError(issue: StandardSchemaV1.Issue): TLocalizedValidationError {
+  const instancePath = Guard.HasPropertyKey(issue, 'path') && Guard.IsArray(issue.path) 
+    ? jsonPointer(issue.path as never) 
+    : jsonPointer([])
+  return {
+    instancePath,
+    schemaPath: '#',
+    keyword: 'type',
+    message: issue.message,
+    params: { type: 'standard-schema' }
+  }
+}

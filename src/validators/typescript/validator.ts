@@ -28,53 +28,64 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
-import { ParseError, UnknownError } from '../errors.ts'
-import { Validator } from '../validator.ts'
+import { System } from 'typebox/system'
+import { Validator as TBValidator } from 'typebox/compile'
+import { ParseError, errorToIssue } from '../../errors/index.ts'
+import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
+import Type from 'typebox'
 
-export class StandardSchemaValidator<Input extends StandardSchemaV1,
-  Output extends unknown = StandardSchemaV1.InferOutput<Input>
+export class TypeScriptValidator<Input extends string, 
+  Schema extends Type.TSchema = Type.TScript<{}, Input>, 
+  Output extends unknown = Type.Static<Schema>
 > extends Validator<Input, Output> {
-  constructor(private readonly input: Input) {
+  private readonly validator: TBValidator<Type.TProperties, Type.TSchema>
+  private readonly script: Input
+  private readonly jsonschema: Type.TSchema
+  constructor(script: Input) {
     super()
+    this.script = script
+    this.jsonschema = Type.Script(this.script) as never as Schema
+    this.validator = new TBValidator({}, this.jsonschema)
   }
   // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {
-    return this.input
+    return this.script
   }
   // ----------------------------------------------------------------
   // Json Schema
   // ----------------------------------------------------------------
-  public override  isJsonSchema(): boolean {
-    return false
+  public override isJsonSchema(): boolean {
+    return true
   }
-  public override  toJsonSchema(): unknown {
-    return {}
+  public override toJsonSchema(): unknown {
+    return this.jsonschema
   }
   // ----------------------------------------------------------------
-  // Accelerated
+  // Acceleration
   // ----------------------------------------------------------------
   public override isAccelerated(): boolean {
-    return false
+    return this.validator.IsEvaluated()
   }
   // ----------------------------------------------------------------
   // Validation
   // ----------------------------------------------------------------
   public override check(value: unknown): value is Output {
-    const result = this.input['~standard'].validate(value)
-    return !('issues' in result)
+    return this.validator.Check(value)
   }
-  public override  parse(value: unknown): Output {
-    const result = this.input['~standard'].validate(value)
-    if ('issues' in result) throw new ParseError(result.issues as never || [])
-    if ('value' in result) return result.value as never
-    throw new UnknownError('Invalid result')
+  public override parse(value: unknown): Output {
+    if (!this.validator.Check(value)) throw new ParseError(value, this.errors(value))
+    return value as Output
   }
-  public override  errors(value: unknown): object[] {
-    const result = this.input['~standard'].validate(value)
-    if ('issues' in result) return result.issues as object[] || []
-    return []
+  public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
+    const config = resolveErrorOptions(options)
+    System.Locale.Set(System.Locale[config.locale])
+    const errors = this.validator.Errors(value)
+    return (
+      config.format === 'standard-schema'
+      ? errors.map(error => errorToIssue(error))
+      : errors
+    ) as never
   }
 }
