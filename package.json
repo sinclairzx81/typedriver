@@ -17,7 +17,10 @@
     "typebox": "^1.0.61"
   },
   "devDependencies": {
+    "@arrirpc/schema": "^0.80.3",
     "arktype": "^2.1.26",
+    "effect": "^3.19.8",
+    "sury": "^11.0.0-alpha.4",
     "valibot": "^1.1.0",
     "zod": "^4.1.12"
   }

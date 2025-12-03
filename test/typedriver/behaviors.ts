@@ -1,5 +1,5 @@
 import { Assert } from 'test'
-import { compile, type Static, Validator } from 'typedriver'
+import { Validator } from 'typedriver'
 
 export function Behaviors(validator: Validator, valid: unknown[], invalid: unknown[]) {
   // Checks

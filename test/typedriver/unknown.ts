@@ -2,7 +2,7 @@ import { Assert } from 'test'
 import { compile, type Static } from 'typedriver'
 
 const Test = Assert.Context('Validator.TypeScript')
-import { Behaviors } from './~behaviors.ts'
+import { Behaviors } from './behaviors.ts'
 
 // ------------------------------------------------------------------
 // Schema
@@ -30,6 +30,5 @@ Test('Should Check 1', () => {
   const T = compile(null)
   type T = Static<typeof T>
   Assert.IsExtendsMutual<unknown, T>(true)
-
   Behaviors(T, ['hello'], [])
 })

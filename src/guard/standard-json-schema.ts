@@ -50,7 +50,7 @@ function IsStandardJsonSchemaV1Props(value: unknown) {
 }
 function IsTypicalStandardJsonSchemaV1(value: unknown): value is StandardSchemaV1 & StandardJSONSchemaV1 {
   return Guard.IsObject(value) &&
-    Guard.HasPropertyKey(value, '~standard') &&
+    !Guard.IsUndefined((value as never)['~standard']) &&
     IsStandardJsonSchemaV1Props(value['~standard'])
 }
 // ArkType (Obviously)
