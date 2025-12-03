@@ -2,7 +2,7 @@
 
 <h1>TypeDriver</h1>
 
-<p>Integration Middlware for High Performance Runtime Validation</p>
+<p>Integration Middleware for High Performance Runtime Validation</p>
 
 <img src="typedriver.png" />
 
