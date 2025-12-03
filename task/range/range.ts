@@ -28,17 +28,18 @@ THE SOFTWARE.
 
 import { Task } from 'tasksmith'
 
+// Note: --skipLibCheck is annoying, but required given the devDependencies
 export async function Range(versions: string[]) {
   for(const version of versions) {
     console.log('checking ...', version)
     await Task.tsc(version)
-      .run('src/index.ts --target ESNext --strict --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext')
+      .run('src/index.ts --target ESNext --strict --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --skipLibCheck')
   }
 }
 export async function RangeNext(versions: string[]) {
   for(const version of versions) {
     console.log('checking ...', version)
     await Task.tsc(version)
-      .run('src/index.ts --target ESNext --strict --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --ignoreConfig')
+      .run('src/index.ts --target ESNext --strict --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --skipLibCheck --ignoreConfig')
   }
 }

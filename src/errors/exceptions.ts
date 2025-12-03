@@ -28,23 +28,20 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-// ------------------------------------------------------------------
-// Compile
-// ------------------------------------------------------------------
-export { type TCompile, compile } from './compile.ts'
-
-// ------------------------------------------------------------------
-// Static
-// ------------------------------------------------------------------
-export { type Static } from './static.ts'
-
-// ------------------------------------------------------------------
-// Validator
-// ------------------------------------------------------------------
-export { 
-  Validator, 
-  type TErrorFormat, 
-  type TErrorLocale, 
-  type TErrorOptions, 
-  type TErrorResult
-} from './validator.ts'
+export class ParseError extends globalThis.Error {
+  declare readonly cause: { errors: object[]; value: unknown }
+  constructor(public value: unknown, public readonly errors: object[]) {
+    super('ParseError')
+    Object.defineProperty(this, 'cause', {
+      value: { errors, value },
+      writable: false,
+      configurable: false,
+      enumerable: false
+    })
+  }
+}
+export class UnknownError extends globalThis.Error {
+  constructor(message: string) {
+    super(`UnknownError: ${message}`)
+  }
+}

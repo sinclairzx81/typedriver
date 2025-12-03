@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardJSONSchemaV1 } from '../_standard/standard-schema.ts'
+import { StandardJSONSchemaV1 } from '../../_standard/standard-schema.ts'
 import { Guard } from 'typebox/guard'
 
 function AsOpenAPI3_0(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
@@ -52,6 +52,7 @@ function AsDraft2020_12(input: StandardJSONSchemaV1): Record<string, unknown> | 
     return undefined
   }
 }
+// Why doesn't the api provide a discovery mechanism?
 export function ResolveJsonSchema(input: StandardJSONSchemaV1): Record<string, unknown> {
   const jsonschema = AsDraft2020_12(input) ?? AsDraft7(input) ?? AsOpenAPI3_0(input)
   if(Guard.IsUndefined(jsonschema)) throw Error(`Vendor '${input['~standard'].vendor}' advertised itself as a Standard JSON Schema but failed to produce a schematic. Submit an issue with the vendor.`)

@@ -28,32 +28,15 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardJSONSchemaV1, StandardSchemaV1 } from '../_standard/standard-schema.ts'
-import { ParseError } from '../errors.ts'
-import { Validator } from '../validator.ts'
-import { Validator as TBValidator } from 'typebox/compile'
-import { ResolveJsonSchema } from './resolve.ts'
+import { StandardSchemaV1 } from '../../_standard/standard-schema.ts'
+import { ParseError, UnknownError, issueToError } from '../../errors/index.ts'
+import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
 
-/**
- * High-performance Json Schema validator that uses library-specific
- * inference mechanisms. The validator assumes the source library
- * produces accurate schematics that encode the runtime
- * representations of its types.
- *
- * Note:
- *
- * Standard JSON Schema does not advertise which Draft versions it
- * supports, and the resolver is using try/catch resolution. This
- * should be brought up in RFC feedback.
- */
-export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & StandardSchemaV1, 
+export class StandardSchemaValidator<Input extends StandardSchemaV1,
   Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {
-  private readonly validator: TBValidator<{}, Record<string, unknown>>
   constructor(private readonly input: Input) {
     super()
-    const schema = ResolveJsonSchema(input)
-    this.validator = new TBValidator({}, schema)
   }
   // ----------------------------------------------------------------
   // Schema
@@ -65,28 +48,37 @@ export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & St
   // Json Schema
   // ----------------------------------------------------------------
   public override isJsonSchema(): boolean {
-    return true
+    return false
   }
   public override toJsonSchema(): unknown {
-    return this.validator.Type()
+    return {}
   }
   // ----------------------------------------------------------------
-  // Accelerated
+  // Acceleration
   // ----------------------------------------------------------------
   public override isAccelerated(): boolean {
-    return this.validator.IsEvaluated()
+    return false
   }
   // ----------------------------------------------------------------
   // Validation
   // ----------------------------------------------------------------
   public override check(value: unknown): value is Output {
-    return this.validator.Check(value)
+    const result = this.input['~standard'].validate(value)
+    return !('issues' in result)
   }
-  public override parse(value: unknown): Output {
-    if (!this.validator.Check(value)) throw new ParseError(this.errors(value))
-    return value as never
+  public override  parse(value: unknown): Output {
+    const result = this.input['~standard'].validate(value)
+    if ('issues' in result) throw new ParseError(value, result.issues as never ?? [])
+    if ('value' in result) return result.value as never
+    throw new UnknownError('Invalid result')
   }
-  public override errors(value: unknown): object[] {
-    return this.validator.Errors(value)
+  public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
+    const result = this.input['~standard'].validate(value)
+    const issues = (('issues' in result) ? result.issues : []) as StandardSchemaV1.Issue[]
+    const config = resolveErrorOptions(options)
+    return (config.format === 'json-schema'
+      ? issues.map(issue => issueToError(issue))
+      : issues.map(issue => ({ path: issue.path, message: issue.message }))
+    ) as never
   }
 }

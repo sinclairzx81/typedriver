@@ -28,23 +28,18 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-// ------------------------------------------------------------------
-// Compile
-// ------------------------------------------------------------------
-export { type TCompile, compile } from './compile.ts'
+import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import { TLocalizedValidationError } from 'typebox/error'
+import { Guard } from 'typebox/guard'
 
 // ------------------------------------------------------------------
-// Static
+// Issues
 // ------------------------------------------------------------------
-export { type Static } from './static.ts'
-
-// ------------------------------------------------------------------
-// Validator
-// ------------------------------------------------------------------
-export { 
-  Validator, 
-  type TErrorFormat, 
-  type TErrorLocale, 
-  type TErrorOptions, 
-  type TErrorResult
-} from './validator.ts'
+function pathSegments(pointer: string): string[] {
+  if (Guard.IsEqual(pointer.length, 0)) return []
+  return pointer.slice(1).split('/').map((segment) => segment.replace(/~1/g, '/').replace(/~0/g, '~'))
+}
+export function errorToIssue(error: TLocalizedValidationError): StandardSchemaV1.Issue {
+  const path = pathSegments(error.instancePath)
+  return { path, message: error.message }
+}

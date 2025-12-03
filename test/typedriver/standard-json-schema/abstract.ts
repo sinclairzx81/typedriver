@@ -1,22 +1,10 @@
 import { Assert } from 'test'
 import { compile, type Static } from 'typedriver'
 
-const Test = Assert.Context('Validator.StandardJsonSchema.Reference')
+const Test = Assert.Context('Validator.StandardJsonSchema.Abstract')
 import { Behaviors } from '../behaviors.ts'
-import { StandardJSONSchemaV1, StandardSchemaV1 } from '@standard-schema/spec'
+import { StandardJsonSchema } from '../reference.ts'
 
-const StandardJsonSchema = <const Schema extends Record<string, unknown>>(schema: Schema): StandardSchemaV1<Static<Schema>> & StandardJSONSchemaV1 => ({
-  ...schema,
-  '~standard': {
-    version: 1,
-    vendor: 'json-schema',
-    validate: () => {},
-    jsonSchema: {
-      input: () => schema,
-      output: () => schema
-    }
-  }
-} as never)
 // ------------------------------------------------------------------
 // Schema
 // ------------------------------------------------------------------

@@ -28,29 +28,27 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+import { System } from 'typebox/system'
+import { StandardJSONSchemaV1, StandardSchemaV1 } from '../../_standard/standard-schema.ts'
+import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
+import { ParseError, errorToIssue } from '../../errors/index.ts'
 import { Validator as TBValidator } from 'typebox/compile'
-import { Validator } from '../validator.ts'
-import { ParseError } from '../errors.ts'
-import Type from 'typebox'
+import { ResolveJsonSchema } from './resolve.ts'
 
-export class TypeScriptValidator<Input extends string, 
-  Schema extends Type.TSchema = Type.TScript<{}, Input>, 
-  Output extends unknown = Type.Static<Schema>
+export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & StandardSchemaV1, 
+  Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {
-  private readonly validator: TBValidator<Type.TProperties, Type.TSchema>
-  private readonly script: Input
-  private readonly jsonschema: Type.TSchema
-  constructor(script: Input) {
+  private readonly validator: TBValidator<{}, Record<string, unknown>>
+  constructor(private readonly input: Input) {
     super()
-    this.script = script
-    this.jsonschema = Type.Script(this.script) as never as Schema
-    this.validator = new TBValidator({}, this.jsonschema)
+    const schema = ResolveJsonSchema(input)
+    this.validator = new TBValidator({}, schema)
   }
   // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {
-    return this.script
+    return this.input
   }
   // ----------------------------------------------------------------
   // Json Schema
@@ -59,10 +57,10 @@ export class TypeScriptValidator<Input extends string,
     return true
   }
   public override toJsonSchema(): unknown {
-    return this.jsonschema
+    return this.validator.Type()
   }
   // ----------------------------------------------------------------
-  // Accelerated
+  // Acceleration
   // ----------------------------------------------------------------
   public override isAccelerated(): boolean {
     return this.validator.IsEvaluated()
@@ -74,10 +72,15 @@ export class TypeScriptValidator<Input extends string,
     return this.validator.Check(value)
   }
   public override parse(value: unknown): Output {
-    if (!this.validator.Check(value)) throw new ParseError(this.errors(value))
-    return value as Output
+    if (!this.validator.Check(value)) throw new ParseError(value, this.errors(value))
+    return value as never
   }
-  public override errors(value: unknown): object[] {
-    return this.validator.Errors(value)
+  public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
+    const config = resolveErrorOptions(options)
+    System.Locale.Set(System.Locale[config.locale])
+    const errors = this.validator.Errors(value)
+    return (config.format === 'standard-schema'
+      ? errors.map(error => errorToIssue(error))
+      : errors) as never
   }
 }
