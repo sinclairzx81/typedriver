@@ -56,6 +56,10 @@ Task.run('publish', async (otp: string, target: string = `target/build`) => {
 // ------------------------------------------------------------------
 Task.run('format', () => Task.shell('deno fmt src test/typedriver'))
 // ------------------------------------------------------------------
+// Metrics
+// ------------------------------------------------------------------
+Task.run('metrics', () => Task.esbuild.metrics(['./task/metrics/all.ts']))
+// ------------------------------------------------------------------
 // Start
 // ------------------------------------------------------------------
 Task.run('start', () => Task.shell('deno run -A --watch --no-check example/index.ts'))

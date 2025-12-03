@@ -2,7 +2,7 @@
 
 <h1>TypeDriver</h1>
 
-<p>Integration Middleware for High Performance Runtime Validation</p>
+<p>High Performance Driver for Runtime Type System Integration</p>
 
 <img src="typedriver.png" />
 
@@ -23,10 +23,7 @@ $ npm install typedriver
 
 ## Example
 
-Framework Compiler System for JSON Schema, Standard Schema and TypeScript
-
-Ref: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoAqBPADgUwMoDGATgJbYAuqYStd9D4ypAttgPbEWgDeoh7NqQA2uUAF9QAM2KDQAcgo5cAEzIA3XMXnJkAgHYBnbgDVchCpwDMoALz9B2EbgAUAAx7JQoAB4AuUH0AVxYAIy0AGi9QTADgsMjogC84kPDiZHE3AEpdFXNhAENiMQNjUHVC4SDcAKD9AGt9dgB3fV0y7g5DUgpSdn07UDMLawA6bGLDV0rq3GzvRaXFtE7Qbt7+-QDPZb39g8OjpbRvf0C0xOPrm5vTmNSE4ijb17eTsG8Ui6fo9--rmhJPYxqCgA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhqmEvQ40+MgJYUAO2ATgC6gBvUEWydWAGzKgAvqABm3UaADkvAJ4cyAE26sAbmW7LkyEbkz8AamSK8eAZlABeYaI4SyACgHJQodZoAXCrYAEYAVja8ygA0vqDcZACOAK6siVrBANrKAB6xKmoFygBeygC6cX4cipp8rGSYwT5+frnN-hpkwcq4KRShhsoyVa1qHQHdKn0DQyPxfiUTXT0zg0Yy8dLI0gCUJlo24lSJrub8elTiKVMpuADWuNgA7rgmZhagXJisvKx4zlA1lsDgAdBwTpgvJdrmRdq0EYi0B9+N9fv9cM0Foicbi8fiCaA0G1gmtDKNCZSqYTiaBxqAydwKdSWayiWBFqT+utsWy+QS0LIXKCRUA) | [TypeBox](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhgFygAqAngA5kBC2AHqmEn-wMHhkASwrNsAJwAuoAN6gi2cSIA2ZUAF9QAM0nLQAcmksyAE0kiAbmUmHR4qbKatd+ikZOsARl0OgA5GQlXExZADUyImkpAGZQAF5FZWY1MgAKFzIAOgB5bwArKOl0uWQAzjos7IA5AFcKb1t0gEoAGnLQRirTWoamyVaOgIAvHtY+xuaW5E0WmeQzKNUqSQ0QsNArKlU6sjo63ABrXGwAd1wgjdkJTBFpETxE0EjouOzmVcwM7d2yFoCgKBgLQ11At3uj1wdDKwLh8IRiKRQLQFTouH6tmGyJxuJxqK66MxkmxeLJ5ICBLGoAxU0knQpjPxYG0SWy7KAA) | [Zod](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBaA9vqmEl9z7+MgEsaABxZFMoAN6gyLEQIA2VUAF9QAMyJzQAckwBPYVXxEBANypEdyQSLESAVKGwBnUAC8NWmrvdtryLK4LhIAalRkmGIAzKAAvDJywopUABTuAHQsAEYAVhGYqZLIoKAAHoyZuACuNNmWqQCUADQloPqVGTV1DS1t7p3d9URNyCqNjTb4EQrEykEhoGbYCtVUjNW4ANa4LADuuDYLEqIuApgCLLjxoOGRMRnCxC5py6tUjaVf319ox6Cnc6XXCMYo-cEQyFQ6HfNClCqgIaWVow1FotFw9qMJFEFHo-EE35gUoDRG1YZtQlU1FoNQJDIMoA) | [Valibot](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBq2ANgJYBGA9pqmEkFDhI8MnY0ADtyKZQAb1BluU9qyqgAvqABmRFaADkmAJ6Sq+IuwBuVIoeTipMuQCpQ2AM6hru-TSNrNi5eB2RlXE85JioyTBkAZlAAXiUVSTUqAAprADpuTgArWMws+WRQUAAPRjzcAFcaTjssgEoAGgrQE1rchqaWjq6AL17+5qI25E1W1sd8WNZiDQionzZ6qkZ63ABrXG4Ad1xHVblpT3ZMdm5cFOYSxNzJYk9soNZN1sqf35+0M6gC5XG64RjlP6QqHQmGw35oSo1UDjOydOHojEYhHdRgoohozGEon-MCVUbIxoTLrEmnotDaVK5JlAA) | [ArkType](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRA1gCoCeADlamEkFDhI8MgCWNbgHsimUAG9QZaVPEAbKqAC+oAGZFVoAOSYeVfEXEA3KkWPIJU2fKVneO-YZonird1QOyCq4AM7yAGpUZJiyAMygALzKqtwaVAAUARkKyKCgAB6MxrgArjQARnbGADR5oJzFZZXVdfkAXk3lVfbI2gCU-Y740erEWiHhoNbY6qVUjKW4rLjSAO64jpPyMqHimOLSuEmgUTHxAHTcxKGZM3NU-fnPL89o26C7+4e4jLmvAMBQOBIJeaHyRVAzR6bVBcPhcPBDUY0LssIRGMx+SRnSh3Ts9SxRMRYF0yQuFKAA) | [Effect](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCiAZi1WZqmEr3-wPDIAljQAOAeyKZQAb1BkJ44QBsqoAL6gWRJaADkmAJ5iq+IsIBuVIvpHipM+ekq1sm7bpoGqbDpjtkRVwAZxkANX8pAGZQAF4FJTFVKgAKF2o6ADowvEISDLdwgEZ012ysIgBXTlTZZFBQAA9GQuyAOSqaACMbABoG0CNW8uwszp7+wYAvEcyxid6iZA0ASnXkZHwOFWJ1YLDQS2wVKqpGKtwAa1wJAHdcTYOZSRDhTGEJXHjQSM4YrJiYghNLHU5UVaNKHQqFoZ6gV7vT64Rj1GHojGYrHY6FoRpEKjYfBfFRGZqMXBdJYDHG0ul0vGgAlEklk4agSmTIg0+m8vmwsD4wnE3Ck0CzDlUmyDfmy2loLQJLLKoA) | [Arri](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRRAlqmEtz73+MjY0ADgHsimUAG9QZUSLYAbKqAC+oAGZF5oAOSYAnsKr52ANypFdgkeMkzsazdpp6AAsXZFhZYAGdKWmxrZDlcP0kANSoyTHEAZlAAXll5YSUqAApsADpRACMAKxjMTKlkUFAAD0Zc3ABXGnzLTIBKABoK0ANanIamlo6ugC9e-uaiNuRVVtbkZHwYxWIVMIjQM2xFeqpGetwAa1xRAHdcebXJMT82TDZRXGTQaNiEnOFiPyzN7apWyoBgIBaEuoGut3uuEY5SBsLh8IRiMBaEqNVA40snSR2JxOJR3UYGKIWNxpLJwLAlVG6MaEy65IZ2LQ6hSOTZQA) | [Sury](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFwYCuRAnqmEl9z7+MgEsaABwD2RTKADeoMqJECANlVABfUADMi80AHJMrYVXxEBANypFdgkeMkAqUNgDOGTdpp7nLVrtD+AwKDg-zQAFgA6AGZQAGsAIVAAChoBXFAAalAAcwAvAWEASmRkOVxnSQA1KjJMcRiAXll5YSUqJPQI50pabCSpZH8AD0ZO3CYaACNLABpB0FZRiPGp2fncpZXpojnVQuLkfBrFYhUyitAzbEUmKkYmXFjcUQB3XBLzyTFnAUwBUXSTWqtXqEWExGc7SuNyohRCQTQn1A31+-1wjAG8Kx2JxOLQw0YWzWuJJpOx+IWhIm2zmZLp9NAFI2oCJRHmDI55LA6iaET5QA)
-
+Multi-Library Type Compiler and Inference System for High Performance Frameworks
 
 ```typescript
 import { compile } from 'typedriver'
@@ -46,27 +43,37 @@ const position = Vector3.parse(value)            // const position: {
                                                  // } = ...
 ```
 
+Supports: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoAqBPADgUwMoDGATgJbYAuqYStd9D4ypAttgPbEWgDeoh7NqQA2uUAF9QAM2KDQAcgo5cAEzIA3XMXnJkAgHYBnbgDVchCpwDMoALz9B2EbgAUAAx7JQoAB4AuUH0AVxYAIy0AGi9QTADgsMjogC84kPDiZHE3AEpdFXNhAENiMQNjUHVC4SDcAKD9AGt9dgB3fV0y7g5DUgpSdn07UDMLawA6bGLDV0rq3GzvRaXFtE7Qbt7+-QDPZb39g8OjpbRvf0C0xOPrm5vTmNSE4ijb17eTsG8Ui6fo9--rmhJPYxqCgA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhqmEvQ40+MgJYUAO2ATgC6gBvUEWydWAGzKgAvqABm3UaADkvAJ4cyAE26sAbmW7LkyEbkz8AamSK8eAZlABeYaI4SyACgHJQodZoAXCrYAEYAVja8ygA0vqDcZACOAK6siVrBANrKAB6xKmoFygBeygC6cX4cipp8rGSYwT5+frnN-hpkwcq4KRShhsoyVa1qHQHdKn0DQyPxfiUTXT0zg0Yy8dLI0gCUJlo24lSJrub8elTiKVMpuADWuNgA7rgmZhagXJisvKx4zlA1lsDgAdBwTpgvJdrmRdq0EYi0B9+N9fv9cM0Foicbi8fiCaA0G1gmtDKNCZSqYTiaBxqAydwKdSWayiWBFqT+utsWy+QS0LIXKCRUA) | [TypeBox](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhgFygAqAngA5kBC2AHqmEn-wMHhkASwrNsAJwAuoAN6gi2cSIA2ZUAF9QAM0nLQAcmksyAE0kiAbmUmHR4qbKatd+ikZOsARl0OgA5GQlXExZADUyImkpAGZQAF5FZWY1MgAKFzIAOgB5bwArKOl0uWQAzjos7IA5AFcKb1t0gEoAGnLQRirTWoamyVaOgIAvHtY+xuaW5E0WmeQzKNUqSQ0QsNArKlU6sjo63ABrXGwAd1wgjdkJTBFpETxE0EjouOzmVcwM7d2yFoCgKBgLQ11At3uj1wdDKwLh8IRiKRQLQFTouH6tmGyJxuJxqK66MxkmxeLJ5ICBLGoAxU0knQpjPxYG0SWy7KAA) | [Effect](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCiAZi1WZqmEr3-wPDIAljQAOAeyKZQAb1BkJ44QBsqoAL6gWRJaADkmAJ5iq+IsIBuVIvpHipM+ekq1sm7bpoGqbDpjtkRVwAZxkANX8pAGZQAF4FJTFVKgAKF2o6ADowvEISDLdwgEZ012ysIgBXTlTZZFBQAA9GQuyAOSqaACMbABoG0CNW8uwszp7+wYAvEcyxid6iZA0ASnXkZHwOFWJ1YLDQS2wVKqpGKtwAa1wJAHdcTYOZSRDhTGEJXHjQSM4YrJiYghNLHU5UVaNKHQqFoZ6gV7vT64Rj1GHojGYrHY6FoRpEKjYfBfFRGZqMXBdJYDHG0ul0vGgAlEklk4agSmTIg0+m8vmwsD4wnE3Ck0CzDlUmyDfmy2loLQJLLKoA) | [Zod](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBaA9vqmEl9z7+MgEsaABxZFMoAN6gyLEQIA2VUAF9QAMyJzQAckwBPYVXxEBANypEdyQSLESAVKGwBnUAC8NWmrvdtryLK4LhIAalRkmGIAzKAAvDJywopUABTuAHQsAEYAVhGYqZLIoKAAHoyZuACuNNmWqQCUADQloPqVGTV1DS1t7p3d9URNyCqNjTb4EQrEykEhoGbYCtVUjNW4ANa4LADuuDYLEqIuApgCLLjxoOGRMRnCxC5py6tUjaVf319ox6Cnc6XXCMYo-cEQyFQ6HfNClCqgIaWVow1FotFw9qMJFEFHo-EE35gUoDRG1YZtQlU1FoNQJDIMoA) | [ArkType](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRA1gCoCeADlamEkFDhI8MgCWNbgHsimUAG9QZaVPEAbKqAC+oAGZFVoAOSYeVfEXEA3KkWPIJU2fKVneO-YZonird1QOyCq4AM7yAGpUZJiyAMygALzKqtwaVAAUARkKyKCgAB6MxrgArjQARnbGADR5oJzFZZXVdfkAXk3lVfbI2gCU-Y740erEWiHhoNbY6qVUjKW4rLjSAO64jpPyMqHimOLSuEmgUTHxAHTcxKGZM3NU-fnPL89o26C7+4e4jLmvAMBQOBIJeaHyRVAzR6bVBcPhcPBDUY0LssIRGMx+SRnSh3Ts9SxRMRYF0yQuFKAA) | [Valibot](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBq2ANgJYBGA9pqmEkFDhI8MnY0ADtyKZQAb1BluU9qyqgAvqABmRFaADkmAJ6Sq+IuwBuVIoeTipMuQCpQ2AM6hru-TSNrNi5eB2RlXE85JioyTBkAZlAAXiUVSTUqAAprADpuTgArWMws+WRQUAAPRjzcAFcaTjssgEoAGgrQE1rchqaWjq6AL17+5qI25E1W1sd8WNZiDQionzZ6qkZ63ABrXG4Ad1xHVblpT3ZMdm5cFOYSxNzJYk9soNZN1sqf35+0M6gC5XG64RjlP6QqHQmGw35oSo1UDjOydOHojEYhHdRgoohozGEon-MCVUbIxoTLrEmnotDaVK5JlAA) | [Arri](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRRAlqmEtz73+MjY0ADgHsimUAG9QZUSLYAbKqAC+oAGZF5oAOSYAnsKr52ANypFdgkeMkzsazdpp6AAsXZFhZYAGdKWmxrZDlcP0kANSoyTHEAZlAAXll5YSUqAApsADpRACMAKxjMTKlkUFAAD0Zc3ABXGnzLTIBKABoK0ANanIamlo6ugC9e-uaiNuRVVtbkZHwYxWIVMIjQM2xFeqpGetwAa1xRAHdcebXJMT82TDZRXGTQaNiEnOFiPyzN7apWyoBgIBaEuoGut3uuEY5SBsLh8IRiMBaEqNVA40snSR2JxOJR3UYGKIWNxpLJwLAlVG6MaEy65IZ2LQ6hSOTZQA) | [Sury](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFwYCuRAnqmEl9z7+MgEsaABwD2RTKADeoMqJECANlVABfUADMi80AHJMrYVXxEBANypFdgkeMkAqUNgDOGTdpp7nLVrtD+AwKDg-zQAFgA6AGZQAGsAIVAAChoBXFAAalAAcwAvAWEASmRkOVxnSQA1KjJMcRiAXll5YSUqJPQI50pabCSpZH8AD0ZO3CYaACNLABpB0FZRiPGp2fncpZXpojnVQuLkfBrFYhUyitAzbEUmKkYmXFjcUQB3XBLzyTFnAUwBUXSTWqtXqEWExGc7SuNyohRCQTQn1A31+-1wjAG8Kx2JxOLQw0YWzWuJJpOx+IWhIm2zmZLp9NAFI2oCJRHmDI55LA6iaET5QA) | ... and more
+
 ## Overview
 
-TypeDriver is a high-performance validation middleware that enables frameworks to incorporate both JSON Schema and Standard Schema specifications into framework interfaces (for example, HTTP route handlers, RPC endpoints, etc.). It provides a unified validation and type inference system to simplify integrating runtime types, and offers a TypeScript DSL compiler and inference system as standard.
+TypeDriver is a high-performance validation and type inference middleware designed to integrate JSON Schema and Standard Schema compliant validation into framework interfaces such as HTTP routes and RPC endpoints. It targets type safety at I/O boundaries by providing a unified validation and inference pipeline that can be bound directly to request-receiving interfaces.
 
-> TypeDriver unifies heterogeneous runtime schema systems based on JSON Schema and Standard Schema into a single system that preserves static type inference, runtime validation, and schema reflection, while remaining compatible with multiple schema ecosystems.
-
-TypeDriver provides high-performance validation for JSON Schema Drafts 3 through 2020-12. Internally, it uses TypeBox for schema validation and type inference, and Standard Schema for remote library integration. The TypeScript DSL provides runtime and type-level TypeScript emulation in support of TS 7 native compiler.
+This project is designed to unify heterogeneous runtime schema systems based on JSON Schema and Standard Schema into a single system that preserves static type inference, runtime validation, and schema reflection, while remaining compatible with multiple schema ecosystems.
 
 License MIT
 
 ## Features
 
-- Built Specifically for Framework Integration
-- TypeScript DSL for TS7 Native (supported in TS5 and above)
-- Unified Validation for JSON Schema and Standard Schema
-- Unified Inference for JSON Schema and Standard Schema
-- High Performance Validation Compiler (performance approx 2x Ajv)
-- Acceleration support for Standard JSON Schema
-- JSON Schema Reflect for OpenAPI, MCP and IDL Based Systems
-- Error Formats for JSON Schema and Standard Schema Based Reporting
-- Error Message Localization (i18n)
+- Framework Integration
+  - Designed for [Type-Safe](#Framework) public IO interfaces (Routes)
+  - One [Function](#Compile) to compile schematics into uniform Validators.
+  - One [Type](#Static) to infer schematics into TypeScript types.
+  - [Extension](#Extensions) Model for Framework Specific Runtime Type APIs
+- Schema Support
+  - TypeScript [DSL](#Script) feature for TS7-native (supported in TS5+).
+  - Scalable [JSON Schema Type Inference](https://tsplay.dev/NlrkxW) as standard.
+  - Supports JSON Schema Drafts 3 through 2020-12.
+  - Full support for Standard Schema
+- Validation Compiler
+  - High-performance JIT compiler for faster application start up.
+  - High-performance runtime validation (approx 2x Ajv under comparable workloads)
+  - Automatic [Acceleration](#Accelerate) for libraries supporting Standard JSON Schema.
+  - Automatic JIT fallback for [Content-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) restrictive environments (Cloudflare)
+- Tooling and Interoperability
+  - JSON Schema [Reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
+  - Error [Formats](#Errors) for JSON Schema and Standard Schema Based Systems
+  - [Localized](#Locales) Error Messages (i18n)
 
 ## Contents
 
@@ -79,8 +86,11 @@ License MIT
 - [Errors](#Errors)
 - [Locales](#Locales)
 - [Static](#Static)
+- [Script](#Script)
 - [Reflect](#Schema)
+- [Extensions](#Extensions)
 - [Accelerate](#Accelerate)
+- [Compression](#Compression)
 - [Contribute](#Contribute)
 
 ## Framework
@@ -101,7 +111,7 @@ route('/', {
 })
 ```
 
-Where the above interface design is achieved with the following TS definitions 
+The above interface design is achieved with the following TypeScript definitions 
 
 <details>
 
@@ -298,7 +308,7 @@ Localization support is only available for JSON Schema
 
 ## Static
 
-TypeDriver provides type infernece for JSON Schema, Standard Schema or TypeScript | [Example](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKC4Hpe4ASQB25DsjToAzhSo1cAGwXIAFsGEBzKQEIeDTAEE4AXmx4ChADwADJFzhwAHgC44wgK4gARhwA09uBRXD28-AIAvYM8fKC4SawA+PUk4ACETM3wiSwQA-VdaCC8AK3RCGFp-Byh0AEd3YBrGVwBtWkdKuhRO2nDaAF0quDAqDFhgaVdchwcXRAkMApCY2lIhhyD5-LpljlWSdbhIrckl6L21gJI4pK5QSFg4ACo4XBlw2Wo6cIhGbi5CBBhFJ4ABhDLhAB0RVK5QAFNMnK4obsoHCAJRDTYo85ozERZGQ1EY-wkdFcfRwcGmHBZKz6CDkKm3IA)
+TypeDriver provides unified type inference for JSON Schema, Standard Schema and TypeScript | [Reference](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKC4Hpe4ACQjsocdLkIALOI3TlgAO2AEIi5BDhKAzhkLwYUzA3Q9+cACpp0WQizAweJuAEE4AXmx4ChADwADJC44OAAPAC44RQBXEAAjDgAaYLgUSJj4pJSAL3TYhKguEn8APjMBACksAHkAOWxpdBBcJ2s4ACEPL3wiXwQUk0jaCDiAK3R9WmSQqHQAR2jgWcZIgG1aUKm6FC3abNoAXWm4MCoMWGB0bUj+kJCIxGRrIYyC2lJjkLTHwbpXjneJE+cFyP2ef3yAI+KRIRTKfAEOFwikYuCgjAaRmaPFAkFgcAAVHBcNoQRQqDQ9hBGNwuM4AMJdJE+XwmCDkOD0sqENTaeCMzzZAB0I3G+gAFLcwpFhf8oOKAJTHb6yyHypU5GVCuWK5IkBVcIA)
 
 ```typescript
 import { type Static } from 'typedriver'
@@ -327,15 +337,43 @@ type B = Static<{
 
 import * as z from 'zod'
 
+type C = Static<typeof C>
 const C = z.object({
   x: z.number(),
   y: z.number(),
   z: z.number(),
 })
-type C = Static<typeof C>
-
-
 ```
+
+Localization support is only available for JSON Schema
+
+## Script
+
+The TypeScript DSL is a runtime and type-level emulation of TypeScript. This feature is based on TypeBox’s ability to transform TypeScript syntax into JSON Schema. The TypeScript DSL supports most TypeScript definitions, as well as type-level constraints expressed using JSON Schema keywords.
+
+> ⚠️ The name `Options<T>` is subject to change. Because Options is a commonly used type name, it may not be appropriate for schema constraint augmentation. As a result, Options should be considered an experimental feature. TypeBox and TypeDriver are open to suggestions for a more suitable name for this type.
+
+```typescript
+const ClampedVector3 = compile(`{
+  x: Options<number, { minimum: 0, maximum: 1 }>,
+  y: Options<number, { minimum: 0, maximum: 1 }>,
+  z: Options<number, { minimum: 0, maximum: 1 }>
+}`)
+
+const JsonSchema = ClampedVector3.toJsonSchema()
+
+// const JsonSchema = {
+//   type: "object",
+//   required: [ "x", "y", "z" ],
+//   properties: {
+//     x: { type: "number", minimum: 0, maximum: 1 },
+//     y: { type: "number", minimum: 0, maximum: 1 },
+//     z: { type: "number", minimum: 0, maximum: 1 }
+//   }
+// }
+```
+
+Refer to [TypeBox](https://github.com/sinclairzx81/typebox) for additional information on this feature.
 
 ## Reflect
 
@@ -362,14 +400,39 @@ The source type used for compilation can also be returned via
 validator.schema()          // will return the schematic used for compile.
 ```
 
+## Extensions
+
+TypeDriver enables Frameworks to define custom Runtime Types specific to the Framework. This can be achieved by creating functions that return statically observable JSON Schema. These schematics can be passed to compile(...) and Static and used like any other type.
+
+Ref: [Framework Types](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApgGjjATzCzgGUYBDGYZOAXzgDMo04ByQ4gEymADcsUNgChhAejFwAtDNlz5CxUuUrVU8ZICqAZwoBzLBulqTps2uGoAdtvgA1LMhjQAzHAC8KNGExYAFBAARgBWjjB+CMJwcAAeAFxwVgCuIIGCfgCUOFFwBAnJqelZOQBe+SlpUJnCdBkZopwkDk6uHmSU1MgAPI0QjHDNzlAuAHyiEsbmU9MmRppWwBBWACoQy0lg2Ak6WFz4EHAAojEwUBROcAAKLMSwBADSWATaTCwgVzeC1FjaRjP-AIUwkacHmixWEAAklYYIJtGFwV1NCM2n5NHAsCcsFYuC8KFYCHAAPxwPzxUEZDwovgQYB7fJYARQSmY2E4l5khLAKyMQRwSGU9zU2l7EmQuAMpnAogkAAyFFsAHlGEiUZ4wUtVtDYVB4U5EaCMVj2XB8YSSZyKVS4DS6RLEoy+SjWdjcaTydzeVA4LLBcK7STZfarI6oNLiKCFpq1htsEi8PLbG1EzBlaq1XAANqaAC6RrZbszIaZeZJmbzCUzADoaxqIetNlgusdkBgklwm5oEwqYCMRt3bDnxpJAaPAUYAGJnEBYADu0AA1oqQmE-mP11NwyQAEpYACOSWAUF2AEEoGcCF1rhBbt8Xi6TbvUFAuF1bLwrHo8EkrAurBBZysfscmvW8Hiee9jTdd9uT0NpjlOc4YC6Bcnj6D4by+YAfjwGDP2A6JdwPI9T3PChCXVKN61jJtQK+cDnjGDMiMPY8uDPC9hExSBYDgbkdUYc4SCnCgZ3nKAlxXJwr0+WBsMggsXifaBXzwr84B-P8AKAlFImiRoEjYIJQicNg8ByMBZLvBI6LknC4ByY9iLYhIWJI9iyMvWy7zGOguJiHj4EYH99SWOBjLCLprCTbz5PzV0lMcFS31OWDv1-f9AL7PxLMwuztBsqz5IyBIRLExdlxM5DYp+XTHKwGAkigKxEHwGVDIi0y8Cc1jdgSSqwirVDnhyoqfiyOBctvOKGAVB0pT8iYN2W0xJ2nOdFwAOQqQQ1xW-alGEfjBEE5BhPW8SF22wpvT0triEMgpKhEPzuOgIKQuoMKnqKUqLq2nbboc6Jj0a5rWoM9gfqEegaiAA)
+
+```typescript
+import { compile, type Static } from 'typedriver'
+
+interface FrameworkString {
+  type: 'string'
+}
+export function number(): FrameworkString { 
+  return { type: 'string' }
+}
+
+// ... Usage
+
+const T = number()                     // const T: FrameworkString = { type: 'number' }
+
+type T = Static<typeof T>              // type T = number
+```
+
+This is an advanced feature based on TypeBox's extension model for JSON Schema.
+
 ## Accelerate
 
-TypeDriver provides acceleration support for libraries that implement the Standard JSON Schema specification. This is a new specification that enables runtime type libraries to be integrated into TypeBox validation infrastructure. This project tracks upstream implementations of this specification and maintains a benchmark measuring compariative performance with and without compile(...).
+TypeDriver provides acceleration support for libraries that implement the upcoming Standard JSON Schema specification. This is a new specification enables remote type libraries to be integrated directly into TypeBox validation infrastructure. This project tracks upstream implementations of this specification and maintains a benchmark measuring compariative performance with and without compile(...).
 
 ```bash
 $ deno task bench
 ```
-Benchmark 16M Parse Operations of this Structure
+Benchmark 16M Parse Operations of this Structure | We Measure Time To Complete
 ```typescript
 const Vector3 = compile(`{
   x: number,
@@ -395,6 +458,22 @@ Accelerated Indicates Support for Standard JSON Schema
 └────────────┴────────────┴─────────────┴──────────────┴──────────────┴─────────────────┘
 
 Last Run: Thu Dec 04 2025
+```
+
+## Compression
+
+TypeDriver is intended for server-side validation in Node, Deno and Bun runtimes, but can be used in Browsers also. TypeDriver depends on most of TypeBox's internal compiler and TS emulation infrastructure. The following shows the compression metrics for bundled, minified and gzipped. TypeDriver uses esbuild for bundling and Deno local gzipped compression.
+
+```bash
+$ deno task metrics
+```
+Compression Rates
+```bash
+┌───────┬─────────────────────────┬─────────────┬─────────────┬────────────┐
+│ (idx) │ path                    │ bundled     │ minified    │ gzipped    │
+├───────┼─────────────────────────┼─────────────┼─────────────┼────────────┤
+│     0 │ "./task/metrics/all.ts" │ "579.74 KB" │ "286.01 KB" │ "55.14 KB" │
+└───────┴─────────────────────────┴─────────────┴─────────────┴────────────┘
 ```
 
 ## Contribute

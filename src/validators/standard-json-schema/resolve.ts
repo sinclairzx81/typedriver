@@ -52,9 +52,9 @@ function AsDraft2020_12(input: StandardJSONSchemaV1): Record<string, unknown> | 
     return undefined
   }
 }
-// Why doesn't the api provide a discovery mechanism?
+// Standard JSON Schema should provide mechanism to query supported specifications
 export function ResolveJsonSchema(input: StandardJSONSchemaV1): Record<string, unknown> {
   const jsonschema = AsDraft2020_12(input) ?? AsDraft7(input) ?? AsOpenAPI3_0(input)
-  if(Guard.IsUndefined(jsonschema)) throw Error(`Vendor '${input['~standard'].vendor}' advertised itself as a Standard JSON Schema but failed to produce a schematic. Submit an issue with the vendor.`)
+  if (Guard.IsUndefined(jsonschema)) throw Error(`Vendor '${input['~standard'].vendor}' advertised itself as a Standard JSON Schema but failed to produce a schematic. Submit an issue with the vendor.`)
   return jsonschema
 }

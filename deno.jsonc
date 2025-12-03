@@ -4,6 +4,7 @@
     "bench": "deno run -A tasks.ts bench",           // Bench Project
     "clean": "deno run -A tasks.ts clean",           // Clean Build Targets
     "format": "deno run -A tasks.ts format",         // Formats Code
+    "metrics": "deno run -A tasks.ts metrics",       // Formats Code
     "local": "deno run -A tasks.ts local",           // Build Local Project
     "publish": "deno run -A tasks.ts publish",       // Publish Package
     "report": "deno run -A tasks.ts report",         // Test Converage
