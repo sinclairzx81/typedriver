@@ -118,7 +118,7 @@ import { compile } from 'typedriver'
 Pass TypeScript definitions via strings [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFAAMErOHAAeALjicAriABGzFXApbdBo6oBeZvYaitcCgJSq37j56-ef7gPR+Ujz8gsJQIlp8AIYYwDRRYQA8AHSpADSIxr7ZObluAW6a2nbMaVl5FZX5gaqmxRZQZVXNlQXWtg1NLd3ZBbgAfOxcvHCQ3MAwwBCcEnACQqLJYFFQ3PJIxkUADF11AIxdNnBbjs5AA)
 
 ```typescript
-const Vec3 = compile(`{
+const Vector3 = compile(`{
   x: number
   y: number
   z: number
@@ -128,7 +128,7 @@ const Vec3 = compile(`{
 ... or Json Schema [Example](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFEjhLlK1WtUB6DVJ79BwqCIBccPgEMMwGmYMAeAHSOANIlZLK1E6QgAjAFb6pC7qIaFhWsoAHiacAK4gPsxObnBQWACOscBpNCYA2qSRQWQUxaQAXqQAusFhdXARShQx8YlQyUpgxNSwwFjcJor1w+HaSuUtCcwpStGIcB5YXnFTLHi1I6ERuAB8M3DN84vLrcyk6-sTR1RLZCtt57gpT7gAlOxcvHCQ3MAwwBBOBJTPpRPYwGYoNx5EgUnMAAwdA4mACMSKu8NYbyAA)
 
 ```typescript
-const Vec3 = compile({ 
+const Vector3 = compile({ 
   type: 'object',
   required: ['x', 'y', 'z'],
   properties: {
@@ -144,7 +144,7 @@ const Vec3 = compile({
 ```typescript
 import * as z from 'zod'
 
-const Vec3 = compile(z.object({ 
+const Vector3 = compile(z.object({ 
   x: z.number(),  
   y: z.number(), 
   z: z.number(), 
@@ -161,9 +161,9 @@ The compile(...) function returns Validator instances to Check, Parse and report
 The check(...) returns a boolean result.
 
 ```typescript
-// Vec3.check(value: unknown): value is Vec3
+// Vector3.check(value: unknown): value is Vector3
 
-if(Vec3.check(value)) {
+if(Vector3.check(value)) {
 
   const { x, y, z } = value // safe
 }
@@ -174,9 +174,9 @@ if(Vec3.check(value)) {
 The parse(...) function returns if valid, otherwise throws.
 
 ```typescript
-// Vec3.parse(value: unknown): Vec3
+// Vector3.parse(value: unknown): Vector3
 
-const { x, y, z } = Vec3.parse(value)                 
+const { x, y, z } = Vector3.parse(value)                 
 ```
 
 ## Errors
@@ -184,9 +184,9 @@ const { x, y, z } = Vec3.parse(value)
 The errors(...) function returns diagnostics (use only after failed check)
 
 ```typescript
-// Vec3.errors(value: unknown): object[]
+// Vector3.errors(value: unknown): object[]
 
-const errors = Vec3.errors(value)              
+const errors = Vector3.errors(value)              
 ```
 
 ## Static
