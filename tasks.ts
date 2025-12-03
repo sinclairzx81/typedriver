@@ -1,6 +1,7 @@
 // deno-fmt-ignore-file
 
 import { Range, RangeNext } from './task/range/index.ts'
+import { Bench } from './task/bench/index.ts'
 import { Task } from 'tasksmith'
 
 const Version = '0.8.2'
@@ -28,6 +29,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
     }
   },
 })
+
 // ------------------------------------------------------------------
 // Build
 // ------------------------------------------------------------------
@@ -69,6 +71,15 @@ Task.run('fast', (filter: string = '') => Task.test.run(['test/typedriver'], { w
 // Report
 // ------------------------------------------------------------------
 Task.run('report', () => Task.test.report(['test/typedriver']))
+// ------------------------------------------------------------------
+// Bench
+// ------------------------------------------------------------------
+Task.run('bench', async () => {
+  await Task.file('deno.lock').delete()
+  await Task.shell('deno clean')
+  await Task.shell('deno install')
+  await Bench()
+})
 // ------------------------------------------------------------------
 // Range
 // ------------------------------------------------------------------

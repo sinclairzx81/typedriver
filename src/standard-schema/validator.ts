@@ -39,6 +39,12 @@ export class StandardSchemaValidator<Input extends StandardSchemaV1,
     super()
   }
   // ----------------------------------------------------------------
+  // Accelerated
+  // ----------------------------------------------------------------
+  public override accelerated(): boolean {
+    return false
+  }
+  // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {

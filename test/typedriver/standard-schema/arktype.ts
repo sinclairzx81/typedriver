@@ -1,7 +1,7 @@
 import { Assert } from 'test'
 import { compile, type Static } from 'typedriver'
 
-const Test = Assert.Context('Validator.StandardSchema.Valibot')
+const Test = Assert.Context('Validator.StandardSchema.ArkType')
 import { Behaviors } from '../behaviors.ts'
 import { type } from 'arktype'
 
@@ -18,11 +18,11 @@ Test('Should Schema 1', () => {
 // ------------------------------------------------------------------
 Test('Should JsonSchema 1', () => {
   const T = compile(type('string'))
-  Assert.IsFalse(T.isJsonSchema())
+  Assert.IsTrue(T.isJsonSchema())
 })
 Test('Should JsonSchema 2', () => {
   const T = compile(type('string'))
-  Assert.IsEqual(T.toJsonSchema(), {})
+  Assert.IsEqual(T.toJsonSchema(), { '$schema': 'https://json-schema.org/draft/2020-12/schema', type: 'string' })
 })
 
 // ------------------------------------------------------------------

@@ -14,14 +14,14 @@
     "test": "deno run -A tasks.ts test"
   },
   "dependencies": {
-    "typebox": "^1.0.61"
+    "typebox": "1.0.61"
   },
   "devDependencies": {
-    "@arrirpc/schema": "^0.80.3",
-    "arktype": "^2.1.26",
-    "effect": "^3.19.8",
-    "sury": "^11.0.0-alpha.4",
-    "valibot": "^1.1.0",
-    "zod": "^4.1.12"
+    "@arrirpc/schema": "latest",
+    "arktype": "latest",
+    "effect": "latest",
+    "sury": "latest",
+    "valibot": "latest",
+    "zod": "latest"
   }
 }

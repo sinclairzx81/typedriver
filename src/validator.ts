@@ -30,6 +30,8 @@ THE SOFTWARE.
 
 /** Abstract Base for all Validator types. */
 export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
+  /** Returns true if this validator is accelerated */
+  public abstract accelerated(): boolean
   /** Returns the schema used to construct this validator */
   public abstract schema(): Input
   /** Checks a value matches the given schema */
