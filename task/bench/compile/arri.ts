@@ -9,4 +9,4 @@ const Vector3 = compile(arri.object({
   z: arri.number()
 }))
 
-benchmark(Vector3.accelerated(), () => Vector3.parse({ x: 0, y: 0, z: 0 }))
+benchmark(Vector3.isAccelerated(), () => Vector3.parse({ x: 0, y: 0, z: 0 }))

@@ -56,12 +56,6 @@ export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & St
     this.validator = new TBValidator({}, schema)
   }
   // ----------------------------------------------------------------
-  // Accelerated
-  // ----------------------------------------------------------------
-  public override accelerated(): boolean {
-    return this.validator.IsEvaluated()
-  }
-  // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {
@@ -75,6 +69,12 @@ export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & St
   }
   public override toJsonSchema(): unknown {
     return this.validator.Type()
+  }
+  // ----------------------------------------------------------------
+  // Accelerated
+  // ----------------------------------------------------------------
+  public override isAccelerated(): boolean {
+    return this.validator.IsEvaluated()
   }
   // ----------------------------------------------------------------
   // Validation

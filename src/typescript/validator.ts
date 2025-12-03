@@ -47,12 +47,6 @@ export class TypeScriptValidator<Input extends string,
     this.validator = new TBValidator({}, this.jsonschema)
   }
   // ----------------------------------------------------------------
-  // Accelerated
-  // ----------------------------------------------------------------
-  public override accelerated(): boolean {
-    return this.validator.IsEvaluated()
-  }
-  // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {
@@ -66,6 +60,12 @@ export class TypeScriptValidator<Input extends string,
   }
   public override toJsonSchema(): unknown {
     return this.jsonschema
+  }
+  // ----------------------------------------------------------------
+  // Accelerated
+  // ----------------------------------------------------------------
+  public override isAccelerated(): boolean {
+    return this.validator.IsEvaluated()
   }
   // ----------------------------------------------------------------
   // Validation
