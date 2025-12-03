@@ -39,12 +39,6 @@ export class StandardSchemaValidator<Input extends StandardSchemaV1,
     super()
   }
   // ----------------------------------------------------------------
-  // Accelerated
-  // ----------------------------------------------------------------
-  public override accelerated(): boolean {
-    return false
-  }
-  // ----------------------------------------------------------------
   // Schema
   // ----------------------------------------------------------------
   public override schema(): Input {
@@ -58,6 +52,12 @@ export class StandardSchemaValidator<Input extends StandardSchemaV1,
   }
   public override  toJsonSchema(): unknown {
     return {}
+  }
+  // ----------------------------------------------------------------
+  // Accelerated
+  // ----------------------------------------------------------------
+  public override isAccelerated(): boolean {
+    return false
   }
   // ----------------------------------------------------------------
   // Validation
