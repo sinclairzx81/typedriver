@@ -1,6 +1,7 @@
 {
   "tasks": {
     "build": "deno run -A tasks.ts build",           // Build Project
+    "bench": "deno run -A tasks.ts bench",           // Bench Project
     "clean": "deno run -A tasks.ts clean",           // Clean Build Targets
     "format": "deno run -A tasks.ts format",         // Formats Code
     "local": "deno run -A tasks.ts local",           // Build Local Project
@@ -24,17 +25,16 @@
     // --------------------------------------------------------------
     // "@standard-schema/spec": "npm:@standard-schema/spec",
     "@standard-schema/spec": "./src/_standard/standard-schema.ts",
-    "typebox": "npm:typebox",
+    "typebox": "npm:typebox@1.0.61",
     // --------------------------------------------------------------
     // DevDependencies
     // --------------------------------------------------------------
-    "@arrirpc/schema": "npm:@arrirpc/schema",
-    "arktype": "npm:arktype",
-    "effect": "npm:effect",
-    "sury": "npm:sury",
-    "valibot": "npm:valibot",
-    "yup": "npm:yup",
-    "zod": "npm:zod",
+    "@arrirpc/schema": "npm:@arrirpc/schema@latest",
+    "arktype": "npm:arktype@latest",
+    "effect": "npm:effect@latest",
+    "sury": "npm:sury@latest",
+    "valibot": "npm:valibot@latest",
+    "zod": "npm:zod@latest",
     // --------------------------------------------------------------
     // Library
     // --------------------------------------------------------------
@@ -50,6 +50,7 @@
     "tasks"
   ],
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "lib": ["deno.ns", "dom"]
   }
 }
