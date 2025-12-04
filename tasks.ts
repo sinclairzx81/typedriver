@@ -4,7 +4,7 @@ import { Range, RangeNext } from './task/range/index.ts'
 import { Bench } from './task/bench/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.8.5'
+const Version = '0.8.6'
 
 // ------------------------------------------------------------------
 // Build
@@ -15,7 +15,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
   additional: ['license', 'readme.md'],
   packageJson: {
     name: 'typedriver',
-    description: 'Unified Runtime Validation and Inference Driver for TypeScript',
+    description: 'High Performance Driver for Runtime Type System Integration',
     version: Version,
     keywords: ['typescript', 'json-schema', 'standard-schema'],
     license: 'MIT',
@@ -29,7 +29,11 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
     }
   },
 })
-
+const PublishPackage = async (target: string = `target/build`) => {
+  const { version } = JSON.parse(await Task.file(`${target}/package.json`).read())
+  await Task.shell(`git tag ${version}`)
+  await Task.shell(`git push origin ${version}`)
+}
 // ------------------------------------------------------------------
 // Build
 // ------------------------------------------------------------------
@@ -45,12 +49,7 @@ Task.run('local', (target: string = `../build-test/node_modules/typedriver`) => 
 // ------------------------------------------------------------------
 // Publish
 // ------------------------------------------------------------------
-Task.run('publish', async (otp: string, target: string = `target/build`) => {
-  console.log(`cd ${target} && npm publish typedriver-${Version}.tgz --access=public --otp ${otp}`)
-  await Task.shell(`cd ${target} && npm publish typedriver-${Version}.tgz --access=public --otp ${otp}`)
-  await Task.shell(`git tag ${Version}`)
-  await Task.shell(`git push origin ${Version}`)
-})
+Task.run('publish', (target: string = `target/build`) => PublishPackage(target))
 // ------------------------------------------------------------------
 // Format
 // ------------------------------------------------------------------
