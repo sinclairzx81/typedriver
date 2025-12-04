@@ -32,6 +32,10 @@ jobs:
       - name: Update
         run: npm install npm -g
 
+      # Install
+      - name: Install
+        run: deno install
+
       # Build
       - name: Build
         run: deno task build
