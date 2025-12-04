@@ -28,7 +28,7 @@ The current interface doesn't provide a way to query for generation targets. A c
 
 ## Non-Json-Instances
 
-JSON Schema supports superset schematics which some libraries target (TypeBox being one). A super for JavaScript might include support for `unknown`, `symbol`, `void`,  as well as other non-representable types (such as Date). There are provisions made for this in the specification. 
+JSON Schema supports superset schematics which some libraries target (TypeBox being one). A superset for JavaScript might include additional schematics for `unknown`, `symbol`, `void`, as well as other non-representable types (such as Date). There are provisions made for this in the specification. 
 
 https://json-schema.org/draft/2020-12/json-schema-core#name-non-json-instances
 

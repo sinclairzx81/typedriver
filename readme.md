@@ -2,7 +2,7 @@
 
 <h1>TypeDriver</h1>
 
-<p>High Performance Driver for Runtime Type System Integration</p>
+<p>A High Performance Driver for Runtime Type System Integration</p>
 
 <img src="typedriver.png" />
 
@@ -43,37 +43,15 @@ const position = Vector3.parse(value)            // const position: {
                                                  // } = ...
 ```
 
-Supports: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoAqBPADgUwMoDGATgJbYAuqYStd9D4ypAttgPbEWgDeoh7NqQA2uUAF9QAM2KDQAcgo5cAEzIA3XMXnJkAgHYBnbgDVchCpwDMoALz9B2EbgAUAAx7JQoAB4AuUH0AVxYAIy0AGi9QTADgsMjogC84kPDiZHE3AEpdFXNhAENiMQNjUHVC4SDcAKD9AGt9dgB3fV0y7g5DUgpSdn07UDMLawA6bGLDV0rq3GzvRaXFtE7Qbt7+-QDPZb39g8OjpbRvf0C0xOPrm5vTmNSE4ijb17eTsG8Ui6fo9--rmhJPYxqCgA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhqmEvQ40+MgJYUAO2ATgC6gBvUEWydWAGzKgAvqABm3UaADkvAJ4cyAE26sAbmW7LkyEbkz8AamSK8eAZlABeYaI4SyACgHJQodZoAXCrYAEYAVja8ygA0vqDcZACOAK6siVrBANrKAB6xKmoFygBeygC6cX4cipp8rGSYwT5+frnN-hpkwcq4KRShhsoyVa1qHQHdKn0DQyPxfiUTXT0zg0Yy8dLI0gCUJlo24lSJrub8elTiKVMpuADWuNgA7rgmZhagXJisvKx4zlA1lsDgAdBwTpgvJdrmRdq0EYi0B9+N9fv9cM0Foicbi8fiCaA0G1gmtDKNCZSqYTiaBxqAydwKdSWayiWBFqT+utsWy+QS0LIXKCRUA) | [TypeBox](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhgFygAqAngA5kBC2AHqmEn-wMHhkASwrNsAJwAuoAN6gi2cSIA2ZUAF9QAM0nLQAcmksyAE0kiAbmUmHR4qbKatd+ikZOsARl0OgA5GQlXExZADUyImkpAGZQAF5FZWY1MgAKFzIAOgB5bwArKOl0uWQAzjos7IA5AFcKb1t0gEoAGnLQRirTWoamyVaOgIAvHtY+xuaW5E0WmeQzKNUqSQ0QsNArKlU6sjo63ABrXGwAd1wgjdkJTBFpETxE0EjouOzmVcwM7d2yFoCgKBgLQ11At3uj1wdDKwLh8IRiKRQLQFTouH6tmGyJxuJxqK66MxkmxeLJ5ICBLGoAxU0knQpjPxYG0SWy7KAA) | [Effect](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCiAZi1WZqmEr3-wPDIAljQAOAeyKZQAb1BkJ44QBsqoAL6gWRJaADkmAJ5iq+IsIBuVIvpHipM+ekq1sm7bpoGqbDpjtkRVwAZxkANX8pAGZQAF4FJTFVKgAKF2o6ADowvEISDLdwgEZ012ysIgBXTlTZZFBQAA9GQuyAOSqaACMbABoG0CNW8uwszp7+wYAvEcyxid6iZA0ASnXkZHwOFWJ1YLDQS2wVKqpGKtwAa1wJAHdcTYOZSRDhTGEJXHjQSM4YrJiYghNLHU5UVaNKHQqFoZ6gV7vT64Rj1GHojGYrHY6FoRpEKjYfBfFRGZqMXBdJYDHG0ul0vGgAlEklk4agSmTIg0+m8vmwsD4wnE3Ck0CzDlUmyDfmy2loLQJLLKoA) | [Zod](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBaA9vqmEl9z7+MgEsaABxZFMoAN6gyLEQIA2VUAF9QAMyJzQAckwBPYVXxEBANypEdyQSLESAVKGwBnUAC8NWmrvdtryLK4LhIAalRkmGIAzKAAvDJywopUABTuAHQsAEYAVhGYqZLIoKAAHoyZuACuNNmWqQCUADQloPqVGTV1DS1t7p3d9URNyCqNjTb4EQrEykEhoGbYCtVUjNW4ANa4LADuuDYLEqIuApgCLLjxoOGRMRnCxC5py6tUjaVf319ox6Cnc6XXCMYo-cEQyFQ6HfNClCqgIaWVow1FotFw9qMJFEFHo-EE35gUoDRG1YZtQlU1FoNQJDIMoA) | [ArkType](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRA1gCoCeADlamEkFDhI8MgCWNbgHsimUAG9QZaVPEAbKqAC+oAGZFVoAOSYeVfEXEA3KkWPIJU2fKVneO-YZonird1QOyCq4AM7yAGpUZJiyAMygALzKqtwaVAAUARkKyKCgAB6MxrgArjQARnbGADR5oJzFZZXVdfkAXk3lVfbI2gCU-Y740erEWiHhoNbY6qVUjKW4rLjSAO64jpPyMqHimOLSuEmgUTHxAHTcxKGZM3NU-fnPL89o26C7+4e4jLmvAMBQOBIJeaHyRVAzR6bVBcPhcPBDUY0LssIRGMx+SRnSh3Ts9SxRMRYF0yQuFKAA) | [Valibot](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBq2ANgJYBGA9pqmEkFDhI8MnY0ADtyKZQAb1BluU9qyqgAvqABmRFaADkmAJ6Sq+IuwBuVIoeTipMuQCpQ2AM6hru-TSNrNi5eB2RlXE85JioyTBkAZlAAXiUVSTUqAAprADpuTgArWMws+WRQUAAPRjzcAFcaTjssgEoAGgrQE1rchqaWjq6AL17+5qI25E1W1sd8WNZiDQionzZ6qkZ63ABrXG4Ad1xHVblpT3ZMdm5cFOYSxNzJYk9soNZN1sqf35+0M6gC5XG64RjlP6QqHQmGw35oSo1UDjOydOHojEYhHdRgoohozGEon-MCVUbIxoTLrEmnotDaVK5JlAA) | [Arri](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRRAlqmEtz73+MjY0ADgHsimUAG9QZUSLYAbKqAC+oAGZF5oAOSYAnsKr52ANypFdgkeMkzsazdpp6AAsXZFhZYAGdKWmxrZDlcP0kANSoyTHEAZlAAXll5YSUqAApsADpRACMAKxjMTKlkUFAAD0Zc3ABXGnzLTIBKABoK0ANanIamlo6ugC9e-uaiNuRVVtbkZHwYxWIVMIjQM2xFeqpGetwAa1xRAHdcebXJMT82TDZRXGTQaNiEnOFiPyzN7apWyoBgIBaEuoGut3uuEY5SBsLh8IRiMBaEqNVA40snSR2JxOJR3UYGKIWNxpLJwLAlVG6MaEy65IZ2LQ6hSOTZQA) | [Sury](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFwYCuRAnqmEl9z7+MgEsaABwD2RTKADeoMqJECANlVABfUADMi80AHJMrYVXxEBANypFdgkeMkAqUNgDOGTdpp7nLVrtD+AwKDg-zQAFgA6AGZQAGsAIVAAChoBXFAAalAAcwAvAWEASmRkOVxnSQA1KjJMcRiAXll5YSUqJPQI50pabCSpZH8AD0ZO3CYaACNLABpB0FZRiPGp2fncpZXpojnVQuLkfBrFYhUyitAzbEUmKkYmXFjcUQB3XBLzyTFnAUwBUXSTWqtXqEWExGc7SuNyohRCQTQn1A31+-1wjAG8Kx2JxOLQw0YWzWuJJpOx+IWhIm2zmZLp9NAFI2oCJRHmDI55LA6iaET5QA) | ... and more
+Compiles: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoAqBPADgUwMoDGATgJbYAuqYStd9D4ypAttgPbEWgDeoh7NqQA2uUAF9QAM2KDQAcgo5cAEzIA3XMXnJkAgHYBnbgDVchCpwDMoALz9B2EbgAUAAx7JQoAB4AuUH0AVxYAIy0AGi9QTADgsMjogC84kPDiZHE3AEpdFXNhAENiMQNjUHVC4SDcAKD9AGt9dgB3fV0y7g5DUgpSdn07UDMLawA6bGLDV0rq3GzvRaXFtE7Qbt7+-QDPZb39g8OjpbRvf0C0xOPrm5vTmNSE4ijb17eTsG8Ui6fo9--rmhJPYxqCgA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhqmEvQ40+MgJYUAO2ATgC6gBvUEWydWAGzKgAvqABm3UaADkvAJ4cyAE26sAbmW7LkyEbkz8AamSK8eAZlABeYaI4SyACgHJQodZoAXCrYAEYAVja8ygA0vqDcZACOAK6siVrBANrKAB6xKmoFygBeygC6cX4cipp8rGSYwT5+frnN-hpkwcq4KRShhsoyVa1qHQHdKn0DQyPxfiUTXT0zg0Yy8dLI0gCUJlo24lSJrub8elTiKVMpuADWuNgA7rgmZhagXJisvKx4zlA1lsDgAdBwTpgvJdrmRdq0EYi0B9+N9fv9cM0Foicbi8fiCaA0G1gmtDKNCZSqYTiaBxqAydwKdSWayiWBFqT+utsWy+QS0LIXKCRUA) | [TypeBox](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhgFygAqAngA5kBC2AHqmEn-wMHhkASwrNsAJwAuoAN6gi2cSIA2ZUAF9QAM0nLQAcmksyAE0kiAbmUmHR4qbKatd+ikZOsARl0OgA5GQlXExZADUyImkpAGZQAF5FZWY1MgAKFzIAOgB5bwArKOl0uWQAzjos7IA5AFcKb1t0gEoAGnLQRirTWoamyVaOgIAvHtY+xuaW5E0WmeQzKNUqSQ0QsNArKlU6sjo63ABrXGwAd1wgjdkJTBFpETxE0EjouOzmVcwM7d2yFoCgKBgLQ11At3uj1wdDKwLh8IRiKRQLQFTouH6tmGyJxuJxqK66MxkmxeLJ5ICBLGoAxU0knQpjPxYG0SWy7KAA) | [Effect](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCiAZi1WZqmEr3-wPDIAljQAOAeyKZQAb1BkJ44QBsqoAL6gWRJaADkmAJ5iq+IsIBuVIvpHipM+ekq1sm7bpoGqbDpjtkRVwAZxkANX8pAGZQAF4FJTFVKgAKF2o6ADowvEISDLdwgEZ012ysIgBXTlTZZFBQAA9GQuyAOSqaACMbABoG0CNW8uwszp7+wYAvEcyxid6iZA0ASnXkZHwOFWJ1YLDQS2wVKqpGKtwAa1wJAHdcTYOZSRDhTGEJXHjQSM4YrJiYghNLHU5UVaNKHQqFoZ6gV7vT64Rj1GHojGYrHY6FoRpEKjYfBfFRGZqMXBdJYDHG0ul0vGgAlEklk4agSmTIg0+m8vmwsD4wnE3Ck0CzDlUmyDfmy2loLQJLLKoA) | [Zod](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBaA9vqmEl9z7+MgEsaABxZFMoAN6gyLEQIA2VUAF9QAMyJzQAckwBPYVXxEBANypEdyQSLESAVKGwBnUAC8NWmrvdtryLK4LhIAalRkmGIAzKAAvDJywopUABTuAHQsAEYAVhGYqZLIoKAAHoyZuACuNNmWqQCUADQloPqVGTV1DS1t7p3d9URNyCqNjTb4EQrEykEhoGbYCtVUjNW4ANa4LADuuDYLEqIuApgCLLjxoOGRMRnCxC5py6tUjaVf319ox6Cnc6XXCMYo-cEQyFQ6HfNClCqgIaWVow1FotFw9qMJFEFHo-EE35gUoDRG1YZtQlU1FoNQJDIMoA) | [ArkType](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRA1gCoCeADlamEkFDhI8MgCWNbgHsimUAG9QZaVPEAbKqAC+oAGZFVoAOSYeVfEXEA3KkWPIJU2fKVneO-YZonird1QOyCq4AM7yAGpUZJiyAMygALzKqtwaVAAUARkKyKCgAB6MxrgArjQARnbGADR5oJzFZZXVdfkAXk3lVfbI2gCU-Y740erEWiHhoNbY6qVUjKW4rLjSAO64jpPyMqHimOLSuEmgUTHxAHTcxKGZM3NU-fnPL89o26C7+4e4jLmvAMBQOBIJeaHyRVAzR6bVBcPhcPBDUY0LssIRGMx+SRnSh3Ts9SxRMRYF0yQuFKAA) | [Valibot](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBq2ANgJYBGA9pqmEkFDhI8MnY0ADtyKZQAb1BluU9qyqgAvqABmRFaADkmAJ6Sq+IuwBuVIoeTipMuQCpQ2AM6hru-TSNrNi5eB2RlXE85JioyTBkAZlAAXiUVSTUqAAprADpuTgArWMws+WRQUAAPRjzcAFcaTjssgEoAGgrQE1rchqaWjq6AL17+5qI25E1W1sd8WNZiDQionzZ6qkZ63ABrXG4Ad1xHVblpT3ZMdm5cFOYSxNzJYk9soNZN1sqf35+0M6gC5XG64RjlP6QqHQmGw35oSo1UDjOydOHojEYhHdRgoohozGEon-MCVUbIxoTLrEmnotDaVK5JlAA) | [Arri](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygCCRRAlqmEtz73+MjY0ADgHsimUAG9QZUSLYAbKqAC+oAGZF5oAOSYAnsKr52ANypFdgkeMkzsazdpp6AAsXZFhZYAGdKWmxrZDlcP0kANSoyTHEAZlAAXll5YSUqAApsADpRACMAKxjMTKlkUFAAD0Zc3ABXGnzLTIBKABoK0ANanIamlo6ugC9e-uaiNuRVVtbkZHwYxWIVMIjQM2xFeqpGetwAa1xRAHdcebXJMT82TDZRXGTQaNiEnOFiPyzN7apWyoBgIBaEuoGut3uuEY5SBsLh8IRiMBaEqNVA40snSR2JxOJR3UYGKIWNxpLJwLAlVG6MaEy65IZ2LQ6hSOTZQA) | [Sury](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFwYCuRAnqmEl9z7+MgEsaABwD2RTKADeoMqJECANlVABfUADMi80AHJMrYVXxEBANypFdgkeMkAqUNgDOGTdpp7nLVrtD+AwKDg-zQAFgA6AGZQAGsAIVAAChoBXFAAalAAcwAvAWEASmRkOVxnSQA1KjJMcRiAXll5YSUqJPQI50pabCSpZH8AD0ZO3CYaACNLABpB0FZRiPGp2fncpZXpojnVQuLkfBrFYhUyitAzbEUmKkYmXFjcUQB3XBLzyTFnAUwBUXSTWqtXqEWExGc7SuNyohRCQTQn1A31+-1wjAG8Kx2JxOLQw0YWzWuJJpOx+IWhIm2zmZLp9NAFI2oCJRHmDI55LA6iaET5QA) | ... and more
 
 ## Overview
 
-TypeDriver is a high-performance validation and type inference middleware designed to integrate JSON Schema and Standard Schema compliant validation into framework interfaces such as HTTP routes and RPC endpoints. It targets type safety at I/O boundaries by providing a unified validation and inference pipeline that can be bound directly to request-receiving interfaces.
+TypeDriver is a validation compiler and type-inference middleware designed to integrate JSON Schema and Standard Schema compliant validation into framework interfaces such as HTTP routes and RPC endpoints. It also functions as a validation optimizer built to accelerate high-throughput messaging systems.
 
 This project is designed to unify heterogeneous runtime schema systems based on JSON Schema and Standard Schema into a single system that preserves static type inference, runtime validation, and schema reflection, while remaining compatible with multiple schema ecosystems.
 
 License MIT
-
-## Features
-
-- Framework Integration
-  - Designed for [Type-Safe](#Framework) public IO interfaces (Routes)
-  - One [Function](#Compile) to compile schematics into uniform Validators.
-  - One [Type](#Static) to infer schematics into TypeScript types.
-  - [Extension](#Extensions) Model for Framework Specific Runtime Type APIs
-- Schema Support
-  - TypeScript [DSL](#Script) feature for TS7-native (supported in TS5+).
-  - Scalable [JSON Schema Type Inference](https://tsplay.dev/NlrkxW) as standard.
-  - Supports JSON Schema Drafts 3 through 2020-12.
-  - Full support for Standard Schema
-- Validation Compiler
-  - High-performance JIT compiler for faster application start up.
-  - High-performance runtime validation (approx 2x Ajv under comparable workloads)
-  - Automatic [Acceleration](#Accelerate) for libraries supporting Standard JSON Schema.
-  - Automatic JIT fallback for [Content-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) restrictive environments (Cloudflare)
-- Tooling and Interoperability
-  - JSON Schema [Reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
-  - Error [Formats](#Errors) for JSON Schema and Standard Schema Based Systems
-  - [Localized](#Locales) Error Messages (i18n)
 
 ## Contents
 
@@ -93,6 +71,28 @@ License MIT
 - [Compression](#Compression)
 - [Contribute](#Contribute)
 
+## Features
+
+- Framework Integration
+  - Designed specifically for [type-safe](#Framework) I/O interfaces.
+  - One function to [compile](#compile) schematics into Validators.
+  - One type to [infer](#Static) schematics into TypeScript types.
+  - Schema [extension](#Extensions) model for Framework specific runtime type API
+- Schema Support
+  - TypeScript [DSL](#Script) for TS7-native (supported in TS5+).
+  - Scalable JSON Schema type inference ([demo](https://tsplay.dev/wjrYMw))
+  - Supports JSON Schema Drafts 3 through 2020-12.
+  - Full support for Standard Schema
+- Validation Compiler
+  - High-performance JIT compiler for faster application start up.
+  - High-performance runtime validation (approx 2x Ajv performance)
+  - Automatic [acceleration](#Accelerate) for libraries supporting Standard JSON Schema.
+  - Automatic JIT fallback for [content-security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) restrictive environments (Cloudflare)
+- Tooling and Interoperability
+  - JSON Schema [reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
+  - Error [formats](#Errors) for JSON Schema and Standard Schema Based Systems
+  - Includes [localized](#Locales) error messages (i18n) as standard.
+
 ## Framework
 
 TypeDriver is designed for framework integration. It provides a simple infrastructure to connect type inference and validation to framework interfaces.
@@ -100,6 +100,8 @@ TypeDriver is designed for framework integration. It provides a simple infrastru
 Ref: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YyAoEoAiBTAzgSwOYB2qYSZ5FcyADgPbYAuAFAOTAsA0oA3sqKACNaAEwCeALlAADXv34APSYQCuAWwGYAThz5yJoFeq065oAF5K1GzboC+U5La5NNmAI7KcDAJSgAvAB8PLoAxrSEjDyg8lyiXGagtv6grh5eAHRCYqBoDKLUmODYAIYAZpgAhI7eyCQQlA2N8HUAYprFqpgA7rSaANZ1TUPDyLiqdJoMUXkFoADKDMUMuCFcYeO4ADaYiaClmrSqoCwzmMKauABuWiy1mPITU7iEDFqlxSE7AEq0yq8A8tRluFsAAeABCIlEoHur0IwmwoGUhD6hFoXUIyWRqPRhCCskEUMkkLEjmQ90eoFOoB+f0wAGFiptNgIPn1QQAFJYACxh8jhCNAjAuhHwXEBwIifIFiNpAKBuBBQT8oCYuhc7k8jEk3CRmk2ki5DG5XCy+gWSxWoIlioiAG0WGaWABdIK2XyBUCXWi4YTIGoU3pTUrIkKS0B0RicnnSzDwxHC55i0BhCJTG0g2Pxmm-eWS7BcXSM5mskJ9ZJyhlMlls6PG8UKpXIAJMag8w08ri0RsRSQZiJraulvqSYs1su+AmpyJmgD6lyZvqWvWS62oW0wTG7+YdTudNX4uREtEk6TPoDG1G2nReKVzO02tHwKzJQA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YyAoEoAiBTAzgSwOYB2qYSZ5FcyADgPbYAuAFAOTAsA0oA3sqKACNaAEwCeALh59+oBqOqZJLWgIBWmAMYNO0-gCdMARwCuuA8MkBtFgA9OoFqPssAXiwC6HXaGp7aCvQZcHEleGRkbUNl5RQdCYwBbAUw9FlAAXy9w-gkeaIUleKSUtMzvfhcouQK4xOTUjKyZdOkWzNAmAxMcBgBKUABeAD4pfg1aQkY8my5RLhcMwdAu4x6AOiExUDRqzHBsAEMAM0wAQmR03uQSCEo7+-gbgDE9A4TMAHdaPQBrG4eAYDkLgEnRAnldqAAMoMA5BDRccag3AAG0wiyOfgSDl2wj0uAAbiVrpgbGCGKBcIQGCkjgcNOiAEq0Yw0gDy1CCE2wAB4AEIiUSgUk0wjCbCgYyEH6EWgfQhLKUyuWEEZhQSCyQCsQXZCk8n5JksmkAYQOKJRAnpPx5AAU4QALYU2UXi0CMfGEfBcDlcybO10S5mszC+3DckYDDrSTpGVaMKLGPQoyT2hgOribXIwuG4DQ8sPc6xZjwjS6DEYE2i4YTIK7674Uo5SrThhV0Rh2x0BzBiiUeqne0DjSYUwv+kW9t3B9mctvYLjSM0Wq0aH5LGeYZeW61d9M+ucR5BDJjUR2px1cfx+7CSccL4fmndryTb1c-frqkdTLMAfQJ5o1nC3xLEi1CopgTDXvOxaCh4Vz8DsIi0JIaxoZSoJou81LLMa6IorQ+B5rqQA) | [Standard Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YyAoEoAiBTAzgSwOYB2qYSZ5FcyuAtgA4D2ATgC6gBUoAhtqAF6gAZkwY1QAcj4MAJuOTJG2FgApxwcQBpQAb2ShQAIxkBPAFz8AdAwMArTAGMVu-foAe5vhcIBXGgcxMygCUGnouZpY+fgHBoS78Hl6+-oEhYQC+QcjpWspMmACO3jgsQaAAvAB8OmH2DIRKOqCuWsZaAukVoPlFJRZG0sagaCzGdJjg2FyCmACE2VkkEJQrq-BLAGJMXDSYAO7MANZLa6dn1PTMbNqgo+OgAMosXCy49lp19LgANpigncJRBI7phpExcAA3AJyZCYVyMVigXCEFgBQRcex-ABKDG8qIA8nRXvVsAAeABCJlAcNRhGkvG8hEOhAYe0IXUZzNZhGqzkMJnMlMG2Vh8KutzG2NxqIAwlxvt8DBjDqSAAovAAW1NctPpoCU4MI+C0hOJDW1ut4OLxmFNuBJ1XKoGUYTyhWKSnMN28TG+5nVLA1WgGESeLzepLtJIA2uIQ+IALrVTIVaoQhi4aTILJwhFsQSMxz29mKFhqzUWzB03gG5HG0B1BpsKPmmlVvXWglE4vYLRhOUKpX2Q5dTuYAeK5XlwMm7sO5CVZR0TX+zVaBhzhrmFu9hvyyfD8wToeHMp8xuNEMAfQh8szL2YXU+dB+mGUG7N2Fj8YTWX0IxkBhzAsECkXoX5dhRbppT+b4GHwN4RSAA)
 
 ```typescript
+// Next Generation Inference System Based on TypeScript DSL (TS7)
+
 route('/', {
   body: `{
     x: number,
@@ -264,7 +266,7 @@ const issues = [
 
 ## Locales
 
-TypeDriver has translations for many different languages and locales.
+TypeDriver provides localized translations for multiple languages and locales, using BCP 47-compliant locale identifiers expressed with underscores (_) in place of hyphens (-). These can be passed to the errors(...) function in the following way.
 
 ```typescript
 const issues = Vector3.errors({ x: 1, y: true }, {  
@@ -345,11 +347,9 @@ const C = z.object({
 })
 ```
 
-Localization support is only available for JSON Schema
-
 ## Script
 
-The TypeScript DSL is a runtime and type-level emulation of TypeScript. This feature is based on TypeBox’s ability to transform TypeScript syntax into JSON Schema. The TypeScript DSL supports most TypeScript definitions, as well as type-level constraints expressed using JSON Schema keywords.
+The [TypeScript DSL](https://sinclairzx81.github.io/typebox/#/docs/script/overview) is a runtime and type-level emulation of TypeScript. This feature is based on TypeBox's ability to transform TypeScript syntax into JSON Schema. The DSL supports most TypeScript definitions, as well as type-level constraints expressed using JSON Schema keywords.
 
 > ⚠️ The name `Options<T>` is subject to change. Because Options is a commonly used type name, it may not be appropriate for schema constraint augmentation. As a result, Options should be considered an experimental feature. TypeBox and TypeDriver are open to suggestions for a more suitable name for this type.
 
@@ -394,7 +394,7 @@ validator.toJSONSchema()    // Returns the JSON Schema for the validator. If the
                             // empty {} is returned to indicate an unknown 
                             // runtime schema.
 ```
-The source type used for compilation can also be returned via
+The original source type used for compilation can also be returned via
 
 ```typescript
 validator.schema()          // will return the schematic used for compile.
@@ -422,8 +422,6 @@ const T = number()                     // const T: FrameworkString = { type: 'nu
 
 type T = Static<typeof T>              // type T = number
 ```
-
-This is an advanced feature based on TypeBox's extension model for JSON Schema.
 
 ## Accelerate
 
