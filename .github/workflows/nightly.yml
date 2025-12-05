@@ -18,6 +18,9 @@ jobs:
         uses: denoland/setup-deno@v2
         with:
           deno-version: canary
+      # Install
+      - name: Install
+        run: deno install
       # Range
       - name: Range
         run: deno task range
