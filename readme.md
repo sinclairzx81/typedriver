@@ -73,32 +73,25 @@ License MIT
 
 ## Features
 
-Framework Integration
-
+- Framework Integration
   - Designed specifically for [type-safe](#Framework) I/O interfaces.
   - One function to [compile](#compile) schematics into Validators.
   - One type to [infer](#Static) schematics into TypeScript types.
   - Schema [extension](#Extensions) model for Framework specific runtime type API
-
-Schema Support
-
+- Schema Support
   - TypeScript [DSL](#Script) for TS7-native (supported in TS5+).
   - Scalable JSON Schema type inference ([demo](https://tsplay.dev/wjrYMw))
   - Supports JSON Schema Drafts 3 through 2020-12.
   - Full support for Standard Schema
-
-Validation Compiler
-
+- Validation Compiler
   - High-performance JIT compiler for faster application start up.
   - High-performance runtime validation (approx 2x Ajv performance)
   - Automatic [acceleration](#Accelerate) for libraries supporting Standard JSON Schema.
   - Automatic JIT fallback for [content-security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) restrictive environments (Cloudflare)
-
-Tooling and Interoperability
-
-- JSON Schema [reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
-- Error [formats](#Errors) for JSON Schema and Standard Schema Based Systems
-- Includes [localized](#Locales) error messages (i18n) as standard.
+- Tooling and Interoperability
+  - JSON Schema [reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
+  - Error [formats](#Errors) for JSON Schema and Standard Schema Based Systems
+  - Includes [localized](#Locales) error messages (i18n) as standard.
 
 ## Framework
 
