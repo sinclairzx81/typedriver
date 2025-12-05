@@ -26,7 +26,7 @@ $ npm install typedriver
 Multi-Library Type Compiler and Inference System for High Performance Frameworks
 
 ```typescript
-import { compile } from 'typedriver'
+import compile from 'typedriver'
 
 const Vector3 = compile(`{
   x: number,
@@ -144,7 +144,7 @@ export function route<Path extends string, const Options extends RouteOptions,
 TypeDriver consists of a single compile(...) function that accepts JSON Schema, Standard Schema or TypeScript definition and returns a Validator instance.
 
 ```typescript
-import { compile } from 'typedriver'
+import compile from 'typedriver'
 ```
 
  Ref: [TypeScript](https://www.typescriptlang.org/play/?#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4A1LMhjQAzHAC8KNGExYAFAAMErOHAAeALjicAriABGzFXApbdBo6oBeZvYaitcCgJSq37j56-ef7gPR+Ujz8gsJQIlp8AIYYwDRRYQA8AHSpADSIxr7ZObluAW6a2nbMaVl5FZX5gaqmxRZQZVXNlQXWtg1NLd3ZBbgAfOxcvHCQ3MAwwBCcEnACQqLJYFFQ3PJIxkUADF11AIxdNnBbjs5AA)
@@ -380,7 +380,7 @@ Refer to [TypeBox](https://github.com/sinclairzx81/typebox) for additional infor
 Validators can reflect back a JSON Schema representation if the underlying type supports it. This is true for all TypeScript and JSON Schema source types. Reflect can be used for OpenAPI metadata publishing, or RPC systems that need to publish JSON based IDL (interface definition language) to remote callers. Validators provide two functions for this.
 
 ```typescript
-import { compile, type Static } from 'typedriver'
+import compile, { type Static } from 'typedriver'
 
 const validator = compile(...)
 
@@ -407,7 +407,7 @@ TypeDriver enables Frameworks to define custom Runtime Types specific to the Fra
 Ref: [Framework Types](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApgGjjATzCzgGUYBDGYZOAXzgDMo04ByQ4gEymADcsUNgChhAejFwAtDNlz5CxUuUrVU8ZICqAZwoBzLBulqTps2uGoAdtvgA1LMhjQAzHAC8KNGExYAFBAARgBWjjB+CMJwcAAeAFxwVgCuIIGCfgCUOFFwBAnJqelZOQBe+SlpUJnCdBkZopwkDk6uHmSU1MgAPI0QjHDNzlAuAHyiEsbmU9MmRppWwBBWACoQy0lg2Ak6WFz4EHAAojEwUBROcAAKLMSwBADSWATaTCwgVzeC1FjaRjP-AIUwkacHmixWEAAklYYIJtGFwV1NCM2n5NHAsCcsFYuC8KFYCHAAPxwPzxUEZDwovgQYB7fJYARQSmY2E4l5khLAKyMQRwSGU9zU2l7EmQuAMpnAogkAAyFFsAHlGEiUZ4wUtVtDYVB4U5EaCMVj2XB8YSSZyKVS4DS6RLEoy+SjWdjcaTydzeVA4LLBcK7STZfarI6oNLiKCFpq1htsEi8PLbG1EzBlaq1XAANqaAC6RrZbszIaZeZJmbzCUzADoaxqIetNlgusdkBgklwm5oEwqYCMRt3bDnxpJAaPAUYAGJnEBYADu0AA1oqQmE-mP11NwyQAEpYACOSWAUF2AEEoGcCF1rhBbt8Xi6TbvUFAuF1bLwrHo8EkrAurBBZysfscmvW8Hiee9jTdd9uT0NpjlOc4YC6Bcnj6D4by+YAfjwGDP2A6JdwPI9T3PChCXVKN61jJtQK+cDnjGDMiMPY8uDPC9hExSBYDgbkdUYc4SCnCgZ3nKAlxXJwr0+WBsMggsXifaBXzwr84B-P8AKAlFImiRoEjYIJQicNg8ByMBZLvBI6LknC4ByY9iLYhIWJI9iyMvWy7zGOguJiHj4EYH99SWOBjLCLprCTbz5PzV0lMcFS31OWDv1-f9AL7PxLMwuztBsqz5IyBIRLExdlxM5DYp+XTHKwGAkigKxEHwGVDIi0y8Cc1jdgSSqwirVDnhyoqfiyOBctvOKGAVB0pT8iYN2W0xJ2nOdFwAOQqQQ1xW-alGEfjBEE5BhPW8SF22wpvT0triEMgpKhEPzuOgIKQuoMKnqKUqLq2nbboc6Jj0a5rWoM9gfqEegaiAA)
 
 ```typescript
-import { compile, type Static } from 'typedriver'
+import compile, { type Static } from 'typedriver'
 
 interface FrameworkString {
   type: 'string'

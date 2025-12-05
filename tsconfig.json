@@ -5,9 +5,8 @@
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
-      "typedriver": ["src/index.ts"]
+      "typedriver": ["./src/index.ts"]
     }
   }
 }
