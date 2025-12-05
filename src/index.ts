@@ -46,5 +46,13 @@ export {
   type TErrorFormat, 
   type TErrorLocale, 
   type TErrorOptions, 
-  type TErrorResult
+  type TErrorResult,
+  type TJsonSchemaError,
+  type TStandardSchemaError,
 } from './validator.ts'
+
+// ------------------------------------------------------------------
+// Default
+// ------------------------------------------------------------------
+import { compile } from './compile.ts'
+export default compile

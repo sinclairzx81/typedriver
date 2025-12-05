@@ -1,5 +1,4 @@
-import { compile, type Static } from 'typedriver'
-
+import compile, { type Static } from 'typedriver'
 
 // ------------------------------------------------------------------
 // Compile

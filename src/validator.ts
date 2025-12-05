@@ -29,9 +29,14 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { System } from 'typebox/system'
-import { Type } from 'typebox'
 import { TLocalizedValidationError } from 'typebox/error'
 import { StandardSchemaV1 } from './_standard/standard-schema.ts'
+
+// ------------------------------------------------------------------
+// Error Types
+// ------------------------------------------------------------------
+export type TStandardSchemaError = StandardSchemaV1.Issue
+export type TJsonSchemaError = TLocalizedValidationError
 
 // ------------------------------------------------------------------
 // TErrorFormat
