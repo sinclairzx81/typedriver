@@ -3,10 +3,10 @@
   "specifiers": {
     "jsr:@std/media-types@1.1.0": "1.1.0",
     "jsr:@std/path@1.1.0": "1.1.0",
-    "npm:@arrirpc/schema@latest": "0.80.3",
+    "npm:@arrirpc/schema@latest": "0.81.0",
     "npm:@types/node@*": "24.2.0",
     "npm:arktype@latest": "2.1.28",
-    "npm:effect@latest": "3.19.8",
+    "npm:effect@latest": "3.19.9",
     "npm:sury@latest": "11.0.0-alpha.4",
     "npm:typebox@1.0.61": "1.0.61",
     "npm:valibot@latest": "1.2.0",
@@ -30,8 +30,8 @@
     "@ark/util@0.56.0": {
       "integrity": "sha512-BghfRC8b9pNs3vBoDJhcta0/c1J1rsoS1+HgVUreMFPdhz/CRAKReAu57YEllNaSy98rWAdY1gE+gFup7OXpgA=="
     },
-    "@arrirpc/schema@0.80.3": {
-      "integrity": "sha512-Ftx95blKAekHiDdaJQxZkBpcAaMcZsDSxHkdoyEV05EsRsPXPOEzgD7C53s2miHMMkYufkFTC301C7Gmpd2Gaw==",
+    "@arrirpc/schema@0.81.0": {
+      "integrity": "sha512-MhvcmwAKSSI0yUwwxud802aT0So3v41jC87yGLUhXxJWBKC1sttgr03mw+i7ScD73KAWjKPP2qM3bS4FW3Z9Xg==",
       "dependencies": [
         "@arrirpc/type-defs",
         "@standard-schema/spec",
@@ -39,8 +39,8 @@
         "uncrypto"
       ]
     },
-    "@arrirpc/type-defs@0.80.3": {
-      "integrity": "sha512-zitOL57k+btEDwBcW71Pq4m4Zmu3gQsiYsmka0AMpUOHWxiRJKK0COi5QYkDPGYaQqcF3DihOPGA44LUjfa71g==",
+    "@arrirpc/type-defs@0.81.0": {
+      "integrity": "sha512-UulmLTHAEPx5X4exOVG5QuZCO2T9FCR76yHMB0+uxf2cDKBI00Ybv7pFmZ0Im+cJLFcSlf3BLs4IJ+hg3l4xeQ==",
       "dependencies": [
         "scule"
       ]
@@ -68,8 +68,8 @@
         "arkregex"
       ]
     },
-    "effect@3.19.8": {
-      "integrity": "sha512-OmLw8EfH02vdmyU2fO4uY9He/wepwKI5E/JNpE2pseaWWUbaYOK9UlxIiKP20ZEqQr+S/jSqRDGmpiqD/2DeCQ==",
+    "effect@3.19.9": {
+      "integrity": "sha512-taMXnfG/p+j7AmMOHHQaCHvjqwu9QBO3cxuZqL2dMG/yWcEMw0ZHruHe9B49OxtfKH/vKKDDKRhZ+1GJ2p5R5w==",
       "dependencies": [
         "@standard-schema/spec",
         "fast-check"

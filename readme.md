@@ -34,8 +34,6 @@ const Vector3 = compile(`{
   z: number
 }`)
 
-declare const value: unknown
-
 const position = Vector3.parse(value)            // const position: {
                                                  //   x: number,
                                                  //   y: number,
@@ -65,7 +63,7 @@ License MIT
 - [Locales](#Locales)
 - [Static](#Static)
 - [Script](#Script)
-- [Reflect](#Schema)
+- [Reflect](#Reflect)
 - [Extensions](#Extensions)
 - [Accelerate](#Accelerate)
 - [Compression](#Compression)
