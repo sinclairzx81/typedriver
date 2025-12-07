@@ -29,8 +29,8 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { Guard } from 'typebox/guard'
-import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
-import { TStandardSchemaError } from '../validator.ts'
+import type { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import type { TStandardSchemaError } from '../validator.ts'
 
 // ------------------------------------------------------------------
 // Normal: Segments

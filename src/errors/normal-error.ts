@@ -28,8 +28,8 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { TLocalizedValidationError } from 'typebox/error'
-import { TJsonSchemaError } from '../validator.ts'
+import type { TLocalizedValidationError } from 'typebox/error'
+import type { TJsonSchemaError } from '../validator.ts'
 
 /** (Internal) Normalize a TLocalizedValidationError as TJsonSchemaError. */
 export function normalError(error: TLocalizedValidationError): TJsonSchemaError {

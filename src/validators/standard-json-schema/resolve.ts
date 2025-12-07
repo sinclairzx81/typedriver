@@ -31,30 +31,30 @@ THE SOFTWARE.
 import { StandardJSONSchemaV1 } from '../../_standard/standard-schema.ts'
 import { Guard } from 'typebox/guard'
 
-function AsOpenAPI3_0(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
+function OpenAPI3_0(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
   try {
     return input['~standard'].jsonSchema.input({ target: 'openapi-3.0' })
   } catch {
     return undefined
   }
 }
-function AsDraft7(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
+function Draft7(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
   try {
     return input['~standard'].jsonSchema.input({ target: 'draft-07' })
   } catch {
     return undefined
   }
 }
-function AsDraft2020_12(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
+function Draft2020_12(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {
   try {
     return input['~standard'].jsonSchema.input({ target: 'draft-2020-12' })
   } catch {
     return undefined
   }
 }
-// Standard JSON Schema should provide mechanism to query supported specifications
-export function ResolveJsonSchema(input: StandardJSONSchemaV1): Record<string, unknown> {
-  const jsonschema = AsDraft2020_12(input) ?? AsDraft7(input) ?? AsOpenAPI3_0(input)
+/** (Internal) Resolves a JsonSchema representation (need discovery mechanism here) */
+export function resolveJsonSchema(input: StandardJSONSchemaV1): Record<string, unknown> {
+  const jsonschema = Draft2020_12(input) ?? Draft7(input) ?? OpenAPI3_0(input)
   if (Guard.IsUndefined(jsonschema)) throw Error(`Vendor '${input['~standard'].vendor}' advertised itself as a Standard JSON Schema but failed to produce a schematic. Submit an issue with the vendor.`)
   return jsonschema
 }

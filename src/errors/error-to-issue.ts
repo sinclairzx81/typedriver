@@ -29,7 +29,7 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { Guard } from 'typebox/guard'
-import { type TJsonSchemaError, type TStandardSchemaError } from '../validator.ts'
+import type { TJsonSchemaError, TStandardSchemaError } from '../validator.ts'
 
 // ------------------------------------------------------------------
 // Issues
