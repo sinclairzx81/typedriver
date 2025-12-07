@@ -28,18 +28,10 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { Guard } from 'typebox/guard'
-import type { TJsonSchemaError, TStandardSchemaError } from '../validator.ts'
+import type { TLocalizedValidationError } from 'typebox/error'
+import type { TJsonSchemaError } from '../validator.ts'
 
-// ------------------------------------------------------------------
-// Issues
-// ------------------------------------------------------------------
-function pathSegments(pointer: string): string[] {
-  if (Guard.IsEqual(pointer.length, 0)) return []
-  return pointer.slice(1).split('/').map((segment) => segment.replace(/~1/g, '/').replace(/~0/g, '~'))
-}
-/** (Internal) Transform TJsonSchemaError to TStandardSchemaError */
-export function errorToIssue(error: TJsonSchemaError): TStandardSchemaError {
-  const path = pathSegments(error.instancePath)
-  return { path, message: error.message }
+/** (Internal) Normalize a TLocalizedValidationError as TJsonSchemaError. */
+export function normalError(error: TLocalizedValidationError): TJsonSchemaError {
+  return error
 }

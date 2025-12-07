@@ -28,11 +28,11 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+import Type from 'typebox'
 import { System } from 'typebox/system'
 import { Validator as TBValidator } from 'typebox/compile'
-import { ParseError, errorToIssue } from '../../errors/index.ts'
+import { ParseError, errorToIssue, normalError } from '../../errors/index.ts'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
-import Type from 'typebox'
 
 export class TypeScriptValidator<Input extends string, 
   Schema extends Type.TSchema = Type.TScript<{}, Input>, 
@@ -84,8 +84,8 @@ export class TypeScriptValidator<Input extends string,
     const errors = this.validator.Errors(value)
     return (
       config.format === 'standard-schema'
-      ? errors.map(error => errorToIssue(error))
-      : errors
+      ? errors.map(error => errorToIssue(normalError(error)))
+      : errors.map(error => normalError(error))
     ) as never
   }
 }

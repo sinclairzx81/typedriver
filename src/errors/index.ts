@@ -31,3 +31,6 @@ THE SOFTWARE.
 export * from './exceptions.ts'
 export * from './error-to-issue.ts'
 export * from './issue-to-error.ts'
+
+export * from './normal-error.ts'
+export * from './normal-issue.ts'

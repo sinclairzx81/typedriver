@@ -29,7 +29,7 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { StandardSchemaV1 } from '../../_standard/standard-schema.ts'
-import { ParseError, UnknownError, issueToError } from '../../errors/index.ts'
+import { ParseError, UnknownError, issueToError, normalIssue } from '../../errors/index.ts'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
 
 export class StandardSchemaValidator<Input extends StandardSchemaV1,
@@ -77,8 +77,8 @@ export class StandardSchemaValidator<Input extends StandardSchemaV1,
     const issues = (('issues' in result) ? result.issues : []) as StandardSchemaV1.Issue[]
     const config = resolveErrorOptions(options)
     return (config.format === 'json-schema'
-      ? issues.map(issue => issueToError(issue))
-      : issues.map(issue => ({ path: issue.path, message: issue.message }))
+      ? issues.map(issue => issueToError(normalIssue(issue)))
+      : issues.map(issue => normalIssue(issue))
     ) as never
   }
 }

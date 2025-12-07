@@ -28,6 +28,9 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+// ------------------------------------------------------------------
+// ParseError
+// ------------------------------------------------------------------
 export class ParseError extends globalThis.Error {
   declare readonly cause: { errors: object[]; value: unknown }
   constructor(public value: unknown, public readonly errors: object[]) {
@@ -40,6 +43,9 @@ export class ParseError extends globalThis.Error {
     })
   }
 }
+// ------------------------------------------------------------------
+// UnknownError
+// ------------------------------------------------------------------
 export class UnknownError extends globalThis.Error {
   constructor(message: string) {
     super(`UnknownError: ${message}`)
