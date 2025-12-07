@@ -29,20 +29,29 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { System } from 'typebox/system'
-import { TLocalizedValidationError } from 'typebox/error'
-import { StandardSchemaV1 } from './_standard/standard-schema.ts'
-
-// ------------------------------------------------------------------
-// Error Types
-// ------------------------------------------------------------------
-export type TStandardSchemaError = StandardSchemaV1.Issue
-export type TJsonSchemaError = TLocalizedValidationError
 
 // ------------------------------------------------------------------
 // TErrorFormat
 // ------------------------------------------------------------------
 export type TErrorFormat = 'json-schema' | 'standard-schema'
 
+// ------------------------------------------------------------------
+// TJsonSchemaError
+// ------------------------------------------------------------------
+export interface TJsonSchemaError {
+  keyword: string
+  schemaPath: string
+  instancePath: string
+  params: object
+  message: string
+}
+// ------------------------------------------------------------------
+// TStandardSchemaError
+// ------------------------------------------------------------------
+export interface TStandardSchemaError {
+  path: string[]
+  message: string
+}
 // ------------------------------------------------------------------
 // TErrorLocale
 // ------------------------------------------------------------------
@@ -61,33 +70,18 @@ export function resolveErrorOptions(options?: Partial<TErrorOptions>): TErrorOpt
   return { ...defaults, ...resolved }
 }
 export interface TErrorOptions {
-  /**
-   * Specifies the error message generation format.
-   *
-   * Supported values are `json-schema` and `standard-schema`.
-   *
-   * Default: `json-schema`
-   */
+  /** Specifies the error format. Default: `json-schema` */
   format: TErrorFormat
-
-  /**
-   * Specifies the locale used when generating error messages.
-   *
-   * This setting applies only when used with TypeScript, JSON Schema,
-   * or implementations that follow the Standard JSON Schema specification.
-   * When the compiled type is Standard Schema only, the error message
-   * will be whatever is returned from that library.
-   *
-   * Default: `en_US`
-   */
+  /** Specifies the error format. Default: `en_US` */
   locale: TErrorLocale
 }
 // ------------------------------------------------------------------
 // TErrorResult
 // ------------------------------------------------------------------
 export type TErrorResult<Options extends Partial<TErrorOptions>> = (
-  Options['format'] extends 'standard-schema' ? StandardSchemaV1.Issue[] :
-  TLocalizedValidationError[]
+  Options['format'] extends 'standard-schema' 
+    ? TStandardSchemaError[] 
+    : TJsonSchemaError[]
 )
 // ------------------------------------------------------------------
 // Validator

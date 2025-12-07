@@ -28,26 +28,10 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-// ------------------------------------------------------------------
-// ParseError
-// ------------------------------------------------------------------
-export class ParseError extends globalThis.Error {
-  declare readonly cause: { errors: object[]; value: unknown }
-  constructor(public value: unknown, public readonly errors: object[]) {
-    super('ParseError')
-    Object.defineProperty(this, 'cause', {
-      value: { errors, value },
-      writable: false,
-      configurable: false,
-      enumerable: false
-    })
-  }
-}
-// ------------------------------------------------------------------
-// UnknownError
-// ------------------------------------------------------------------
-export class UnknownError extends globalThis.Error {
-  constructor(message: string) {
-    super(`UnknownError: ${message}`)
-  }
+import { TLocalizedValidationError } from 'typebox/error'
+import { TJsonSchemaError } from '../validator.ts'
+
+/** (Internal) Normalize a TLocalizedValidationError as TJsonSchemaError. */
+export function normalError(error: TLocalizedValidationError): TJsonSchemaError {
+  return error
 }

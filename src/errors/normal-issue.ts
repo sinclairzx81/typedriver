@@ -29,17 +29,38 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { Guard } from 'typebox/guard'
-import { type TJsonSchemaError, type TStandardSchemaError } from '../validator.ts'
+import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import { TStandardSchemaError } from '../validator.ts'
 
 // ------------------------------------------------------------------
-// Issues
+// Normal: Segments
 // ------------------------------------------------------------------
-function pathSegments(pointer: string): string[] {
-  if (Guard.IsEqual(pointer.length, 0)) return []
-  return pointer.slice(1).split('/').map((segment) => segment.replace(/~1/g, '/').replace(/~0/g, '~'))
+function isSegmentObjectWithKey(segment: StandardSchemaV1.PathSegment): segment is { key: Exclude<PropertyKey, symbol>  } {
+  return Guard.IsObject(segment) && Guard.HasPropertyKey(segment, 'key') && (
+    Guard.IsBigInt(segment.key)
+    || Guard.IsBoolean(segment.key)
+    || Guard.IsString(segment.key)
+    || Guard.IsNumber(segment.key)
+  )
 }
-/** (Internal) Transform TJsonSchemaError to TStandardSchemaError */
-export function errorToIssue(error: TJsonSchemaError): TStandardSchemaError {
-  const path = pathSegments(error.instancePath)
-  return { path, message: error.message }
+function normalizeSegment(segment: StandardSchemaV1.PathSegment): string {
+  return isSegmentObjectWithKey(segment) ? `${segment.key}` : `${segment}`
+}
+function normalizeSegments(segments: StandardSchemaV1.PathSegment[]): string[] {
+  return segments.map(normalizeSegment)
+}
+// ------------------------------------------------------------------
+// Resolve
+// ------------------------------------------------------------------
+function resolveSegments(issue: StandardSchemaV1.Issue): StandardSchemaV1.PathSegment[] {
+  return (
+    Guard.HasPropertyKey(issue, 'path') && Guard.IsArray(issue.path) 
+      ? issue.path 
+      : []
+    ) as StandardSchemaV1.PathSegment[]
+}
+/** (Internal) Normalize a StandardSchemaV1.Issue as TStandardSchemaError. */
+export function normalIssue(issue: StandardSchemaV1.Issue): TStandardSchemaError {
+  const segments = resolveSegments(issue)
+  return ({ path: normalizeSegments(segments) , message: issue.message })
 }

@@ -28,20 +28,29 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
-import { TLocalizedValidationError } from 'typebox/error'
 import { Guard } from 'typebox/guard'
+import { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import { TStandardSchemaError, TJsonSchemaError } from '../validator.ts'
 
 // ------------------------------------------------------------------
-// Issues
+// Escape
 // ------------------------------------------------------------------
-function jsonPointer(segments: readonly StandardSchemaV1.PathSegment[]): string {
-  return `#${segments.join('/')}`
+function escapeKey(segment: string): string {
+  return `${segment}`.replace(/~/g, '~0').replace(/\//g, '~1')
 }
-export function issueToError(issue: StandardSchemaV1.Issue): TLocalizedValidationError {
-  const instancePath = Guard.HasPropertyKey(issue, 'path') && Guard.IsArray(issue.path) 
-    ? jsonPointer(issue.path as never) 
-    : jsonPointer([])
+// ------------------------------------------------------------------
+// Json Pointer
+// ------------------------------------------------------------------
+function pathToJsonPointer(path: string[]): string {
+  const keys = path.map(escapeKey)
+  return `#/${keys.join('/')}`
+}
+// ------------------------------------------------------------------
+// IssueToError
+// ------------------------------------------------------------------
+/** (Internal) Transform TStandardSchemaError to TJsonSchemaError */
+export function issueToError(issue: TStandardSchemaError): TJsonSchemaError {
+  const instancePath = pathToJsonPointer(issue.path) 
   return {
     instancePath,
     schemaPath: '#',

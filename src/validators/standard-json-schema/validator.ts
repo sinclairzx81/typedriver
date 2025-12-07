@@ -31,7 +31,7 @@ THE SOFTWARE.
 import { System } from 'typebox/system'
 import { StandardJSONSchemaV1, StandardSchemaV1 } from '../../_standard/standard-schema.ts'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
-import { ParseError, errorToIssue } from '../../errors/index.ts'
+import { ParseError, errorToIssue, normalError } from '../../errors/index.ts'
 import { Validator as TBValidator } from 'typebox/compile'
 import { ResolveJsonSchema } from './resolve.ts'
 
@@ -80,7 +80,8 @@ export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & St
     System.Locale.Set(System.Locale[config.locale])
     const errors = this.validator.Errors(value)
     return (config.format === 'standard-schema'
-      ? errors.map(error => errorToIssue(error))
-      : errors) as never
+      ? errors.map(error => errorToIssue(normalError(error)))
+      : errors.map(error => normalError(error))
+    ) as never
   }
 }
