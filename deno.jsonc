@@ -34,6 +34,7 @@
     "arktype": "npm:arktype@latest",
     "effect": "npm:effect@latest",
     "sury": "npm:sury@latest",
+    "@valibot/to-json-schema": "npm:@valibot/to-json-schema",
     "valibot": "npm:valibot@latest",
     "zod": "npm:zod@latest",
     // --------------------------------------------------------------

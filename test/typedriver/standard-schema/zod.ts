@@ -18,11 +18,11 @@ Test('Should Schema 1', () => {
 // ------------------------------------------------------------------
 Test('Should JsonSchema 1', () => {
   const T = compile(z.string())
-  Assert.IsFalse(T.isJsonSchema())
+  Assert.IsTrue(T.isJsonSchema())
 })
 Test('Should JsonSchema 2', () => {
   const T = compile(z.string())
-  Assert.IsEqual(T.toJsonSchema(), {})
+  Assert.IsEqual(T.toJsonSchema(), { '$schema': 'https://json-schema.org/draft/2020-12/schema', type: 'string' })
 })
 // ------------------------------------------------------------------
 // Check

@@ -16,14 +16,12 @@ export function deltas(
   standard: number,
   compiled: number,
 ) {
-  const delta = standard - compiled;
-  const percent = (Math.abs(delta) / standard) * 100;
-  const direction =
-    delta > 0 ? "faster" :
-    delta < 0 ? "slower" :
-    "no change"
+  const delta = standard - compiled
+  const percent = (Math.abs(delta) / standard) * 100
+  const times = standard / compiled
   return {
     delta: `${delta.toFixed(0)} ms`,
-    percent: `${percent.toFixed(2)}% ${direction}`,
-  }
+    percent: `${percent.toFixed(2)} %`,
+    times: `${times.toFixed(2)} ×`
+  };
 }
