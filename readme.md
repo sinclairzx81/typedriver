@@ -423,7 +423,7 @@ type T = Static<typeof T>              // type T = number
 
 ## Accelerate
 
-TypeDriver provides acceleration support for libraries that implement the upcoming Standard JSON Schema specification. This is a new specification enables remote type libraries to be integrated directly into TypeBox validation infrastructure. This project tracks upstream implementations of this specification and maintains a benchmark measuring compariative performance with and without compile(...).
+TypeDriver provides acceleration support for libraries that implement the Standard JSON Schema specification.
 
 ```bash
 $ deno task bench
@@ -443,17 +443,14 @@ Accelerated Indicates Support for Standard JSON Schema
 ┌────────────┬────────────┬─────────────┬────────────────┬───────────────┬──────────────┐
 │ (idx)      │ iterations │ accelerated │ standard (...) │ compile (...) │ performance  │
 ├────────────┼────────────┼─────────────┼────────────────┼───────────────┼──────────────┤
-│ typescript │ 16000000   │ true        │ "     30 ms"   │ "     29 ms"  │ "    1.03 ×" │
-│ jsonschema │ 16000000   │ true        │ "     31 ms"   │ "     28 ms"  │ "    1.07 ×" │
-│ zod        │ 16000000   │ true        │ "    581 ms"   │ "     28 ms"  │ "   20.68 ×" │
-│ arktype    │ 16000000   │ true        │ "    539 ms"   │ "     29 ms"  │ "   18.46 ×" │
-│ valibot    │ 16000000   │ true        │ "   3243 ms"   │ "     29 ms"  │ "  113.37 ×" │
-│ effect     │ 16000000   │ false       │ "  23757 ms"   │ "  24997 ms"  │ "    0.95 ×" │
-│ arri       │ 16000000   │ false       │ "   2982 ms"   │ "   3132 ms"  │ "    0.95 ×" │
-│ sury       │ 16000000   │ false       │ "    152 ms"   │ "    159 ms"  │ "    0.96 ×" │
+│ typescript │ 16000000   │ true        │ "     30 ms"   │ "     29 ms"  │ "    1.05 ×" │
+│ jsonschema │ 16000000   │ true        │ "     32 ms"   │ "     29 ms"  │ "    1.11 ×" │
+│ zod        │ 16000000   │ true        │ "    576 ms"   │ "     28 ms"  │ "   20.53 ×" │
+│ arktype    │ 16000000   │ true        │ "    613 ms"   │ "     30 ms"  │ "   20.17 ×" │
+│ valibot    │ 16000000   │ true        │ "   3307 ms"   │ "     29 ms"  │ "  113.24 ×" │
 └────────────┴────────────┴─────────────┴────────────────┴───────────────┴──────────────┘
 
-Last Run: Tue Dec 16 2025
+Last Run: Tue Dec 20 2025
 ```
 
 ## Compression

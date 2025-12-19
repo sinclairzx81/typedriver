@@ -29,7 +29,7 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { Guard } from 'typebox/guard'
-import type { StandardSchemaV1 } from '../_standard/standard-schema.ts'
+import type { StandardSchemaV1 } from '@standard-schema/spec'
 import type { TStandardSchemaError } from '../validator.ts'
 
 // ------------------------------------------------------------------

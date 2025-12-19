@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardJSONSchemaV1 } from '../../_standard/standard-schema.ts'
+import { StandardJSONSchemaV1 } from '@standard-schema/spec'
 import { Guard } from 'typebox/guard'
 
 function OpenAPI3_0(input: StandardJSONSchemaV1): Record<string, unknown> | undefined {

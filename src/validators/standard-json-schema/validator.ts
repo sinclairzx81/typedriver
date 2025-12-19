@@ -29,7 +29,7 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { System } from 'typebox/system'
-import { StandardJSONSchemaV1, StandardSchemaV1 } from '../../_standard/standard-schema.ts'
+import { StandardJSONSchemaV1, StandardSchemaV1 } from '@standard-schema/spec'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
 import { ParseError, errorToIssue, normalError } from '../../errors/index.ts'
 import { Validator as TBValidator } from 'typebox/compile'

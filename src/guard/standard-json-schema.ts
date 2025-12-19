@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardSchemaV1, StandardJSONSchemaV1 } from '../_standard/standard-schema.ts'
+import { StandardSchemaV1, StandardJSONSchemaV1 } from '@standard-schema/spec'
 import Guard from 'typebox/guard'
 
 function IsStandardJsonSchemaConverter(value: unknown) {
