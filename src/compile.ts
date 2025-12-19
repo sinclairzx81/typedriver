@@ -29,7 +29,7 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import Type from 'typebox'
-import { type StandardSchemaV1, type StandardJSONSchemaV1 } from './_standard/standard-schema.ts'
+import { type StandardSchemaV1, type StandardJSONSchemaV1 } from '@standard-schema/spec'
 import { IsJsonSchema, IsStandardSchemaV1, IsStandardJsonSchemaV1, IsTypeScript } from './guard/index.ts'
 import { JsonSchemaValidator } from './validators/json-schema/validator.ts'
 import { StandardJsonSchemaValidator } from './validators/standard-json-schema/validator.ts'

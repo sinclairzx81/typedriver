@@ -37,18 +37,18 @@ export async function Bench() {
       './standard/valibot.ts',
       './compile/valibot.ts'
     ),
-    effect: await library(
-      './standard/effect.ts',
-      './compile/effect.ts'
-    ),
-    arri: await library(
-      './standard/arri.ts',
-      './compile/arri.ts'
-    ),
-    sury: await library(
-      './standard/sury.ts',
-      './compile/sury.ts'
-    ),
+    // effect: await library(
+    //   './standard/effect.ts',
+    //   './compile/effect.ts'
+    // ),
+    // arri: await library(
+    //   './standard/arri.ts',
+    //   './compile/arri.ts'
+    // ),
+    // sury: await library(
+    //   './standard/sury.ts',
+    //   './compile/sury.ts'
+    // ),
   }
   // Deno version info
   console.log("Deno version:     ", Deno.version.deno)

@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardSchemaV1 } from '../../_standard/standard-schema.ts'
+import { StandardSchemaV1 } from '@standard-schema/spec'
 import { ParseError, UnknownError, issueToError, normalIssue } from '../../errors/index.ts'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
 
