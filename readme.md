@@ -443,14 +443,14 @@ Accelerated Indicates Support for Standard JSON Schema
 ┌────────────┬────────────┬─────────────┬────────────────┬───────────────┬──────────────┐
 │ (idx)      │ iterations │ accelerated │ standard (...) │ compile (...) │ performance  │
 ├────────────┼────────────┼─────────────┼────────────────┼───────────────┼──────────────┤
-│ typescript │ 16000000   │ true        │ "     30 ms"   │ "     29 ms"  │ "    1.05 ×" │
-│ jsonschema │ 16000000   │ true        │ "     32 ms"   │ "     29 ms"  │ "    1.11 ×" │
-│ zod        │ 16000000   │ true        │ "    576 ms"   │ "     28 ms"  │ "   20.53 ×" │
-│ arktype    │ 16000000   │ true        │ "    613 ms"   │ "     30 ms"  │ "   20.17 ×" │
-│ valibot    │ 16000000   │ true        │ "   3307 ms"   │ "     29 ms"  │ "  113.24 ×" │
+│ typescript │ 16000000   │ true        │ "     30 ms"   │ "     29 ms"  │ "    1.02 ×" │
+│ jsonschema │ 16000000   │ true        │ "     29 ms"   │ "     29 ms"  │ "    1.00 ×" │
+│ zod        │ 16000000   │ true        │ "    571 ms"   │ "     28 ms"  │ "   20.43 ×" │
+│ arktype    │ 16000000   │ true        │ "    483 ms"   │ "     30 ms"  │ "   16.10 ×" │
+│ valibot    │ 16000000   │ true        │ "   3239 ms"   │ "     28 ms"  │ "  113.72 ×" │
 └────────────┴────────────┴─────────────┴────────────────┴───────────────┴──────────────┘
 
-Last Run: Tue Dec 20 2025
+Last Run: Sat Dec 20 2025
 ```
 
 ## Compression

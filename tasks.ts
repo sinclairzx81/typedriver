@@ -26,7 +26,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
     },
     dependencies: {
       "@standard-schema/spec": "1.1.0",
-      "typebox": "^1.0.61"
+      "typebox": "^1.0.64"
     }
   },
 })
