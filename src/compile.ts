@@ -28,8 +28,10 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import Type from 'typebox'
-import { type StandardSchemaV1, type StandardJSONSchemaV1 } from '@standard-schema/spec'
+import { type TSchema } from 'typebox'
+import { type StandardSchemaV1 } from '@standard-schema/spec'
+import { type Static } from './static.ts'
+
 import { IsJsonSchema, IsStandardSchemaV1, IsStandardJsonSchemaV1, IsTypeScript } from './guard/index.ts'
 import { JsonSchemaValidator } from './validators/json-schema/validator.ts'
 import { StandardJsonSchemaValidator } from './validators/standard-json-schema/validator.ts'
@@ -38,70 +40,30 @@ import { TypeScriptValidator } from './validators/typescript/validator.ts'
 import { Validator } from './validator.ts'
 
 // ------------------------------------------------------------------
-// Standard Json Schema
+// Validators
 // ------------------------------------------------------------------
-type TFromStandardSchema<Input extends StandardSchemaV1, 
-  Output extends unknown = StandardSchemaV1.InferInput<Input>, 
-  Result extends Validator = Validator<Input, Output>
-> = Result
-function FromStandardSchema<Schema extends StandardSchemaV1>(schema: Schema): TFromStandardSchema<Schema> {
-  return new StandardSchemaValidator(schema)
+function CreateStandardSchemaV1Validator<Schema extends StandardSchemaV1>(input: Schema): Validator {
+  return IsStandardJsonSchemaV1(input) ? new StandardJsonSchemaValidator(input) : new StandardSchemaValidator(input)
 }
-// ------------------------------------------------------------------
-// Standard Schema
-// ------------------------------------------------------------------
-type TFromStandardJsonSchema<Input extends StandardSchemaV1 & StandardJSONSchemaV1, 
-  Output extends unknown = StandardSchemaV1.InferInput<Input>, 
-  Result extends Validator = Validator<Input, Output>
-> = Result
-function FromStandardJsonSchema<Schema extends StandardSchemaV1 & StandardJSONSchemaV1>(schema: Schema): TFromStandardSchema<Schema> {
-  return new StandardJsonSchemaValidator(schema)
+function CreateJsonSchemaValidator<Schema extends TSchema>(input: Schema): Validator {
+  return new JsonSchemaValidator(input)
 }
-// ------------------------------------------------------------------
-// JsonSchema
-// ------------------------------------------------------------------
-type TFromJsonSchema<Input extends Type.TSchema, 
-  Output extends unknown = Type.Static<Input>, 
-  Result extends Validator = Validator<Input, Output>
-> = Result
-function FromJsonSchema<Schema extends Type.TSchema>(schema: Schema): TFromJsonSchema<Schema> {
-  return new JsonSchemaValidator(schema)
-}
-// ------------------------------------------------------------------
-// TypeScript
-// ------------------------------------------------------------------
-type TFromTypeScript<Input extends string, 
-  Schema extends Type.TSchema = Type.TScript<{}, Input>, 
-  Output extends unknown = Type.Static<Schema>, 
-  Result extends Validator = Validator<Input, Output>
-> = Result
-function FromTypeScript<Script extends string>(script: Script): TFromTypeScript<Script> {
-  return new TypeScriptValidator(script)
+function CreateTypeScriptValidator<Script extends string>(input: Script): Validator {
+  return new TypeScriptValidator(input)
 }
 // ------------------------------------------------------------------
 // Compile
 // ------------------------------------------------------------------
 /** Compiles a schema into a typed Validator */
-export type TCompile<Schema extends unknown> = (
-  Schema extends string ? TFromTypeScript<Schema> : 
-  Schema extends StandardSchemaV1 ? (
-    Schema extends StandardJSONSchemaV1
-      ? TFromStandardJsonSchema<Schema>
-      : TFromStandardSchema<Schema> 
-  ) : 
-  Schema extends Type.TSchema ? TFromJsonSchema<Schema> : 
-  TFromJsonSchema<{}>
-)
+export type TCompile<Input, Output extends unknown = Static<Input>,
+  Result extends Validator<Input, Output> = Validator<Input, Output>
+> = Result
 /** Compiles a schema into a typed Validator */
-export function compile<const Schema extends unknown>(schema: Schema): TCompile<Schema> {
+export function compile<const Input, Output extends Validator = TCompile<Input>>(input: Input): Output {
   return (
-    IsTypeScript(schema) ? FromTypeScript(schema) : 
-    IsStandardSchemaV1(schema) ? (
-      IsStandardJsonSchemaV1(schema)
-        ? FromStandardJsonSchema(schema) 
-        : FromStandardSchema(schema) 
-    ) : 
-    IsJsonSchema(schema) ? FromJsonSchema(schema) : 
-    FromJsonSchema({})
+    IsTypeScript(input) ? CreateTypeScriptValidator(input) :
+    IsStandardSchemaV1(input) ? CreateStandardSchemaV1Validator(input) :
+    IsJsonSchema(input) ? CreateJsonSchemaValidator(input) :
+    CreateJsonSchemaValidator({})
   ) as never
 }
