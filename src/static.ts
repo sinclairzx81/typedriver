@@ -28,9 +28,9 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
+import { type TSchema, type TScript, type Static as TStatic } from 'typebox'
 import { type StandardSchemaV1 } from '@standard-schema/spec'
 import { type Validator } from './validator.ts'
-import Type from 'typebox'
 
 // ------------------------------------------------------------------
 // StaticValidator
@@ -42,8 +42,8 @@ type StaticValidator<_Input extends unknown, Output extends unknown> = (
 // StaticTypeScript
 // ------------------------------------------------------------------
 type StaticTypeScript<Input extends string,
-  Schema extends Type.TSchema = Type.TScript<{}, Input>,
-  Output extends unknown = Type.Static<Schema>
+  Schema extends TSchema = TScript<{}, Input>,
+  Output extends unknown = TStatic<Schema>
 > = Output
 // ------------------------------------------------------------------
 // StaticStandardSchema
@@ -54,17 +54,17 @@ type StaticStandardSchema<Input extends StandardSchemaV1,
 // ------------------------------------------------------------------
 // StaticJsonSchema
 // ------------------------------------------------------------------
-type StaticJsonSchema<Input extends Type.TSchema,
-  Output extends unknown = Type.Static<Input>
+type StaticJsonSchema<Input extends TSchema,
+  Output extends unknown = TStatic<Input>
 > = Output
 // ------------------------------------------------------------------
 // Infers a TypeScript Type from Json Schema, Standard Schema or TypeScript DSL
 // ------------------------------------------------------------------
 type StaticInput<Input extends unknown> = (
   Input extends Validator<infer Input extends unknown, infer Output extends unknown> ? StaticValidator<Input, Output> :
-  Input extends string ? StaticTypeScript<Input > :
-  Input extends StandardSchemaV1 ? StaticStandardSchema<Input > :
-  Input extends Type.TSchema ? StaticJsonSchema<Input> :
+  Input extends string ? StaticTypeScript<Input> :
+  Input extends StandardSchemaV1 ? StaticStandardSchema<Input> :
+  Input extends TSchema ? StaticJsonSchema<Input> :
   unknown
 )
 // ------------------------------------------------------------------
