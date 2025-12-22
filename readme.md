@@ -45,9 +45,7 @@ Compiles: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#c
 
 ## Overview
 
-TypeDriver is a validation compiler and type-inference middleware designed to integrate JSON Schema and Standard Schema compliant validation into framework interfaces such as HTTP routes and RPC endpoints. It also functions as a validation optimizer built to accelerate high-throughput messaging systems.
-
-This project is designed to unify heterogeneous runtime schema systems based on JSON Schema and Standard Schema into a single system that preserves static type inference, runtime validation, and schema reflection, while remaining compatible with multiple schema ecosystems.
+TypeDriver is a multi-library compiler and type-inference middleware designed to integrate JSON Schema and Standard Schema validation into framework I/O interfaces such as HTTP routes and RPC endpoints. It provides high-performance compiler support for a wide range of ecosystem libraries and offers first-class TypeScript and JSON Schema validation and type inference as standard.
 
 License MIT
 
@@ -71,25 +69,20 @@ License MIT
 
 ## Features
 
-- Framework Integration
-  - Designed specifically for [type-safe](#Framework) I/O interfaces.
-  - One function to [compile](#compile) schematics into Validators.
-  - One type to [infer](#Static) schematics into TypeScript types.
-  - Schema [extension](#Extensions) model for Framework specific runtime type API
-- Schema Support
-  - TypeScript [DSL](#Script) for TS7-native (supported in TS5+).
-  - Scalable JSON Schema type inference ([demo](https://tsplay.dev/wjrYMw))
-  - Supports JSON Schema Drafts 3 through 2020-12.
-  - Full support for Standard Schema
-- Validation Compiler
-  - High-performance JIT compiler for faster application start up.
-  - High-performance runtime validation (approx 2x Ajv performance)
-  - Automatic [acceleration](#Accelerate) for libraries supporting Standard JSON Schema.
-  - Automatic JIT fallback for [content-security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) restrictive environments (Cloudflare)
-- Tooling and Interoperability
-  - JSON Schema [reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
-  - Error [formats](#Errors) for JSON Schema and Standard Schema Based Systems
-  - Includes [localized](#Locales) error messages (i18n) as standard.
+TypeDriver provides a comprehensive set of features for integrating type-safe validation across multiple schema ecosystems:
+
+- Single [function](#Compile) to compile multiple schematics into validators.
+- Single [type](#Static) for inferring TypeScript types from multiple schematics.
+- Integrated TypeScript [DSL](#Script) for TS7-native (supported in TS5+).
+- Validation support for JSON Schema Drafts 3 through 2020-12.
+- Supports Standard Schema and Standard JSON Schema (with [acceleration](#Accelerate))
+- High-performance JIT compiler for improved application start up.
+- High-performance runtime validation (approx 2x Ajv check performance)
+- JIT compile fallback for [content-security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) restrictive edge environments (e.g. Cloudflare)
+- Schema [extension](#Extensions) model for custom type safe builder API's.
+- JSON Schema [reflect](#Reflect) API for OpenAPI, MCP, and IDL-Based Systems
+- Error [formats](#Errors) for JSON Schema and Standard Schema Based Systems
+- Includes [localized](#Locales) error messages (i18n) as standard.
 
 ## Framework
 
@@ -400,25 +393,28 @@ validator.schema()          // will return the schematic used for compile.
 
 ## Extensions
 
-TypeDriver enables Frameworks to define custom Runtime Types specific to the Framework. This can be achieved by creating functions that return statically observable JSON Schema. These schematics can be passed to compile(...) and Static and used like any other type.
+TypeDriver supports the creation of framework specific type builder API. This can be achieved by creating functions that return statically observable JSON Schema. These schematics can be passed directly to compile(...) and Static. TypeDriver will derive the correct TypeScript type based on the schema returned.
 
-Ref: [Framework Types](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApgGjjATzCzgGUYBDGYZOAXzgDMo04ByQ4gEymADcsUNgChhAejFwAtDNlz5CxUuUrVU8ZICqAZwoBzLBulqTps2uGoAdtvgA1LMhjQAzHAC8KNGExYAFBAARgBWjjB+CMJwcAAeAFxwVgCuIIGCfgCUOFFwBAnJqelZOQBe+SlpUJnCdBkZopwkDk6uHmSU1MgAPI0QjHDNzlAuAHyiEsbmU9MmRppWwBBWACoQy0lg2Ak6WFz4EHAAojEwUBROcAAKLMSwBADSWATaTCwgVzeC1FjaRjP-AIUwkacHmixWEAAklYYIJtGFwV1NCM2n5NHAsCcsFYuC8KFYCHAAPxwPzxUEZDwovgQYB7fJYARQSmY2E4l5khLAKyMQRwSGU9zU2l7EmQuAMpnAogkAAyFFsAHlGEiUZ4wUtVtDYVB4U5EaCMVj2XB8YSSZyKVS4DS6RLEoy+SjWdjcaTydzeVA4LLBcK7STZfarI6oNLiKCFpq1htsEi8PLbG1EzBlaq1XAANqaAC6RrZbszIaZeZJmbzCUzADoaxqIetNlgusdkBgklwm5oEwqYCMRt3bDnxpJAaPAUYAGJnEBYADu0AA1oqQmE-mP11NwyQAEpYACOSWAUF2AEEoGcCF1rhBbt8Xi6TbvUFAuF1bLwrHo8EkrAurBBZysfscmvW8Hiee9jTdd9uT0NpjlOc4YC6Bcnj6D4by+YAfjwGDP2A6JdwPI9T3PChCXVKN61jJtQK+cDnjGDMiMPY8uDPC9hExSBYDgbkdUYc4SCnCgZ3nKAlxXJwr0+WBsMggsXifaBXzwr84B-P8AKAlFImiRoEjYIJQicNg8ByMBZLvBI6LknC4ByY9iLYhIWJI9iyMvWy7zGOguJiHj4EYH99SWOBjLCLprCTbz5PzV0lMcFS31OWDv1-f9AL7PxLMwuztBsqz5IyBIRLExdlxM5DYp+XTHKwGAkigKxEHwGVDIi0y8Cc1jdgSSqwirVDnhyoqfiyOBctvOKGAVB0pT8iYN2W0xJ2nOdFwAOQqQQ1xW-alGEfjBEE5BhPW8SF22wpvT0triEMgpKhEPzuOgIKQuoMKnqKUqLq2nbboc6Jj0a5rWoM9gfqEegaiAA)
+Ref: [Advanced Framework Types](https://tsplay.dev/mMkoZw)
 
 ```typescript
-import compile, { type Static } from 'typedriver'
+import { type Static } from 'typedriver'
 
-interface FrameworkString {
+interface TEmail {
   type: 'string'
 }
-export function number(): FrameworkString { 
-  return { type: 'string' }
+export function email(): TEmail { 
+  return { type: 'string', format: 'email' }
 }
 
 // ... Usage
 
-const T = number()                     // const T: FrameworkString = { type: 'number' }
+const T = email()                      // const T: TEmail = { 
+                                       //   type: 'string', 
+                                       //   format: 'email' 
+                                       // }
 
-type T = Static<typeof T>              // type T = number
+type T = Static<typeof T>              // type T = string
 ```
 
 ## Accelerate
