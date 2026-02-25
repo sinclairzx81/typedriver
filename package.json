@@ -15,10 +15,11 @@
   },
   "dependencies": {
     "@standard-schema/spec": "1.1.0",
-    "typebox": "1.0.64"
+    "typebox": "1.1.3"
   },
   "devDependencies": {
     "@arrirpc/schema": "latest",
+    "@types/node": "^25.3.0",
     "arktype": "latest",
     "effect": "latest",
     "sury": "latest",
