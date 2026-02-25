@@ -29,7 +29,7 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { System } from 'typebox/system'
-import { Validator as TBValidator } from 'typebox/compile'
+import { Validator as TBValidator } from 'typebox/schema'
 import { ParseError, errorToIssue, normalError } from '../../errors/index.ts'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
 
@@ -62,7 +62,7 @@ export class JsonSchemaValidator<Input extends Type.TSchema,
   // Acceleration
   // ----------------------------------------------------------------
   public override isAccelerated(): boolean {
-    return this.validator.IsEvaluated()
+    return this.validator.IsAccelerated()
   }
   // ----------------------------------------------------------------
   // Validation
@@ -77,7 +77,7 @@ export class JsonSchemaValidator<Input extends Type.TSchema,
   public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
     const config = resolveErrorOptions(options)
     System.Locale.Set(System.Locale[config.locale])
-    const errors = this.validator.Errors(value)
+    const [_, errors] = this.validator.Errors(value)
     return (config.format === 'standard-schema'
       ? errors.map(error => errorToIssue(normalError(error)))
       : errors.map(error => normalError(error))

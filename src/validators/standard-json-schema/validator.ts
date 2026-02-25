@@ -32,17 +32,18 @@ import { System } from 'typebox/system'
 import { StandardJSONSchemaV1, StandardSchemaV1 } from '@standard-schema/spec'
 import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
 import { ParseError, errorToIssue, normalError } from '../../errors/index.ts'
-import { Validator as TBValidator } from 'typebox/compile'
+import { Validator as TBValidator } from 'typebox/schema'
 import { resolveJsonSchema } from './resolve.ts'
 
 export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & StandardSchemaV1, 
   Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {
   private readonly validator: TBValidator<{}, Record<string, unknown>>
+  private readonly jsonSchema: Record<string, unknown>
   constructor(private readonly input: Input) {
     super()
-    const schema = resolveJsonSchema(input)
-    this.validator = new TBValidator({}, schema)
+    this.jsonSchema = resolveJsonSchema(input)
+    this.validator = new TBValidator({}, this.jsonSchema)
   }
   // ----------------------------------------------------------------
   // Schema
@@ -57,13 +58,13 @@ export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & St
     return true
   }
   public override toJsonSchema(): unknown {
-    return this.validator.Type()
+    return this.jsonSchema
   }
   // ----------------------------------------------------------------
   // Acceleration
   // ----------------------------------------------------------------
   public override isAccelerated(): boolean {
-    return this.validator.IsEvaluated()
+    return this.validator.IsAccelerated()
   }
   // ----------------------------------------------------------------
   // Validation
@@ -78,7 +79,7 @@ export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & St
   public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
     const config = resolveErrorOptions(options)
     System.Locale.Set(System.Locale[config.locale])
-    const errors = this.validator.Errors(value)
+    const [_, errors] = this.validator.Errors(value)
     return (config.format === 'standard-schema'
       ? errors.map(error => errorToIssue(normalError(error)))
       : errors.map(error => normalError(error))
