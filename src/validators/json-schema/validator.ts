@@ -38,7 +38,7 @@ import Type from 'typebox'
 export class JsonSchemaValidator<Input extends Type.TSchema, 
   Output extends unknown = Type.Static<Input>
 > extends Validator<Input, Output> {
-  private readonly validator: TBValidator<{}, Input>
+  private readonly validator: TBValidator
   constructor(private readonly input: Input) {
     super()
     this.validator = new TBValidator({}, input)

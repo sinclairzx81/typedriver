@@ -4,14 +4,14 @@ import { Range, RangeNext } from './task/range/index.ts'
 import { Bench } from './task/bench/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.8.12'
+const Version = '0.8.13'
 
 // ------------------------------------------------------------------
 // Build
 // ------------------------------------------------------------------
 const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', {
   outdir: target,
-  compiler: '5.9.3',
+  compiler: '6.0.2',
   additional: ['license', 'readme.md'],
   packageJson: {
     name: 'typedriver',
@@ -87,9 +87,14 @@ Task.run('bench', async () => {
 // ------------------------------------------------------------------
 // Range
 // ------------------------------------------------------------------
-Task.run('range', () => Range([
-  '5.1.3', '5.1.6', '5.2.2', '5.3.2', '5.3.3',
-  '5.4.3', '5.4.5', '5.5.2', '5.5.3', '5.5.4', '5.6.2',
-  '5.6.3', '5.7.2', '5.7.3', 
-  '5.9.2', 'latest',
-]).then(() => RangeNext(['next'])))
+Task.run('range', async () => {
+  await Range([
+    '5.1.3', '5.1.6', '5.2.2', '5.3.2', '5.3.3',
+    '5.4.3', '5.4.5', '5.5.2', '5.5.3', '5.5.4', 
+    '5.6.2', '5.6.3', '5.7.2', '5.7.3', '5.9.2', 
+    '5.9.3',
+  ])
+  await RangeNext([
+    '6.0.2', 'next', 'latest'
+  ])
+})
