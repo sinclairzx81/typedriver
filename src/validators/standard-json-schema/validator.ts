@@ -38,7 +38,7 @@ import { resolveJsonSchema } from './resolve.ts'
 export class StandardJsonSchemaValidator<Input extends StandardJSONSchemaV1 & StandardSchemaV1, 
   Output extends unknown = StandardSchemaV1.InferOutput<Input>
 > extends Validator<Input, Output> {
-  private readonly validator: TBValidator<{}, Record<string, unknown>>
+  private readonly validator: TBValidator
   private readonly jsonSchema: Record<string, unknown>
   constructor(private readonly input: Input) {
     super()

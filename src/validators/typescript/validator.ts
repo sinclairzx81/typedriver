@@ -38,7 +38,7 @@ export class TypeScriptValidator<Input extends string,
   Schema extends Type.TSchema = Type.TScript<{}, Input>, 
   Output extends unknown = Type.Static<Schema>
 > extends Validator<Input, Output> {
-  private readonly validator: TBValidator<Type.TProperties, Type.TSchema>
+  private readonly validator: TBValidator
   private readonly script: Input
   private readonly jsonschema: Type.TSchema
   constructor(script: Input) {
