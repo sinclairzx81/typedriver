@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@standard-schema/spec": "1.1.0",
-    "typebox": "1.1.6"
+    "typebox": "^1.2.8"
   },
   "devDependencies": {
     "@arrirpc/schema": "latest",
