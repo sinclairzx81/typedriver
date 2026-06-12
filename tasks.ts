@@ -4,7 +4,7 @@ import { Range, RangeNext } from './task/range/index.ts'
 import { Bench } from './task/bench/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.8.13'
+const Version = '0.8.14'
 
 // ------------------------------------------------------------------
 // Build
@@ -26,7 +26,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
     },
     dependencies: {
       "@standard-schema/spec": "1.1.0",
-      "typebox": "^1.0.64"
+      "typebox": "^1.2.8"
     }
   },
 })

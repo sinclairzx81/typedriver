@@ -323,14 +323,12 @@ const C = z.object({
 
 The [TypeScript DSL](https://sinclairzx81.github.io/typebox/#/docs/script/overview) is a runtime and type-level emulation of TypeScript. This feature is based on TypeBox's ability to transform TypeScript syntax into JSON Schema. The DSL supports most TypeScript definitions, as well as type-level constraints expressed using JSON Schema keywords.
 
-> ⚠️ The name `Options<T>` is subject to change. Because Options is a commonly used type name, it may not be appropriate for schema constraint augmentation. As a result, Options should be considered an experimental feature. TypeBox and TypeDriver are open to suggestions for a more suitable name for this type.
-
 ```typescript
 const ClampedVector3 = compile(`{
-  x: Options<number, { minimum: 0, maximum: 1 }>,
-  y: Options<number, { minimum: 0, maximum: 1 }>,
-  z: Options<number, { minimum: 0, maximum: 1 }>
-}`)
+  x: number with { minimum: 0, maximum: 1 },
+  y: number with { minimum: 0, maximum: 1 },
+  z: number with { minimum: 0, maximum: 1 }
+} with { additionalProperties: false }`)
 
 const JsonSchema = ClampedVector3.toJsonSchema()
 
@@ -341,7 +339,8 @@ const JsonSchema = ClampedVector3.toJsonSchema()
 //     x: { type: "number", minimum: 0, maximum: 1 },
 //     y: { type: "number", minimum: 0, maximum: 1 },
 //     z: { type: "number", minimum: 0, maximum: 1 }
-//   }
+//   },
+//   additionalProperties: false
 // }
 ```
 
