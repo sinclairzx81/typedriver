@@ -1,5 +1,5 @@
 import { Assert } from 'test'
-import { compile, type Static } from 'typedriver'
+import compile, { type Static } from 'typedriver'
 
 const Test = Assert.Context('Validator.StandardSchema.Valibot')
 import { Behaviors } from '../behaviors.ts'
@@ -11,7 +11,7 @@ import * as v from 'valibot'
 Test('Should Schema 1', () => {
   const X = v.string()
   const T = compile(X)
-  Assert.IsEqual(X, T.schema())
+  Assert.IsEqual(X, T.toType())
 })
 // ------------------------------------------------------------------
 // JsonSchema

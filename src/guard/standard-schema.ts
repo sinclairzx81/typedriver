@@ -4,7 +4,7 @@ TypeDriver
 
 The MIT License (MIT)
 
-Copyright (c) 2025 Haydn Paterson
+Copyright (c) 2025-2026 Haydn Paterson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ THE SOFTWARE.
 
 // deno-fmt-ignore-file
 
-import { StandardSchemaV1 } from '@standard-schema/spec'
+import { type StandardSchemaV1 } from '@standard-schema/spec'
 import Guard from 'typebox/guard'
 
 function IsStandardSchemaV1Props(value: unknown) {

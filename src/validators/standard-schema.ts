@@ -4,7 +4,7 @@ TypeDriver
 
 The MIT License (MIT)
 
-Copyright (c) 2025 Haydn Paterson
+Copyright (c) 2025-2026 Haydn Paterson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -29,51 +29,41 @@ THE SOFTWARE.
 // deno-fmt-ignore-file
 
 import { StandardSchemaV1 } from '@standard-schema/spec'
-import { ParseError, UnknownError, issueToError, normalIssue } from '../../errors/index.ts'
-import { Validator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../../validator.ts'
+import { ParseError, UnknownError, issueToError, normalIssue } from '../errors/index.ts'
+import { type TValidator, type TErrorOptions, type TErrorResult, resolveErrorOptions } from '../validator.ts'
 
-export class StandardSchemaValidator<Input extends StandardSchemaV1,
-  Output extends unknown = StandardSchemaV1.InferOutput<Input>
-> extends Validator<Input, Output> {
-  constructor(private readonly input: Input) {
-    super()
+// ----------------------------------------------------------------
+// Validator
+// ----------------------------------------------------------------
+export class StandardSchemaValidator<Type extends unknown = unknown> implements TValidator<Type> {
+  readonly _schema: StandardSchemaV1
+  constructor(schema: StandardSchemaV1) {
+    this._schema = schema
   }
-  // ----------------------------------------------------------------
-  // Schema
-  // ----------------------------------------------------------------
-  public override schema(): Input {
-    return this.input
+  public toType(): unknown {
+    return this._schema
   }
-  // ----------------------------------------------------------------
-  // Json Schema
-  // ----------------------------------------------------------------
-  public override isJsonSchema(): boolean {
+  public isJsonSchema(): boolean {
     return false
   }
-  public override toJsonSchema(): unknown {
+  public toJsonSchema(): Record<PropertyKey, unknown> {
     return {}
   }
-  // ----------------------------------------------------------------
-  // Acceleration
-  // ----------------------------------------------------------------
-  public override isAccelerated(): boolean {
+  public isAccelerated(): boolean {
     return false
   }
-  // ----------------------------------------------------------------
-  // Validation
-  // ----------------------------------------------------------------
-  public override check(value: unknown): value is Output {
-    const result = this.input['~standard'].validate(value)
+  public check(value: unknown): value is Type {
+    const result = this._schema['~standard'].validate(value)
     return !('issues' in result)
   }
-  public override  parse(value: unknown): Output {
-    const result = this.input['~standard'].validate(value)
+  public parse(value: unknown): Type {
+    const result = this._schema['~standard'].validate(value)
     if ('issues' in result) throw new ParseError(value, result.issues as never ?? [])
     if ('value' in result) return result.value as never
     throw new UnknownError('Invalid result')
   }
-  public override errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
-    const result = this.input['~standard'].validate(value)
+  public errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options> {
+    const result = this._schema['~standard'].validate(value)
     const issues = (('issues' in result) ? result.issues : []) as StandardSchemaV1.Issue[]
     const config = resolveErrorOptions(options)
     return (config.format === 'json-schema'

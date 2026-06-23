@@ -1,5 +1,5 @@
 import { Assert } from 'test'
-import { compile, type Static } from 'typedriver'
+import compile, { type Static } from 'typedriver'
 
 const Test = Assert.Context('Validator.StandardSchema.Sury')
 import { Behaviors } from '../behaviors.ts'
@@ -11,7 +11,7 @@ import * as sury from 'sury'
 Test('Should Schema 1', () => {
   const X = sury.string
   const T = compile(X)
-  Assert.IsEqual(X, T.schema())
+  Assert.IsEqual(X, T.toType())
 })
 // ------------------------------------------------------------------
 // JsonSchema
