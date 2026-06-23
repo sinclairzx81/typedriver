@@ -1,7 +1,7 @@
 import { Assert } from 'test'
-import { Validator } from 'typedriver'
+import { TValidator } from 'typedriver'
 
-export function Behaviors(validator: Validator, valid: unknown[], invalid: unknown[]) {
+export function Behaviors(validator: TValidator, valid: unknown[], invalid: unknown[]) {
   // Checks
   valid.forEach((value) => Assert.IsTrue(validator.check(value)))
   invalid.forEach((value) => Assert.IsFalse(validator.check(value)))

@@ -1,7 +1,7 @@
 import { Assert } from 'test'
-import { compile, type Static } from 'typedriver'
+import compile, { type Static } from 'typedriver'
 
-const Test = Assert.Context('Validator.TypeScript')
+const Test = Assert.Context('Validator.Unknown')
 import { Behaviors } from './behaviors.ts'
 
 // ------------------------------------------------------------------
@@ -10,7 +10,7 @@ import { Behaviors } from './behaviors.ts'
 Test('Should Schema 1', () => {
   const X = null
   const T = compile(X)
-  Assert.IsEqual({}, T.schema()) // special: do we need an unknown validator?
+  Assert.IsEqual({}, T.toType()) // special: do we need an unknown validator?
 })
 // ------------------------------------------------------------------
 // Generation
@@ -19,7 +19,7 @@ Test('Should JsonSchema 1', () => {
   const T = compile(null)
   Assert.IsTrue(T.isJsonSchema())
 })
-Test('Should JsonSchema 1', () => {
+Test('Should JsonSchema 2', () => {
   const T = compile(null)
   Assert.IsEqual(T.toJsonSchema(), {})
 })

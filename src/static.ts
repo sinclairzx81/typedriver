@@ -4,7 +4,7 @@ TypeDriver
 
 The MIT License (MIT)
 
-Copyright (c) 2025 Haydn Paterson
+Copyright (c) 2025-2026 Haydn Paterson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,48 +26,53 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
+// deno-lint-ignore-file ban-types
 // deno-fmt-ignore-file
 
 import { type TSchema, type TScript, type Static as TStatic } from 'typebox'
 import { type StandardSchemaV1 } from '@standard-schema/spec'
-import { type Validator } from './validator.ts'
+import { type TValidator } from './validator.ts'
 
 // ------------------------------------------------------------------
 // StaticValidator
 // ------------------------------------------------------------------
-type StaticValidator<_Input extends unknown, Output extends unknown> = (
-  Output
-)
+type StaticValidator<Type extends unknown> = Type
+
 // ------------------------------------------------------------------
 // StaticTypeScript
 // ------------------------------------------------------------------
-type StaticTypeScript<Input extends string,
-  Schema extends TSchema = TScript<{}, Input>,
+type StaticTypeScript<Type extends string,
+  Schema extends TSchema = TScript<{}, Type>,
   Output extends unknown = TStatic<Schema>
 > = Output
+
 // ------------------------------------------------------------------
 // StaticStandardSchema
 // ------------------------------------------------------------------
-type StaticStandardSchema<Input extends StandardSchemaV1,
-  Output extends unknown = StandardSchemaV1.InferOutput<Input>
+type StaticStandardSchema<Type extends StandardSchemaV1,
+  Output extends unknown = StandardSchemaV1.InferOutput<Type>
 > = Output
+
 // ------------------------------------------------------------------
 // StaticJsonSchema
 // ------------------------------------------------------------------
-type StaticJsonSchema<Input extends TSchema,
-  Output extends unknown = TStatic<Input>
+type StaticJsonSchema<Type extends TSchema,
+  Output extends unknown = TStatic<Type>
 > = Output
+
 // ------------------------------------------------------------------
-// Infers a TypeScript Type from Json Schema, Standard Schema or TypeScript DSL
+// Type
 // ------------------------------------------------------------------
-type StaticInput<Input extends unknown> = (
-  Input extends Validator<infer Input extends unknown, infer Output extends unknown> ? StaticValidator<Input, Output> :
-  Input extends string ? StaticTypeScript<Input> :
-  Input extends StandardSchemaV1 ? StaticStandardSchema<Input> :
-  Input extends TSchema ? StaticJsonSchema<Input> :
+type StaticType<Type extends unknown> = (
+  Type extends TValidator<infer Type extends unknown> ? StaticValidator<Type> :
+  Type extends string ? StaticTypeScript<Type> :
+  Type extends StandardSchemaV1 ? StaticStandardSchema<Type> :
+  Type extends TSchema ? StaticJsonSchema<Type> :
   unknown
 )
+
 // ------------------------------------------------------------------
-// Infers a TypeScript Type from Json Schema, Standard Schema or TypeScript DSL
+// Static
 // ------------------------------------------------------------------
-export type Static<Input, Output = StaticInput<Input>> = Output
+/** Infers a static type from a runtime type definition */
+export type Static<Schema, Type = StaticType<Schema>> = Type

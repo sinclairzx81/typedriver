@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <rect width="1280" height="640" fill="#0d1117"/>
+  
+  <g stroke="#30363d" stroke-width="1" opacity="0.3">
+    <path d="M0 80h1280M0 160h1280M0 240h1280M0 320h1280M0 400h1280M0 480h1280M0 560h1280"/>
+    <path d="M160 0v640M320 0v640M480 0v640M640 0v640M800 0v640M960 0v640M1120 0v640"/>
+  </g>
+
+  <circle cx="200" cy="200" r="300" fill="#3178c6" opacity="0.15" filter="blur(80px)" />
+  <circle cx="1080" cy="400" r="250" fill="#f25f4c" opacity="0.1" filter="blur(80px)" />
+
+  <text x="120" y="260" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="76" fill="#ffffff" letter-spacing="-1">
+    TypeDriver
+  </text>
+  
+  <text x="120" y="320" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="28" fill="#8b949e">
+    A Runtime TypeScript Validation Engine
+  </text>
+  <text x="120" y="355" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="15" fill="#90a4bc">
+  For TypeScript, JSON Schema and Standard Schema
+  </text>
+  <g transform="translate(700, 110)">
+    <rect width="460" height="370" rx="12" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    
+    <circle cx="25" cy="25" r="6" fill="#ff5f56"/>
+    <circle cx="45" cy="25" r="6" fill="#ffbd2e"/>
+    <circle cx="65" cy="25" r="6" fill="#27c93f"/>
+    
+    <g font-family="monospace" font-size="18">
+      <text x="25" y="75" fill="#ff7b72">import</text>
+      <text x="95" y="75" fill="#b8c8d6">compile</text>
+      <text x="180" y="75" fill="#ff7b72">from</text>
+      <text x="230" y="75" fill="#90bde4">'typedriver'</text>
+      
+      <text x="25" y="120" fill="#8b949e">// Parse Type</text>
+      
+      <text x="25" y="150" fill="#ff7b72">const</text>
+      <text x="85" y="150" fill="#e1e4e8">Vector</text>
+      <text x="155" y="150" fill="#ff7b72">=</text>
+      <text x="175" y="150" fill="#b8c8d6">compile</text>
+      <text x="256" y="150" fill="#f78166">(`</text>
+      <text x="276" y="150" fill="#56b6c2">{</text>
+      
+      <text x="45" y="180" fill="#e5c07b">x</text><text x="56" y="180" fill="#56b6c2">:</text> <text x="75" y="180" fill="#90bde4">number</text>
+      <text x="45" y="210" fill="#e5c07b">y</text><text x="56" y="210" fill="#56b6c2">:</text> <text x="75" y="210" fill="#90bde4">number</text>
+      <text x="45" y="240" fill="#e5c07b">z</text><text x="56" y="240" fill="#56b6c2">:</text> <text x="75" y="240" fill="#90bde4">number</text>
+      
+      <text x="25" y="270" fill="#56b6c2">}</text>
+      <text x="35" y="270" fill="#f78166">`)</text>
+      
+      <text x="25" y="315" fill="#8b949e">// Parse Data</text>
+      
+      <text x="25" y="345" fill="#ff7b72">const</text>
+      <text x="85" y="345" fill="#e1e4e8">value</text>
+      <text x="145" y="345" fill="#ff7b72">=</text>
+      <text x="165" y="345" fill="#e1e4e8">Vector</text>
+      <text x="229" y="345" fill="#ff7b72">.</text>
+      <text x="240" y="345" fill="#b8c8d6">parse</text>
+      <text x="296" y="345" fill="#e1e4e8">(...)</text>
+    </g>
+  </g>
+
+  <g transform="translate(120, 500)" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600">
+
+    <text x="0" y="80" font-size="14" fill="#484f58" font-weight="400" font-family="monospace">
+    </text>
+  </g>
+</svg>
