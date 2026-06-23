@@ -45,9 +45,9 @@ Syntax highlighting available via the [Visual Studio Marketplace](https://market
 
 ## Overview
 
-TypeDriver is a runtime validation engine built with a micro TypeScript DSL engine capable of accepting TypeScript string definitions, JSON Schema, and Standard Schema libraries through a single `compile()` call. Type definitions get JIT compiled through JSON Schema into a high-performance runtime validator, enabling uniform high-throughput validation across multiple ecosystem libraries and schema formats.
+TypeDriver is a runtime validation engine with a built-in TypeScript DSL engine capable of compiling TypeScript string definitions, JSON Schema, and Standard Schema libraries via a single `compile(..)` function. It uses dynamic JIT to transform type definitions into high-performance runtime validators, and enables uniform high-performance validation across multiple ecosystem libraries and schema formats.
 
-TypeDriver can be used as a standalone validator, or integrated into REST and RPC services to help validate data received over the wire.
+TypeDriver was designed to target the type inference performance provided by TypeScript 7 and to promote runtime validation using industry specifications, specifically JSON Schema. It can be used either as a standalone validator or integrated into REST and RPC services to help validate data received over the wire.
 
 License MIT
 
