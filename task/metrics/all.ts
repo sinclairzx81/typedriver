@@ -1,6 +1,6 @@
-import { compile, Static } from 'typedriver'
+import { type, Static } from 'typedriver'
 
-const A = compile(`{
+const A = type(`{
   x: number
   y: number
   z: number  

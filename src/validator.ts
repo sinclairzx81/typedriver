@@ -26,6 +26,7 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
+// deno-lint-ignore-file ban-types
 // deno-fmt-ignore-file
 
 import { System } from 'typebox/system'
@@ -86,20 +87,20 @@ export type TErrorResult<Options extends Partial<TErrorOptions>> = (
 // ------------------------------------------------------------------
 // Validator
 // ------------------------------------------------------------------
-/** Abstract Base for all Validator types. */
-export abstract class Validator<Input extends unknown = unknown, Output extends unknown = unknown> {
-  /** Returns the schema used to construct this validator */
-  public abstract schema(): Input
+/** A Compiled Validator */
+export interface TValidator<Type extends unknown = unknown> {
   /** Checks a value matches the given schema */
-  public abstract check(value: unknown): value is Output
+  check(value: unknown): value is Type
   /** Parses a value and throws if invalid */
-  public abstract parse(value: unknown): Output
+  parse(value: unknown): Type
   /** Returns errors for the given value */
-  public abstract errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options>
-  /** True if the validator has a Json Schema representation */
-  public abstract isJsonSchema(): boolean
-  /** Return the validator Json Schema representation. */
-  public abstract toJsonSchema(): unknown
+  errors<Options extends Partial<TErrorOptions>>(value: unknown, options?: Options): TErrorResult<Options>
   /** Returns true if this validator is JIT accelerated */
-  public abstract isAccelerated(): boolean
+  isAccelerated(): boolean
+  /** True if the validator has a Json Schema representation */
+  isJsonSchema(): boolean
+  /** Return the validator Json Schema representation. */
+  toJsonSchema(): Record<PropertyKey, unknown>
+  /** Returns the type definition used for compilation */
+  toType(): unknown
 }

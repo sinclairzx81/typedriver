@@ -26,4 +26,6 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-export * from './validator.ts'
+export * from './json-schema.ts'
+export * from './standard-json-schema.ts'
+export * from './standard-schema.ts'

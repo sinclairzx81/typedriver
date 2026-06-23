@@ -26,7 +26,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
     },
     dependencies: {
       "@standard-schema/spec": "1.1.0",
-      "typebox": "^1.2.8"
+      "typebox": "^1.3.0"
     }
   },
 })
@@ -43,6 +43,10 @@ Task.run('build', (target: string = `target/build`) => BuildPackage(target))
 // Clean
 // ------------------------------------------------------------------
 Task.run('clean', () => Task.folder('target').delete())
+// ------------------------------------------------------------------
+// Lint
+// ------------------------------------------------------------------
+Task.run('lint', () => Task.shell('deno lint src'))
 // ------------------------------------------------------------------
 // Local
 // ------------------------------------------------------------------

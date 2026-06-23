@@ -1,6 +1,6 @@
 import { Assert } from 'test'
 import { Guard } from 'typebox/guard'
-import { compile } from 'typedriver'
+import compile from 'typedriver'
 
 const Test = Assert.Context('Validator.Errors.JsonSchema')
 import { StandardJsonSchema } from '../reference.ts'

@@ -1,7 +1,7 @@
   import { benchmark } from '../benchmark.ts'
-  import { compile } from 'typedriver'
+  import { type } from 'typedriver'
   
-  const Vector3 = compile({
+  const Vector3 = type({
     type: 'object',
     required: ['x', 'y', 'z'],
     properties: {
