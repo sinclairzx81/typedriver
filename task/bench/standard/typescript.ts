@@ -1,7 +1,7 @@
   import { benchmark } from '../benchmark.ts'
-  import { type } from 'typedriver'
+  import compile from 'typedriver'
   
-  const Vector3 = type(`{
+  const Vector3 = compile(`{
     x: number
     y: number
     z: number
