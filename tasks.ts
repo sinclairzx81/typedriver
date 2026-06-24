@@ -4,7 +4,7 @@ import { Range, RangeNext } from './task/range/index.ts'
 import { Bench } from './task/bench/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.9.0'
+const Version = '0.9.1'
 
 // ------------------------------------------------------------------
 // Build
@@ -15,7 +15,7 @@ const BuildPackage = (target: string = `target/build`) => Task.build.esm('src', 
   additional: ['license', 'readme.md'],
   packageJson: {
     name: 'typedriver',
-    description: 'High Performance Driver for Runtime Type System Integration',
+    description: 'A Runtime TypeScript Validation Engine',
     version: Version,
     keywords: ['typescript', 'json-schema', 'standard-schema'],
     license: 'MIT',

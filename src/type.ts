@@ -76,14 +76,14 @@ function FromTypeScript<Script extends string>(script: Script): TFromTypeScript<
 // ------------------------------------------------------------------
 // Type
 // ------------------------------------------------------------------
-/** Compiles a type into a high performance Validator */
+/** Compiles a type definition into a high performance Validator */
 export type TType<Type extends unknown, Result extends TValidator = (
   Type extends string ? TFromTypeScript<Type> :
   Type extends StandardSchemaV1 ? TFromStandardSchema<Type> :
   Type extends TSchema ? TFromJsonSchema<Type> :
   TFromJsonSchema<{}>
 )> = Result
-/** Compiles a type into a high performance Validator */
+/** Compiles a type definition into a high performance Validator */
 export function type<const Type extends unknown>(type: Type): TType<Type> {
   return (
     IsTypeScript(type) ? FromTypeScript(type) :
