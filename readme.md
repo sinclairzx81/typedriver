@@ -143,7 +143,7 @@ console.log(errors)
 
 ## Static
 
-Examples: [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKC4cwBU4AXmx4ChADwADJK1wAbAK7oAXHAB2ikACMOpKQD44xk6bNwA9BeRoBwxF3NPnL128vXjcpao1bdUI7uwSHuVqRAA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKC4cwBU4AXmx4ChADxI4M2XPkLF8gPTLkaAcMRcZfAFx0IAIwBW6QjFoAaJbbuLVs1rgA2AV3QGAdm5BGOOnBQ6ACObsDBjAYA2rTO7ui0ALo29mkqaiSBYFQYsMDoAM4GCIEy8R4lcGWy+nQ+fhy01XJZMlkkAHxAA) | [Standard Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKFEljgBeFKjVoCIjbl0IQAdgGd4AFTgBeQQDoIAIwBW6QjAAUSOGfMXLXM61wAbAK7oAXJtkOQ2jkYCUcLiQ+XFwMmCrqOPhEADyhEORwSgB8lqlp6XAA9JnIaGFqiP4ZxSWlxdnmto4ucO6eHEVlTc0ZFSRAA)
+[TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKC4cwBU4AXmx4ChADwADJK1wAbAK7oAXHAB2ikACMOpKQD44xk6bNwA9BeRoBwxF3NPnL128vXjcpao1bdUI7uwSHuVqRAA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKC4cwBU4AXmx4ChADxI4M2XPkLF8gPTLkaAcMRcZfAFx0IAIwBW6QjFoAaJbbuLVs1rgA2AV3QGAdm5BGOOnBQ6ACObsDBjAYA2rTO7ui0ALo29mkqaiSBYFQYsMDoAM4GCIEy8R4lcGWy+nQ+fhy01XJZMlkkAHxAA) | [Standard Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzjAnmApnAyjAhjYAYzgF84AzKCEOAclQwBMpgA3dKWgKFEljgBeFKjVoCIjbl0IQAdgGd4AFTgBeQQDoIAIwBW6QjAAUSOGfMXLXM61wAbAK7oAXJtkOQ2jkYCUcLiQ+XFwMmCrqOPhEADyhEORwSgB8lqlp6XAA9JnIaGFqiP4ZxSWlxdnmto4ucO6eHEVlTc0ZFSRAA)
 
 TypeDriver has unified type inference for TypeScript, JSON Schema, and Standard Schema. Use the `Static<T>` type to derive a static TypeScript type from any runtime type definition.
 
@@ -285,7 +285,7 @@ const TVector = Generic('number')                  // const TVector: `{
 
 const Vector = compile(TVector)                    // const Vector: TValidator<{
                                                    //   x: number
-                                                   //   y: numer
+                                                   //   y: number
                                                    // }>
 ```
 
@@ -344,7 +344,7 @@ validator.toType()                                  // Returns the original type
 
 ## Integrate
 
-Examples: [Input / Output Validated Function](https://www.typescriptlang.org/play/?target=99&module=7&ssl=37&ssc=58&pln=1&pc=1#code/JYWwDg9gTgLgBAYwuYAbApgGjgbzjATzHTgGUYBDGYBOAXzgDMpk4ByQ4gEymADd0UNgChhAejFwAwhVSoARhQQBrYegAekWPiIkAKjLmKVAHmFw4ASQB2YAK7wNMdNa4BnOHevLrEAO7W2OZwAPIO9o7qzq4eXj7+1sIAfHAAvHAAFHyydugAXFa2DgCUaSlhMBGiEnAAYl4I1BDWoWBN1m5qmtDwnPohbcDNbmYWNhFwTi7unt6+AWmz8QGYwRUTUzFL8y3pcTurKek4wcBFMAD8BeMOqxYQ4Q5XoY8wwnTikvXWjUMttUoYNACF0tPBGA12nUGiYkB14AN2h5NjM9Ii-m47oUNlFprE5glFuQqDQTOjhgBtNhnCJsAC6SSx6wck1xW32hPSxOoCDJg0pbAelQc9MZwUMCiUylZ0VREuMyhMNxg2GZMCOcAMsklpmVqteSWSGQg-I6BXJHWwEJ+BXlUuKtu1CtwwThbngNJZ6SQKAwxtNbipnpg9NKruG8CFE29yDAaHQ-qRVKjIrpxXD8MQTqliyyOXy2wSpVSKWC91eADowBQoG4E9aEBlg1Wa3W86hcqUKB5rOgBFBiumLFB0DA7FAWghsyo4N24L3++9qpJlXBJGq4AA1WTALhUdBcOAAQS4h++v2awjd8Aop8W54yJwswYKAAM8BQCtY7CB5IJsPIX4-n+UD0K+2BrpIei6KQCC8G02IsgAIugjBnMA7TBCmMAFHgfQFGw36-oIbD0BY5EUZBcAAFKkCEAByZAIAAFugIAUC8wrwChaHWBhfzvNgj6zgB9DFikHEANRwPI6aiNecDZB2JDpLeXDCZ+cAAIwAQUABMYmUTUClKbkiwAMxwEAA)
+[Typed Function](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAYwuYAbApgGjgbzjATzHTgGUYBDGYBOAXzgDMpk4ByQ4gEymADd0UNgChhAejFwAKkXRcAYgFcAdgmoRlALjgBhCqlQAjCggDWw9AA9IsfLOl6DxswB5hcOAEllYRfCsw6MpcAM5wKqbKEADuytjucADyfr7+loHBYRFRscIAfHAAvHAAFHz6iuja3qkAlEUFyTCpohLSsgoqasAa2olg6sohFtbQ8JwkUv2DIW4eNX5wAUGh4cqRMcpFaxux8R5NqUvpK1nrOVvF2Zv52zgJwD5+APzVTzCYCRApL30-MMI6K1JDJuEpVIMRjZ4IwuoN2mC4T1lC4kEN4NNkWFlplpJiNCFPvN3scMqtrrFtuQqDQXPihgBtNiPVJsAC6eSJSX+pNOOwuVMo1AQdIGWKZ32afnZnISjiMJlMvNxUnlzlMLgWH25UpgBWKqv0CtcWuwhz8eXyJQgYoJfVtQ2wCCN6u0asVtTdLsVuASaJC8BZi2KSBQGGtDpCTKDMHZ9T9BPgkqOIeQYDQ6AjMwl-zjCSg6BgiigWxKCQ8ZQqVX5m3qhQKyb8ADowBQoCFM86nIqSjGW22O5XUJV6hQwsp0AIoLVaglR+PJ4JAcC4ABRSwUcAYYT++AULhcbaguTg7oaEr3Dwx7QAAzwFG0ykUIEMgmwhkfz9fUHoN65jZgbQ8AmbQ2CfF9BDYeg4EBbALzgCh33oOsCgoOAAGo4EMWdRF3OAQmfbZ9y4eCHzgABGd9tAAJmQjx6LaPDymHEhigAZjgIA) | [Express Router](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBKB7ArgFwKYBOqYSZ5Fl4yAlgLYAOmhuoAxpozQDb4A0oAN6hcATwb5QAZVwBDXDTagAvqABmhTqADkYiQBNCNAG5FtyZPgAeTFiPGSAKgAlZAO329CAHgBCmfVEBdHwGblEAPlAAXlAACgAjANEALlB-QIBKGKiABU06GgBnfG8QsMjQAB8MUPCLa1tWNWw3NgVMNwwcAm8ONyLWAHkGDoHQawIPIqFQJMCAfjTWgGs3TAB3NwFCOtEl0FX1rZU+ZFB05ImrKf0Zo82u2Jl5RW8RsaKAbW150W0ALoRM4Xcrha63e5uNaPGLSOQKNjvUY0TrfbS7CqA4HnUCuDxeCH4aagFzuTxEPzJYJ7KKxMkEykZIK1CoRZAROKYFFotIfVEDAQAC3JXjS+IphGyglx-UGc2SADVZNwaPp5Mw4RwuLwuTyBgA6P6ZWVo1iY8LK1Xq3Ca2Lahg8fB6z4Gi2iE0XXa4bCELqyIqiNrxXYARzS7hZuyKEbcLLck1jHpyQlxF1whFEqYuOfYZoVgThfytao1hANDFkhBKcTDRuSntzeYG5vwRWw3FYsVkG1kNFYIsZhESVwDoATpilaZz3t9XWjBoAVkVOrW9iWbcwK1Wa9GO7hMo2Lqo2PI2EL4kRNFLs02Ezc4lfmEeVLjlMh32gqN+f5QSNIiEnf9fxA0DYFoRhmFYRpoxmDQtG0GC2yKcxkDlVhZAYBg4SQooijibIczQA1sBrXCiiXFc3AI7JwHHfB8DuUAAAE9DbYByIsTCGArTBBjibRgFIohgCKGgAHM3HAbAGG0YIemdGULj+NIAANhDcWQ6HwNJBiMNxxIEfA6D7bhdIzGgDJUVSQVAd01OENVzP0wzQHbNg2GQtIkkwXh3Gsj8BBHLIUyU5t5Q0rT+AmEyeBUIsribJs0F2WR9Ds-BQ2wNtcFxWc-VmJydAARgAJgAZjktzsA8ryREIbL4qIsASg8DKiiYAZ8A-Q8uKwg1VUGYk4gAVgABgmk1gLAmaQP-ABhVViVyr9ZrWig0Pzd04R7PtmnwXBzwEoVcFwBgUhAbhMFPbghT43AUnGiahJKQhRIkqSZKqsLtNwO79DSbRciGKRHDk3EhXwNKiBjWZtHmzoplwcBHAcbRAe41VTzGYBl06bRTlxFTQAAKSkIYADkDT0yzxJoNRRDiMKLk07TAYAVVe8Hc2M0zAeEwhmOsLSwnwA1tXMY8TWUTIDT+4boxTBc8eo3rNoGXyxau8S1wqTIgA)
 
 TypeDriver is designed for framework integration. The following is a starter script for a runtime and static type-safe function that is able to accept any TypeScript, JSON Schema or Standard Schema definition.
 
@@ -357,35 +357,36 @@ export type TCallback<
   Output extends unknown
 > = (value: Input) => Output
 
-// Function Options
+// Options
 export type TOptions<
-  Input extends unknown = unknown,
-  Output extends unknown = unknown,
+  Input extends unknown = unknown, 
+  Output extends unknown = unknown
 > = {
   input?: Input,
   output?: Output
 }
-// Function Factory
-export function Func<const Options extends TOptions,
+
+// TypedFunction
+export function TypedFunction<const Options extends TOptions,
   Input extends unknown = Static<Options['input']>,
   Output extends unknown = Static<Options['output']>,
   Callback extends TCallback<Input, Output> = TCallback<Input, Output>
->(options: Options, func: Callback): Callback {
+>(options: Options, callback: Callback): Callback {
   const input = compile(options['input']) 
   const output = compile(options['output'])
-  const callback = (value: unknown) => 
-    output.parse(func(input.parse(value) as never))
-  return callback as never
+  return (
+    (value: unknown) => output.parse(callback(input.parse(value) as never))
+  ) as never
 }
 
-// Input/Output Validated Add Function
-const add = Func({
-  input: `{ a: number, b: number }`,  // TypeScript Input Definition
-  output: { type: 'number' }          // JSON Schema Output Definition
+// Example
+const add = TypedFunction({
+  input: `{ a: number, b: number }`,
+  output: `number`
 }, ({ a, b }) => a + b)
 
 
-const value = add({ a: 1, b: 2 })     // const value = 3 
+const sum = add({ a: 1, b: 2 })                     // const value = 3 
 ```
 
 

@@ -4,7 +4,7 @@ import { Range, RangeNext } from './task/range/index.ts'
 import { Bench } from './task/bench/index.ts'
 import { Task } from 'tasksmith'
 
-const Version = '0.9.0'
+const Version = '0.9.1'
 
 // ------------------------------------------------------------------
 // Build
