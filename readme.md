@@ -348,7 +348,7 @@ type T = Static<typeof T>                           // type T = {
 
 ## Reflect
 
-TypeDriver represents TypeScript using JSON Schema representations. Compiled validators include a `toJsonSchema()` function that returns the internal JSON Schema representation.
+TypeDriver uses JSON Schema to represent TypeScript at runtime. Compiled validators include a `toJsonSchema()` function that returns the internal JSON Schema representation.
 
 ```typescript
 import compile from 'typedriver'
