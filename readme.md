@@ -23,7 +23,7 @@ $ npm install typedriver --save
 
 ## Usage
 
-Compile TypeScript Definitions into High Performance Validators
+Compile TypeScript definitions into high performance validators
 
 ```typescript
 import compile from 'typedriver'
@@ -46,9 +46,7 @@ Syntax highlighting is available via the [Visual Studio Marketplace](https://mar
 
 ## Overview
 
-TypeDriver is a runtime type system that compiles TypeScript, JSON Schema and Standard Schema definitions into high performance validators. It works by transforming definitions into a common Type IR then uses JIT compilation to produce a uniform high performance validator.
-
-TypeDriver is designed to use the inference performance provided by TypeScript 7 native compiler as well as to promote validation using established industry specifications, specifically JSON Schema. It can be used either as a standalone validator or integrated into REST and RPC services to help validate data received over the wire.
+TypeDriver is a runtime type system that compiles TypeScript, JSON Schema and Standard Schema definitions into high performance JSON Schema validators. It also hosts the TypeScript type system statically inside TypeScript types which enables it to infer types from string definitions.
 
 License MIT
 
@@ -56,8 +54,8 @@ License MIT
 
 - [Compile](#Compile)
 - [Validate](#Validate)
-- [Static](#Static)
 - [Script](#Script)
+- [Static](#Static)
 - [Reflect](#Reflect)
 - [Integrate](#Integrate)
 - [Benchmarks](#Benchmarks)
@@ -108,7 +106,7 @@ const User = compile(z.object({
 
 ## Validate
 
-TypeDriver validators provide 3 validation functions.
+TypeDriver validators have three validation functions.
 
 
 ### Parse
@@ -139,6 +137,133 @@ const errors = Vector.errors(data, {
   locale: 'ko_KR'                                    // (default) 'en_US'
 })
 console.log(errors)
+```
+
+## Script
+
+[Definitions](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BBGnSzducALxwABglZw4vKFiwwAXPJj1OAc1kpglNQuDbdqAK6cNFQxuM7ckjhB7wAqt2bipMuZwCGIFg2mjpyWCB+mMF2un6CiiJqACQIAkIiuKwOTi5wAArENGbI8BLSusA00Sa+AUHqIbpg9Mj1nGYgAEbMWY5cvHAA8lA0nmU+cGYeUMkI7syZcs0QRSXcswUrxTC4ANoAur3s-fAMfhiVfjDQXqjo2AAUw6NQAJRyH3IA9F8ozgNnC40K7QNQAFQAaudLtcoAAeCafJHIlGo1E-D5TZhqRFovH4lEYz7+QLVLQAbl0BOp1KJH3CkQwZMpNNZ+Lpcji6XWiCpbP5nw5HwUSlUDTsLIFUu+v2RyH01nF2kl0oFQrk5ksUEVRmVfNVrKFuBVBsNsrwJtNtPNy1WMB5uKtBKFJPquop+qdeKFlWZnq96PNSxabQ63SgloDgY+e32kajyIxuAAfKwgA) |  [Options](https://www.typescriptlang.org/play/?target=99&module=7#code/FASwtgDg9gTgLgAgN4IMZUiANgUwQXwQDMYMEByOATwhwBMYQA3HGc4YdAOwGdEA1HKjiwEAXjQYI2HAAoABkmAIEADwBcCLgFcwAI1YIA7iDgALZAjAgu4XZoAMAGisBDVXbCaAjASfKEKk0dfUMTc0trWzB7BGc3DxivBF98YEJwiyUVOhweVEYIOBAoLk1yACYAEQRBYVEAFRocdnx5AEoObh4oXAA6LCgAc1k6kRg+kQApHq4AZVQzHDBXWXb2lU2t7c2Ael3kAJ3jk9Oz0-3N6lpyqD0AKyE4cn9zt-ePhEuVGBwAR20IF+dE0AG0KKoXhQqOQEABdV6fJHIlTfBAQUi0eAgPKabIognvNEqDSWI6EinHYlXZrlEIGNgucmUlmog47KKeRxM1m8tnHFaJWK+Zl8wnU-CIsWU6lBMnSlnUlTXHB03QMqGihVIpVWGxcuJS7Uo3WCg0i43i9mbNKWgloyVau3nNG5fKFYqlcrVWpPRrNdjO5GXNJAA) | [Generics](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BxLJ2bBkcALxwAPABU4WAB4xBNbnF71OAcwB8ACmkAuONICU47XAAGSVnDjyjAEgTTcAGji24FJy-ytcSzgAQ1UuXnZw+GkANSxkGGhxOAEhemRdUk4AVxAAI2ZSMzsS0rKSgHoKlAgeaLiE6CNrT3K29o7OrqqShzgc-OY3Ly7RsbGeux9+3IKoEfHFpcrqwOTLADoty0ja3jgGxKhk1HRsfUPoYuW4HqiD+KOjWOCMYBpgo8kEBZu-zsm9iMAzmv3+4LKgOmA2YYIh8J6uG0rCAA) | [Programmable](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BJTmACu8ALxwABglZw4ADwBccTkJAAjZjLgUlK9ZtkAvXao1RWuCey684AeRHCxk6bIDaAaTjBOcANZYFBAEcAAkCAJOuAC6SuGRIrie0XAAPspCGBgWVhwQPPAMAIYYwDRFMNBw4qjo2AAUDjBOAJSy7R2dHQD03Sj5tsWl5ZVQSgAqAGolZRXQADyuXcsrq2trvZ2KGfpQaRlZANxa66dnZ5sdOjtm+ypHJ+dPz+2X7cY3zHeZGMcv-89NrgAHxAA)
+
+TypeDriver has advanced runtime and static type inference support for TypeScript definitions represented as strings.
+
+### Definitions
+
+Type definitions can be defined in the following way.
+
+```typescript
+const Address = `{
+  street: string
+  city: string
+  country: string
+}`
+const User = `{
+  name: string
+  email: string
+  address: ${Address}
+}`
+const Product = `{
+  id: string
+  name: string
+  price: number
+}`
+const Order = `{
+  user: ${User}
+  products: ${Product}[]
+}`
+
+const validator = compile(Order)        // const validator: TValidator<{
+                                        //   user: {
+                                        //     name: string;
+                                        //     email: string;
+                                        //     address: {
+                                        //       street: string;
+                                        //       city: string;
+                                        //       country: string;
+                                        //     };
+                                        //   };
+                                        //   products: {
+                                        //     name: string;
+                                        //     id: string;
+                                        //     price: number;
+                                        //   }[];
+                                        // }>
+```
+
+
+### Options
+
+Data constraints and annotations can be specified via a `with` keyword. TypeDriver natively understands JSON Schema vocabulary. The following constrains a Vector type.
+
+```typescript
+const Vector = compile(`{
+  x: number with { minimum: 0, maximum: 1 },
+  y: number with { minimum: 0, maximum: 1 }
+} with {
+  description: '2D Vector Type'
+}`)
+
+console.log(Vector.toJsonSchema())                 // {
+                                                   //   type: 'object',
+                                                   //   required: [ 'x', 'y' ],
+                                                   //   properties: {
+                                                   //     x: { 
+                                                   //       type: 'number', 
+                                                   //       minimum: 0, 
+                                                   //       maximum: 1 
+                                                   //     },
+                                                   //     y: { 
+                                                   //       type: 'number', 
+                                                   //       minimum: 0,
+                                                   //       maximum: 1 
+                                                   //     }
+                                                   //   },
+                                                   //   description: '2D Vector Type'
+                                                   // }
+```
+
+
+### Generics
+
+Generic types can be created the following way
+
+```typescript
+const Generic = <T extends string>(T: T) => `{ 
+  x: ${T}, 
+  y: ${T} 
+}` as const
+
+const TVector = Generic('number')                  // const TVector: `{ 
+                                                   //   x: number,
+                                                   //   y: number
+                                                   // }` = `...`
+
+const Vector = compile(TVector)                    // const Vector: TValidator<{
+                                                   //   x: number
+                                                   //   y: number
+                                                   // }>
+```
+
+### Programmable
+
+Programmable Mapped and Conditional types are supported.
+
+```typescript
+import { compile } from 'typedriver'
+
+const Input = `{
+  x: number
+  y: number
+  z: number
+}`
+
+const Output = `{
+  [K in keyof ${Input}]: ${Input}[K] | null
+}`
+
+const validator = compile(Output)                  // const validator: TValidator<{
+                                                   //     x: number | null;
+                                                   //     y: number | null;
+                                                   //     z: number | null;
+                                                   // }>
 ```
 
 ## Static
@@ -186,133 +311,6 @@ type T = Static<typeof T>                           // type T = {
                                                     //   value: number 
                                                     // }
 ```
-
-
-## Script
-
-[Options](https://www.typescriptlang.org/play/?target=99&module=7#code/FASwtgDg9gTgLgAgN4IMZUiANgUwQXwQDMYMEByOATwhwBMYQA3HGc4YdAOwGdEA1HKjiwEAXjQYI2HAAoABkmAIEADwBcCLgFcwAI1YIA7iDgALZAjAgu4XZoAMAGisBDVXbCaAjASfKEKk0dfUMTc0trWzB7BGc3DxivBF98YEJwiyUVOhweVEYIOBAoLk1yACYAEQRBYVEAFRocdnx5AEoObh4oXAA6LCgAc1k6kRg+kQApHq4AZVQzHDBXWXb2lU2t7c2Ael3kAJ3jk9Oz0-3N6lpyqD0AKyE4cn9zt-ePhEuVGBwAR20IF+dE0AG0KKoXhQqOQEABdV6fJHIlTfBAQUi0eAgPKabIognvNEqDSWI6EinHYlXZrlEIGNgucmUlmog47KKeRxM1m8tnHFaJWK+Zl8wnU-CIsWU6lBMnSlnUlTXHB03QMqGihVIpVWGxcuJS7Uo3WCg0i43i9mbNKWgloyVau3nNG5fKFYqlcrVWpPRrNdjO5GXNJAA) | [Referential](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4AVAII06WbtzgBeOAAMErOHF5QsWGAC5FMepwDm8lMEoalwXftQBXTlorGtpvbmkcIPfgFVuzSTLkLOAIYgWHbaegpYIAGYoQ76AcLKYhoAJAiCiaLcuKxOLm5wfAAKxDQWyPBSsvrANLFm-kEhmmH6YPTIzZwWIABGzLnOXLyFAPJQNN5VfnAWXlCp6Z7MOQrtEGUV3IvFpeUwuADaALqD7MPw45NQPqjo2AAUfFfMAJQKH58KAPTfKK4jF4LQoANQCGFqARg0AAPDMvgjEUjkR9fh85swNPCUTjcZ80Z9AsF6joANz6PGUnEEj6RaIYEnkqnM5E0hQJETJRAUlm8n5-BFKFTqFoOJl8iVsj7IQy2UW6cUS3lShSWaxQOUmBU8pVUqW4RW6vUCvCGo14mnrTYwbbc83MqVE5pask6+0oqW1Rlu91IqXtYCdDTdPrMM2+v0mo7HcMRhFo3AAPlYQA) | [Generics](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BxLJ2bBkcALxwAPABU4WAB4xBNbnF71OAcwB8ACmkAuONICU47XAAGSVnDjyjAEgTTcAGji24FJy-ytcSzgAQ1UuXnZw+GkANSxkGGhxOAEhemRdUk4AVxAAI2ZSMzsS0rKSgHoKlAgeaLiE6CNrT3K29o7OrqqShzgc-OY3Ly7RsbGeux9+3IKoEfHFpcrqwOTLADoty0ja3jgGxKhk1HRsfUPoYuW4HqiD+KOjWOCMYBpgo8kEBZu-zsm9iMAzmv3+4LKgOmA2YYIh8J6uG0rCAA) | [Programmable](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4AVAGpZkMaHAC8cAAYJWcOAA8AXHE4BXEACNmcuBRXqtO+QC8DG7VFa4p7Lrzh8AsgEMw1GhOkASBIOGiUPhYCjBYnDTciLrKcMCcBMxwABoANLr6cQlJAJrppirxiVBwAFrWcAD8cADaaXB5ZQC6cAZYTFC2HBA88K7utF6o6NgAFM5uHgCU8rNz8wsA9IsoPQ79HiqCLhjANC6BADw1ugtn5xeXF8uzhpapcKdXzy-PN-J3zA9Pr79-8u9VBZjP9Qb8bk0AHxAA)
-
-TypeDriver has full compile and type inference support for TypeScript definitions encoded in strings. 
-
-### Options
-
-Use the `with` keyword to augment types with data constraints and annotations. 
-
-```typescript
-const Vector = compile(`{
-  x: number with { minimum: 0, maximum: 1 },
-  y: number with { minimum: 0, maximum: 1 }
-} with {
-  description: '2D Vector Type'
-}`)
-
-console.log(Vector.toJsonSchema())                 // {
-                                                   //   type: 'object',
-                                                   //   required: [ 'x', 'y' ],
-                                                   //   properties: {
-                                                   //     x: { 
-                                                   //       type: 'number', 
-                                                   //       minimum: 0, 
-                                                   //       maximum: 1 
-                                                   //     },
-                                                   //     y: { 
-                                                   //       type: 'number', 
-                                                   //       minimum: 0,
-                                                   //       maximum: 1 
-                                                   //     }
-                                                   //   },
-                                                   //   description: '2D Vector Type'
-                                                   // }
-```
-
-### Referential
-
-Referential types can be modelled in the following way.
-
-```typescript
-const TAddress = `{
-  street: string
-  city: string
-  country: string
-}`
-const TUser = `{
-  name: string
-  email: string
-  address: ${TAddress}
-}`
-const TProduct = `{
-  id: string
-  name: string
-  price: number
-}`
-const TOrder = `{
-  user: ${TUser}
-  products: ${TProduct}[]
-}`
-
-const Order = compile(TOrder)           // const Order: TValidator<{
-                                        //   user: {
-                                        //     name: string;
-                                        //     email: string;
-                                        //     address: {
-                                        //       street: string;
-                                        //       city: string;
-                                        //       country: string;
-                                        //     };
-                                        //   };
-                                        //   products: {
-                                        //     name: string;
-                                        //     id: string;
-                                        //     price: number;
-                                        //   }[];
-                                        // }>
-```
-
-### Generics
-
-Generic types can be created the following way
-
-```typescript
-const Generic = <T extends string>(T: T) => `{ 
-  x: ${T}, 
-  y: ${T} 
-}` as const
-
-const TVector = Generic('number')                  // const TVector: `{ 
-                                                   //   x: number,
-                                                   //   y: number
-                                                   // }` = `...`
-
-const Vector = compile(TVector)                    // const Vector: TValidator<{
-                                                   //   x: number
-                                                   //   y: number
-                                                   // }>
-```
-
-## Programmable
-
-Programmable Mapped and Conditional types are supported.
-
-```typescript
-const TVector = `{
-  x: number
-  y: number
-  z: number
-}`
-
-const TMapped = `${TVector} extends {
-  x: infer X,
-  y: infer Y,
-  z: infer Z
-} ? [X, Y, Z] : never`
-
-const Mapped = compile(TMapped)                    // const Mapped: TValidator<[
-                                                   //   number, 
-                                                   //   number, 
-                                                   //   number
-                                                   // ]>
-```
-
 
 ## Reflect
 
@@ -390,11 +388,19 @@ const sum = add({ a: 1, b: 2 })                     // const value = 3
 ```
 
 
-## Benchmarks
+## Benchmark
 
-TypeDriver uses TypeBox for validation, which is known for high performance and specification compliance. By transforming Standard Schema libraries that support JSON Schema, validation performance can be improved by several orders of magnitude. TypeDriver gives JSON Schema-supporting libraries the same performance characteristics as TypeBox.
+TypeDriver is built for performance and to be as lean as possible while hosting a TypeScript DSL engine and JSON Schema 2020-12 validation compiler. The following are high level metrics for the library.
 
-Libraries marked as accelerated expose their JSON Schema representation, allowing TypeDriver to bypass the library's own validation logic and run validation directly through TypeBox instead.
+### Performance
+
+The following table shows library throughput with and without TypeDriver acceleration.
+
+```bash
+$ deno task bench
+```
+
+Performance Metrics
 
 ```bash
 ┌────────────┬────────────┬─────────────┬────────────────┬───────────────┬──────────────┐
@@ -410,15 +416,16 @@ Libraries marked as accelerated expose their JSON Schema representation, allowin
 Last Run: Tue Jun 23 2026
 ```
 
-## Compression
+### Compression
 
-TypeDriver is intended to be a server-side technology for high-throughput systems, but can also be used in browser environments. The library compresses to around 50kb gzipped.
+TypeDriver compresses to approximately 50kb gzipped.
 
 ```bash
 $ deno task metrics
 ```
 
-Compression Rates
+Compression Metrics
+
 ```bash
 ┌───────┬─────────────────────────┬─────────────┬─────────────┬────────────┐
 │ (idx) │ path                    │ bundled     │ minified    │ gzipped    │
