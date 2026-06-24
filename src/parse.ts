@@ -26,34 +26,13 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-// deno-fmt-ignore-file
+import { type TScript, type TSchema, Script } from 'typebox'
 
-// ------------------------------------------------------------------
-// Static
-// ------------------------------------------------------------------
-export { type Static } from './static.ts'
-
-// ------------------------------------------------------------------
-// Parse
-// ------------------------------------------------------------------
-export { type TParse, parse } from './parse.ts'
-
-// ------------------------------------------------------------------
-// Validator
-// ------------------------------------------------------------------
-export { 
-  type TValidator, 
-  type TErrorFormat, 
-  type TErrorLocale, 
-  type TErrorOptions, 
-  type TErrorResult,
-  type TJsonSchemaError,
-  type TStandardSchemaError,
-} from './validator.ts'
-
-// ------------------------------------------------------------------
-// Compile
-// ------------------------------------------------------------------
-export { type TCompile as TType, compile } from './compile.ts'
-import { compile } from './compile.ts'
-export default compile
+/** Parses a TypeScript definition into JSON Schema only. */
+export type TParse<Script extends string,
+  Result extends TSchema = TScript<{}, Script>,
+> = Result
+/** Parses a TypeScript definition into JSON Schema only. */
+export function parse<Script extends string>(script: Script): TParse<Script> {
+  return Script({}, script)
+}

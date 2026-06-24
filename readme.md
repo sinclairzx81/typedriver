@@ -46,7 +46,7 @@ Syntax highlighting is available via the [Visual Studio Marketplace](https://mar
 
 ## Overview
 
-TypeDriver is a runtime type system that compiles TypeScript, JSON Schema and Standard Schema definitions into high performance JSON Schema validators. It also hosts the TypeScript type system statically inside TypeScript types which enables it to infer types from string definitions.
+TypeDriver is a runtime type system that compiles TypeScript, JSON Schema and Standard Schema definitions into high performance JSON Schema validators. It also statically emulates the TypeScript type system inside the TypeScript type system which enables it to infer types from strings.
 
 License MIT
 
@@ -55,11 +55,11 @@ License MIT
 - [Compile](#Compile)
 - [Validate](#Validate)
 - [Script](#Script)
+- [Parse](#Translate)
 - [Static](#Static)
 - [Reflect](#Reflect)
 - [Integrate](#Integrate)
-- [Benchmarks](#Benchmarks)
-- [Compression](#Compression)
+- [Benchmark](#Benchmark)
 - [Contribute](#Contribute)
 
 
@@ -67,7 +67,7 @@ License MIT
 
 [TypeScript](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoAqBPADgUwMoDGATgJbYAuqYStd9D4ypAttgPbEWgDeoh7NqQA2uUAF9QAM2KDQAcgo5cAEzIA3XMXnJkAgHYBnbgDVchCpwDMoALz9B2EbgAUAAx7JQoAB4AuUH0AVxYAIy0AGi9QTADgsMjogC84kPDiZHE3AEpdFXNhAENiMQNjUHVC4SDcAKD9AGt9dgB3fV0y7g5DUgpSdn07UDMLawA6bGLDV0rq3GzvRaXFtE7Qbt7+-QDPZb39g8OjpbRvf0C0xOPrm5vTmNSE4ijb17eTsG8Ui6fo9--rmhJPYxqCgA) | [JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoBSBnA9gO1AMoDGAFgKYC2AhqmEvQ40+MgJYUAO2ATgC6gBvUEWydWAGzKgAvqABm3UaADkvAJ4cyAE26sAbmW7LkyEbkz8AamSK8eAZlABeYaI4SyACgHJQodZoAXCrYAEYAVja8ygA0vqDcZACOAK6siVrBANrKAB6xKmoFygBeygC6cX4cipp8rGSYwT5+frnN-hpkwcq4KRShhsoyVa1qHQHdKn0DQyPxfiUTXT0zg0Yy8dLI0gCUJlo24lSJrub8elTiKVMpuADWuNgA7rgmZhagXJisvKx4zlA1lsDgAdBwTpgvJdrmRdq0EYi0B9+N9fv9cM0Foicbi8fiCaA0G1gmtDKNCZSqYTiaBxqAydwKdSWayiWBFqT+utsWy+QS0LIXKCRUA) | [Standard Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/PTAEFpK6dv4YpAoEoDKAXAhgOwCbYBO+GAxgBYCmAttgFygBaA9vqmEl9z7+MgEsaABxZFMoMixECANlVAAzItNAByTAE9hVfEQEA3KkTXJBIsRIBeSlTXVW2p5FNwBnCQDUqZTGIDMoAC8ktLCclQAFFYAdCwARgBWPpiRAN7IoKAAHoyxuACuNPHGkQCUADSZoJp5MYXFpZXVVnUNJUTlVQC+ZWVm+D6yxAquHqAG2LIFVIwFuADWuCwA7rhmYxKibgKYAiy4waDevgExwsRuUZPTVGVZD48PaJug27v7uIwZT79--wDAY80FlcqB2sYqkDoTCYSCaowIUQobDUWjnmAsq1wUUOtV0QToWhukcYmSgA)
 
-TypeDriver exports a single compile(...) function that accepts any TypeScript, JSON Schema, or Standard Schema definition. The function will immediately JIT compile the definition into an high-performance validator instance. If the environment does not support JIT (such as Cloudflare), TypeDriver will automatically fallback to dynamic checking.
+The compile function will accept any TypeScript, JSON Schema or Standard Schema definition and JIT compile it into a high-performance runtime validator. If the JavaScript environment does not support JIT (i.e. Cloudflare), the compiler will automatically fallback to dynamic validation.
 
 ```typescript
 import compile from 'typedriver'
@@ -143,11 +143,11 @@ console.log(errors)
 
 [Definitions](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BBGnSzducALxwABglZw4vKFiwwAXPJj1OAc1kpglNQuDbdqAK6cNFQxuM7ckjhB7wAqt2bipMuZwCGIFg2mjpyWCB+mMF2un6CiiJqACQIAkIiuKwOTi5wAArENGbI8BLSusA00Sa+AUHqIbpg9Mj1nGYgAEbMWY5cvHAA8lA0nmU+cGYeUMkI7syZcs0QRSXcswUrxTC4ANoAur3s-fAMfhiVfjDQXqjo2AAUw6NQAJRyH3IA9F8ozgNnC40K7QNQAFQAaudLtcoAAeCafJHIlGo1E-D5TZhqRFovH4lEYz7+QLVLQAbl0BOp1KJH3CkQwZMpNNZ+Lpcji6XWiCpbP5nw5HwUSlUDTsLIFUu+v2RyH01nF2kl0oFQrk5ksUEVRmVfNVrKFuBVBsNsrwJtNtPNy1WMB5uKtBKFJPquop+qdeKFlWZnq96PNSxabQ63SgloDgY+e32kajyIxuAAfKwgA) |  [Options](https://www.typescriptlang.org/play/?target=99&module=7#code/FASwtgDg9gTgLgAgN4IMZUiANgUwQXwQDMYMEByOATwhwBMYQA3HGc4YdAOwGdEA1HKjiwEAXjQYI2HAAoABkmAIEADwBcCLgFcwAI1YIA7iDgALZAjAgu4XZoAMAGisBDVXbCaAjASfKEKk0dfUMTc0trWzB7BGc3DxivBF98YEJwiyUVOhweVEYIOBAoLk1yACYAEQRBYVEAFRocdnx5AEoObh4oXAA6LCgAc1k6kRg+kQApHq4AZVQzHDBXWXb2lU2t7c2Ael3kAJ3jk9Oz0-3N6lpyqD0AKyE4cn9zt-ePhEuVGBwAR20IF+dE0AG0KKoXhQqOQEABdV6fJHIlTfBAQUi0eAgPKabIognvNEqDSWI6EinHYlXZrlEIGNgucmUlmog47KKeRxM1m8tnHFaJWK+Zl8wnU-CIsWU6lBMnSlnUlTXHB03QMqGihVIpVWGxcuJS7Uo3WCg0i43i9mbNKWgloyVau3nNG5fKFYqlcrVWpPRrNdjO5GXNJAA) | [Generics](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BxLJ2bBkcALxwAPABU4WAB4xBNbnF71OAcwB8ACmkAuONICU47XAAGSVnDjyjAEgTTcAGji24FJy-ytcSzgAQ1UuXnZw+GkANSxkGGhxOAEhemRdUk4AVxAAI2ZSMzsS0rKSgHoKlAgeaLiE6CNrT3K29o7OrqqShzgc-OY3Ly7RsbGeux9+3IKoEfHFpcrqwOTLADoty0ja3jgGxKhk1HRsfUPoYuW4HqiD+KOjWOCMYBpgo8kEBZu-zsm9iMAzmv3+4LKgOmA2YYIh8J6uG0rCAA) | [Programmable](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzgYwuYAbApnAvnAMyjTgHIYBPMLAEymADcspSAoV1AOwGd4BJTmACu8ALxwABglZw4ADwBccTkJAAjZjLgUlK9ZtkAvXao1RWuCey684AeRHCxk6bIDaAaTjBOcANZYFBAEcAAkCAJOuAC6SuGRIrie0XAAPspCGBgWVhwQPPAMAIYYwDRFMNBw4qjo2AAUDjBOAJSy7R2dHQD03Sj5tsWl5ZVQSgAqAGolZRXQADyuXcsrq2trvZ2KGfpQaRlZANxa66dnZ5sdOjtm+ypHJ+dPz+2X7cY3zHeZGMcv-89NrgAHxAA)
 
-TypeDriver has advanced runtime and static type inference support for TypeScript definitions represented as strings.
+TypeDriver has advanced type inference support for TypeScript definitions encoded as strings.
 
 ### Definitions
 
-Type definitions can be defined in the following way.
+Type definitions can be specified in the following way.
 
 ```typescript
 const Address = `{
@@ -223,7 +223,7 @@ console.log(Vector.toJsonSchema())                 // {
 
 ### Generics
 
-Generic types can be created the following way
+Generic types can be created in the following way
 
 ```typescript
 const Generic = <T extends string>(T: T) => `{ 
@@ -244,7 +244,7 @@ const Vector = compile(TVector)                    // const Vector: TValidator<{
 
 ### Programmable
 
-Programmable Mapped and Conditional types are supported.
+Programmable mapped and conditional types are supported
 
 ```typescript
 import { compile } from 'typedriver'
@@ -264,6 +264,40 @@ const validator = compile(Output)                  // const validator: TValidato
                                                    //     y: number | null;
                                                    //     z: number | null;
                                                    // }>
+```
+
+<a name="Translate"></a>
+
+## Parse
+
+[Transform TypeScript to JSON Schema](https://www.typescriptlang.org/play/?target=99&module=7#code/JYWwDg9gTgLgBAbzmAhlAzgUwDRxgTzEzgGUYUZgBjOAXzgDMoIQ4ByAogEymADdMUNgChhVCADt08AGqYqMaHAC8yNFgAUAAwTC4cAB4AuOBICuIAEaC9cfCfNWb+gF4OL1qMNpaAlKM5iOQUlVTIKagAeQIgGOGDFKAA+fVS09P0Aeky8QiD5RJVEWwzSsvKK8uzU41MPQWwSyuaW5ur9ezqnKEbWvv6M9rg3Ls8mgYm2nNpRcSkIABtMADoFiABzDQToX0mW6rBeCRh0E109i4qhwJM2CEsAKwK2Xsu39KGoTABHM2AvrgmADabAML3Y+HBbBcbAAuq93oihocIERYMBMKdioicUN9LUkDd2I5PGxaAicZc8XYzrkiLcSYIyRTKXtqSNCXkGfUhDNWW8hnz+RdqrQgA)
+
+Use the parse function to transform TypeScript into JSON Schema.
+
+```typescript
+import { parse, type Static } from 'typedriver'
+
+const Vector = parse(`{
+  x: number
+  y: number
+  z: number
+}`)
+
+type Vector = Static<typeof Vector>                // type Vector = {
+                                                   //   x: number,
+                                                   //   y: number,
+                                                   //   z: number
+                                                   // }
+
+console.log(Vector)                                // prints: {
+                                                   //   type: 'object',
+                                                   //   required: ['x', 'y', 'z'],
+                                                   //   properties: {
+                                                   //     x: { type: 'number'},
+                                                   //     y: { type: 'number'},
+                                                   //     z: { type: 'number'}
+                                                   //   }
+                                                   // }
 ```
 
 ## Static
@@ -314,7 +348,7 @@ type T = Static<typeof T>                           // type T = {
 
 ## Reflect
 
-TypeDriver internally represents TypeScript using JSON Schema as a runtime IR for types. Compiled validators provide a `toJsonSchema()` function that returns the JSON Schema representation. This can be passed on to form builders and other metadata tooling.
+TypeDriver represents TypeScript using JSON Schema representations. Compiled validators include a `toJsonSchema()` function that returns the internal JSON Schema representation.
 
 ```typescript
 import compile from 'typedriver'
@@ -331,7 +365,7 @@ validator.toJsonSchema()                            // Returns JSON Schema or an
                                                     // schema {} if not supported.
 ```
 
-The original source type used for compilation can also be retrieved via:
+The original type used for compilation can also be retrieved via:
 
 ```typescript
 validator.toType()                                  // Returns the original type or

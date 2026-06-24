@@ -72,19 +72,18 @@ function FromTypeScript<Script extends string>(script: Script): TFromTypeScript<
   const schema = Script({}, script)
   return new JsonSchemaValidator(script, schema as Record<PropertyKey, unknown>)
 }
-
 // ------------------------------------------------------------------
-// Type
+// Compile
 // ------------------------------------------------------------------
 /** Compiles a type definition into a high performance Validator */
-export type TType<Type extends unknown, Result extends TValidator = (
+export type TCompile<Type extends unknown, Result extends TValidator = (
   Type extends string ? TFromTypeScript<Type> :
   Type extends StandardSchemaV1 ? TFromStandardSchema<Type> :
   Type extends TSchema ? TFromJsonSchema<Type> :
   TFromJsonSchema<{}>
 )> = Result
 /** Compiles a type definition into a high performance Validator */
-export function type<const Type extends unknown>(type: Type): TType<Type> {
+export function compile<const Type extends unknown>(type: Type): TCompile<Type> {
   return (
     IsTypeScript(type) ? FromTypeScript(type) :
     IsStandardSchemaV1(type) ? FromStandardSchema(type) :
